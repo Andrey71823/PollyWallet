@@ -1,57 +1,177 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LayoutB from './LayoutB';
-import { ArrowLeft } from 'lucide-react';
+import HeaderB from './HeaderB';
+import { Box, Diamond, TrendingUp, Sparkles, Check, Star, X, Plus, Minus } from 'lucide-react';
 
 export default function NFTB() {
-    const tabs = ['All', 'Art', 'Gaming', 'Music', 'Virtual'];
+    const [showMintModal, setShowMintModal] = useState(false);
+    const [quantity, setQuantity] = useState(1);
+    const pricePerNFT = 1000;
+
+    const benefits = [
+        'Exclusive Airdrop Rewards',
+        'Up to 60% Point Boost',
+        '10% APY Daily Interest',
+        'Ambassador Program Access'
+    ];
 
     return (
         <LayoutB>
-            <div className="sticky top-0 bg-[#e0e5ec]/90 backdrop-blur-md z-40 px-6 pt-12 pb-4 space-y-6">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                    <button className="w-10 h-10 bg-[#e0e5ec] rounded-full shadow-neu active:shadow-neu-pressed flex items-center justify-center text-gray-600">
-                        <ArrowLeft size={20} />
-                    </button>
-                    <h1 className="text-lg font-bold text-gray-800">My Collection</h1>
-                    <div className="w-10 h-10 rounded-full shadow-neu p-0.5 bg-[#e0e5ec]">
-                        <img src="https://i.pravatar.cc/150?img=11" alt="Profile" className="w-full h-full rounded-full object-cover" />
+            <div className="p-6 pt-8 space-y-6">
+                <HeaderB title="NFT Mint" />
+
+                {/* Stats Row */}
+                <div className="flex gap-3">
+                    <div className="flex-1 bg-white p-4 rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.04)] text-center border border-gray-50">
+                        <Box className="mx-auto mb-2 text-gray-600" size={22} />
+                        <p className="text-2xl font-black text-gray-900">3</p>
+                        <p className="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Owned</p>
+                    </div>
+                    <div className="flex-1 bg-white p-4 rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.04)] text-center border border-gray-50">
+                        <Diamond className="mx-auto mb-2 text-blue-600" size={22} />
+                        <p className="text-lg font-black text-gray-900">Diamond</p>
+                        <p className="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Rank</p>
+                    </div>
+                    <div className="flex-1 bg-white p-4 rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.04)] text-center border border-gray-50">
+                        <TrendingUp className="mx-auto mb-2 text-green-600" size={22} />
+                        <p className="text-2xl font-black text-green-600">50%</p>
+                        <p className="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Boost</p>
                     </div>
                 </div>
 
-                {/* Filter Pills */}
-                <div className="flex gap-4 overflow-x-auto no-scrollbar py-2 px-1">
-                    {tabs.map((tab, i) => (
-                        <button key={tab} className={`px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all ${i === 0
-                                ? 'shadow-neu-pressed text-blue-600'
-                                : 'shadow-neu text-gray-500 active:shadow-neu-pressed'
-                            }`}>
-                            {tab}
-                        </button>
-                    ))}
-                </div>
-            </div>
+                {/* Main Card */}
+                <div className="bg-white p-2 rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-50">
+                    <div className="bg-gradient-to-b from-gray-50 to-white rounded-[32px] p-6 pb-8 relative overflow-hidden">
 
-            <div className="px-6 pb-20">
-                <div className="grid grid-cols-2 gap-5">
-                    {[1, 2, 3, 4, 5, 6].map((item) => (
-                        <div key={item} className="bg-[#e0e5ec] p-3 rounded-[24px] shadow-neu group">
-                            <div className="aspect-square rounded-[18px] shadow-neu-pressed p-1 mb-3 bg-[#e0e5ec]">
-                                <img
-                                    src={`https://picsum.photos/400/400?random=${item + 10}`}
-                                    alt="NFT"
-                                    className="w-full h-full object-cover rounded-[14px] opacity-90 group-hover:opacity-100 transition-opacity"
-                                />
+                        {/* Hero NFT Card - Premium Black/Gold */}
+                        <div className="w-full aspect-[4/3] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-[28px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] mb-8 flex flex-col items-center justify-center text-white relative overflow-hidden">
+                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"></div>
+                            <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+
+                            <div className="w-20 h-20 rounded-[20px] bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20 shadow-xl">
+                                <Star size={36} className="text-yellow-400" fill="currentColor" />
                             </div>
-                            <div className="px-1">
-                                <h3 className="font-bold text-gray-800 text-sm">Punk #{400 + item}</h3>
-                                <div className="flex justify-between items-center mt-2">
-                                    <span className="text-xs font-bold text-blue-600">4.2 ETH</span>
+                            <span className="font-black text-2xl tracking-[0.15em] mb-1">POLY</span>
+                            <span className="text-xs font-bold text-white/60 tracking-widest uppercase">NFT BOX</span>
+                        </div>
+
+                        <div className="space-y-5">
+                            <div>
+                                <h2 className="text-2xl font-black text-gray-900 mb-2">PolyWallet NFT</h2>
+                                <p className="text-gray-500 font-medium text-sm leading-relaxed">
+                                    Mint your NFT to unlock rewards, daily interest, and affiliate benefits.
+                                </p>
+                            </div>
+
+                            {/* Benefits List */}
+                            <div className="space-y-2.5">
+                                {benefits.map((benefit, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check size={12} className="text-green-600" strokeWidth={3} />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">{benefit}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Price & Availability */}
+                            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-[20px] border border-gray-100">
+                                <div>
+                                    <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Mint Price</p>
+                                    <span className="font-black text-2xl text-gray-900">$1,000</span>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-green-600 font-bold text-xs flex items-center gap-1 justify-end mb-1">
+                                        <Sparkles size={12} /> Limited
+                                    </p>
+                                    <span className="text-xs font-bold text-gray-500">3,247 / 10,000</span>
                                 </div>
                             </div>
+
+                            {/* Mint Button */}
+                            <button
+                                onClick={() => setShowMintModal(true)}
+                                className="w-full h-16 bg-black rounded-[24px] text-white font-bold text-lg shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] active:scale-[0.98] transition-all flex items-center justify-center gap-3 relative overflow-hidden hover:shadow-[0_25px_50px_-10px_rgba(0,0,0,0.4)]"
+                            >
+                                <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/15 to-transparent pointer-events-none rounded-t-[24px]"></div>
+                                <Diamond size={20} className="relative z-10" />
+                                <span className="relative z-10">Mint NFT</span>
+                            </button>
                         </div>
-                    ))}
+                    </div>
                 </div>
+
+
+                {/* ========== MINT NFT MODAL ========== */}
+                {showMintModal && (
+                    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center">
+                        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowMintModal(false)}></div>
+                        <div className="bg-white w-full sm:w-[420px] rounded-t-[32px] sm:rounded-[32px] p-6 pb-10 sm:pb-8 shadow-2xl relative z-10 animate-slide-up">
+                            <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 sm:hidden"></div>
+
+                            <div className="flex justify-between items-center mb-6">
+                                <h2 className="text-2xl font-black text-gray-900">Mint NFT</h2>
+                                <button onClick={() => setShowMintModal(false)} className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
+                                    <X size={20} />
+                                </button>
+                            </div>
+
+                            <div className="space-y-5">
+                                {/* Quantity Selector */}
+                                <div>
+                                    <span className="text-sm font-bold text-gray-500 block mb-3">Select Quantity</span>
+                                    <div className="flex items-center justify-center gap-6">
+                                        <button
+                                            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                            className="w-14 h-14 bg-gray-100 rounded-[16px] flex items-center justify-center text-gray-600 hover:bg-gray-200 active:scale-95 transition-all"
+                                        >
+                                            <Minus size={24} />
+                                        </button>
+                                        <div className="bg-gray-50 border border-gray-100 rounded-[20px] px-10 py-4 text-center min-w-[140px]">
+                                            <span className="text-4xl font-black text-gray-900 block">{quantity}</span>
+                                            <span className="text-xs font-bold text-gray-400 uppercase">NFT</span>
+                                        </div>
+                                        <button
+                                            onClick={() => setQuantity(Math.min(10, quantity + 1))}
+                                            className="w-14 h-14 bg-gray-100 rounded-[16px] flex items-center justify-center text-gray-600 hover:bg-gray-200 active:scale-95 transition-all"
+                                        >
+                                            <Plus size={24} />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Price Summary */}
+                                <div className="bg-gray-50 rounded-[20px] p-4 space-y-3">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm font-medium text-gray-500">Price per NFT</span>
+                                        <span className="font-bold text-gray-900">${pricePerNFT.toLocaleString()}</span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-sm font-medium text-gray-500">Quantity</span>
+                                        <span className="font-bold text-gray-900">{quantity}</span>
+                                    </div>
+                                    <div className="h-px bg-gray-200"></div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-base font-bold text-gray-700">Total Cost</span>
+                                        <span className="font-black text-2xl text-gray-900">${(pricePerNFT * quantity).toLocaleString()}</span>
+                                    </div>
+                                </div>
+
+                                {/* Confirm Button */}
+                                <button onClick={() => setShowMintModal(false)} className="w-full h-14 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-base rounded-[16px] shadow-lg shadow-blue-200 hover:shadow-xl hover:shadow-blue-300 active:scale-[0.98] transition-all">
+                                    Confirm Mint
+                                </button>
+
+                                {/* Cancel Button */}
+                                <button onClick={() => setShowMintModal(false)} className="w-full h-12 bg-gray-100 text-gray-600 font-bold text-base rounded-[16px] hover:bg-gray-200 active:scale-[0.98] transition-all">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </LayoutB>
     );

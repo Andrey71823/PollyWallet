@@ -1,14 +1,15 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Layers, Sparkles } from 'lucide-react';
 
 export default function Landing() {
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6">
-            <div className="max-w-md w-full space-y-8">
+        <div className="min-h-screen bg-grid-dark flex flex-col items-center justify-center p-6">
+            <div className="max-w-md w-full space-y-8 bg-white/5 backdrop-blur-xl p-8 rounded-[32px] border border-white/10 shadow-2xl">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold text-gray-900 tracking-tight">PolyWallet</h1>
-                    <p className="mt-2 text-lg text-gray-600">Design Prototype Review</p>
+                    <h1 className="text-4xl font-bold text-white tracking-tight">PolyWallet</h1>
+                    <p className="mt-2 text-lg text-gray-400">Design Prototype Review</p>
                 </div>
 
                 <div className="grid gap-6">

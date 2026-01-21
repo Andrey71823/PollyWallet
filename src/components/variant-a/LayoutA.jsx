@@ -8,39 +8,44 @@ export default function LayoutA({ children }) {
     const path = location.pathname;
 
     const NavItem = ({ to, icon: Icon, label, active }) => (
-        <Link to={to} className="flex flex-col items-center gap-1 group relative p-2">
+        <Link to={to} className="flex flex-col items-center gap-1 group relative p-1 min-w-[64px]">
             <div className={clsx(
-                "p-1.5 rounded-xl transition-all duration-300",
-                active ? "text-gray-900 bg-gray-100" : "text-gray-400 hover:text-gray-600"
+                "p-2.5 rounded-2xl transition-all duration-300 relative overflow-hidden",
+                active
+                    ? "bg-gray-900 text-white shadow-[0_4px_12px_rgba(0,0,0,0.15)] scale-110 -translate-y-1"
+                    : "text-gray-400 hover:text-gray-600 hover:bg-gray-50"
             )}>
-                <Icon size={24} strokeWidth={active ? 2.5 : 2} />
+                {active && (
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-50"></div>
+                )}
+                <Icon size={22} strokeWidth={active ? 2.5 : 2} className="relative z-10" />
             </div>
             <span className={clsx(
-                "text-[10px] font-medium transition-colors",
-                active ? "text-gray-900" : "text-gray-400"
+                "text-[10px] font-bold transition-all duration-300",
+                active ? "text-gray-900 translate-y-0 opacity-100" : "text-gray-400 translate-y-1 opacity-0 h-0 w-0 overflow-hidden"
             )}>
                 {label}
             </span>
             {active && (
-                <div className="absolute -top-2 w-1 h-1 bg-black rounded-full" />
+                <div className="absolute -bottom-2 w-1 h-1 bg-gray-900 rounded-full opacity-0"></div>
             )}
         </Link>
     );
 
     return (
-        <div className="min-h-screen bg-[#F9FAFB] text-gray-900 font-sans flex justify-center selection:bg-gray-200">
-            <div className="w-full max-w-[420px] bg-[#F9FAFB] relative flex flex-col shadow-2xl min-h-screen">
-                <main className="flex-1 overflow-y-auto pb-24 no-scrollbar">
+        <div className="h-[100dvh] w-full bg-grid-dark text-gray-900 font-sans flex justify-center items-start sm:items-center selection:bg-gray-200 overflow-hidden">
+            <div className="w-full h-full bg-[#F9FAFB] relative flex flex-col sm:h-[844px] sm:max-w-[400px] sm:rounded-[40px] sm:shadow-2xl sm:border-[8px] sm:border-gray-900 sm:ring-2 sm:ring-gray-700/50 sm:overflow-hidden transition-all duration-300">
+                <main className="flex-1 overflow-y-auto pb-0 no-scrollbar relative">
                     {children}
                 </main>
 
-                {/* Bottom Nav - Floating Pill Style */}
-                <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] z-50">
-                    <div className="bg-white rounded-[24px] shadow-[0_8px_30px_rgba(0,0,0,0.06)] px-6 py-4 flex justify-between items-center backdrop-blur-xl bg-white/90 border border-white/20">
+                {/* Bottom Nav - Floating Pill Style - FIXED TO BOTTOM */}
+                <div className="absolute bottom-6 left-0 right-0 z-50 flex justify-center p-0 pointer-events-none">
+                    <div className="bg-white/90 rounded-[32px] shadow-[0_8px_40px_rgba(0,0,0,0.08)] px-6 py-3 flex justify-between items-end backdrop-blur-2xl border border-white/60 w-[90%] pointer-events-auto ring-1 ring-white/60">
                         <NavItem to="/soft-white/wallet" icon={Wallet} label="Wallet" active={path.includes('wallet')} />
                         <NavItem to="/soft-white/nft" icon={Disc} label="NFT" active={path.includes('nft')} />
-                        <NavItem to="/soft-white/point" icon={Diamond} label="Point" active={false} />
-                        <NavItem to="/soft-white/rank" icon={Award} label="Rank" active={false} />
+                        <NavItem to="/soft-white/point" icon={Diamond} label="Point" active={path.includes('point')} />
+                        <NavItem to="/soft-white/rank" icon={Award} label="Rank" active={path.includes('rank')} />
                     </div>
                 </div>
             </div>
