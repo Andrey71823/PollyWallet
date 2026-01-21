@@ -22,7 +22,7 @@ export default function LayoutB({ children }) {
     return (
         <div className="h-[100dvh] w-full bg-[#f0f2f5] text-gray-800 font-sans flex justify-center items-start sm:items-center selection:bg-orange-100 overflow-hidden">
             <div className="w-full h-full bg-gradient-to-b from-[#F3EFE0] via-[#FAFAFA] to-[#FFFFFF] relative flex flex-col sm:h-[844px] sm:max-w-[400px] sm:rounded-[40px] sm:shadow-2xl sm:border-[8px] sm:border-gray-900 sm:ring-2 sm:ring-white/10 sm:overflow-hidden transition-all duration-300">
-                <main className="flex-1 overflow-y-auto pb-[104px] no-scrollbar relative z-10">
+                <main className="flex-1 overflow-y-auto pb-[120px] no-scrollbar relative z-10">
                     {children}
                 </main>
 

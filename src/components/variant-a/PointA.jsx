@@ -1,8 +1,14 @@
 import React from 'react';
 import LayoutA from './LayoutA';
+import HeaderActionsA from './HeaderActionsA';
 import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, ChevronRight, Zap } from 'lucide-react';
+import { useLocale } from '../../i18n';
 
 export default function PointA() {
+    const { t } = useLocale();
+    const walletAddress = '0x742d...5f3A';
+    const avatarSrc = 'https://i.pravatar.cc/150?img=11';
+
     const projects = [
         { name: 'Polymarket', points: '15 420', change: '+564', icon: Target, color: 'bg-blue-50 text-blue-600', iconBg: 'bg-blue-100' },
         { name: 'Probable', points: '8 934', change: '+413', icon: BarChart3, color: 'bg-green-50 text-green-600', iconBg: 'bg-green-100' },
@@ -12,13 +18,11 @@ export default function PointA() {
 
     return (
         <LayoutA>
-            <div className="px-6 pt-3 pb-4 space-y-5">
+            <div className="px-6 pt-2 pb-4 space-y-4">
                 {/* Premium Header */}
-                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
-                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">Points & Airdrops</h1>
-                    <div className="w-10 h-10 rounded-full bg-white shadow-soft p-0.5 border border-gray-100">
-                        <img src="https://i.pravatar.cc/150?img=11" alt="Profile" className="w-full h-full rounded-full object-cover" />
-                    </div>
+                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-1.5 -mx-6 px-6 border-b border-gray-100/50">
+                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">{t('pointsAirdrops', 'Points & Airdrops')}</h1>
+                    <HeaderActionsA walletAddress={walletAddress} avatarSrc={avatarSrc} />
                 </div>
 
                 {/* Hero Card - Premium Dark/Light Mix */}
@@ -30,7 +34,7 @@ export default function PointA() {
                         <div className="flex items-center gap-2 mb-2">
                             <div className="bg-white/10 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1.5 border border-white/5">
                                 <Sparkles size={14} className="text-yellow-400" fill="currentColor" />
-                                <span className="text-xs font-bold tracking-wide">TOTAL POINTS</span>
+                                <span className="text-xs font-bold tracking-wide">{t('totalPointsLabel', 'TOTAL POINTS')}</span>
                             </div>
                         </div>
 
@@ -40,17 +44,17 @@ export default function PointA() {
                             <div className="flex-1 bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/5 hover:bg-white/15 transition-colors">
                                 <div className="flex items-center gap-2 text-green-400 mb-1">
                                     <TrendingUp size={16} />
-                                    <span className="text-xs font-bold">+1 234 pts</span>
+                                    <span className="text-xs font-bold">+1 234 {t('pointsTitle', 'Points')}</span>
                                 </div>
-                                <p className="text-[10px] text-white/60 font-medium">yesterday</p>
+                                <p className="text-[10px] text-white/60 font-medium">{t('yesterday', 'yesterday')}</p>
                             </div>
 
                             <div className="flex-1 bg-gradient-to-br from-blue-600/80 to-blue-500/80 backdrop-blur-md rounded-2xl p-3 border border-white/10 shadow-lg shadow-blue-900/20">
                                 <div className="flex items-center gap-2 text-white mb-1">
                                     <Zap size={16} fill="currentColor" />
-                                    <span className="text-xs font-bold">50% Boost</span>
+                                    <span className="text-xs font-bold">50% {t('boost', 'Boost')}</span>
                                 </div>
-                                <p className="text-[10px] text-white/80 font-medium">Boost</p>
+                                <p className="text-[10px] text-white/80 font-medium">{t('boost', 'Boost')}</p>
                             </div>
                         </div>
                     </div>
@@ -59,7 +63,7 @@ export default function PointA() {
                 {/* Projects List - Premium Cards */}
                 <div className="space-y-4">
                     <div className="flex justify-between items-end px-1">
-                        <h3 className="text-lg font-black text-gray-900 tracking-tight">Supported Projects</h3>
+                        <h3 className="text-lg font-black text-gray-900 tracking-tight">{t('supportedProjects', 'Supported Projects')}</h3>
                     </div>
 
                     <div className="grid gap-3">
@@ -73,7 +77,7 @@ export default function PointA() {
                                     <h4 className={`font-bold text-base mb-0.5 ${p.disabled ? 'text-gray-400' : 'text-gray-900'}`}>{p.name}</h4>
                                     {!p.disabled && (
                                         <div className="flex items-center gap-2">
-                                            <span className="text-xs font-bold text-gray-500">Points</span>
+                                            <span className="text-xs font-bold text-gray-500">{t('pointsTitle', 'Points')}</span>
                                             <div className="h-1 w-1 rounded-full bg-gray-300"></div>
                                             <span className="text-xs font-bold text-green-500">{p.change}</span>
                                         </div>
@@ -82,7 +86,7 @@ export default function PointA() {
 
                                 <div className="text-right shrink-0">
                                     {p.disabled ? (
-                                        <span className="text-[10px] font-black uppercase tracking-wider px-3 py-1.5 bg-gray-200 text-gray-500 rounded-lg">Coming Soon</span>
+                                        <span className="text-[10px] font-black uppercase tracking-wider px-3 py-1.5 bg-gray-200 text-gray-500 rounded-lg">{t('comingSoon', 'Coming Soon')}</span>
                                     ) : (
                                         <div className="flex flex-col items-end">
                                             <div className="text-lg font-black text-gray-900 tracking-tight">{p.points}</div>

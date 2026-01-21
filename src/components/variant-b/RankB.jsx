@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import LayoutB from './LayoutB';
 import HeaderB from './HeaderB';
 import { Crown, Users, TrendingUp, Copy, QrCode, Shield, Star, Award, Zap } from 'lucide-react';
+import { useLocale } from '../../i18n';
 
 export default function RankB() {
+    const { t } = useLocale();
     const [showAllTeam, setShowAllTeam] = useState(false);
     const team = [
         { id: 'user1000', rank: 'Gold', team: '0', own: '4', color: 'text-yellow-600', icon: Award, bg: 'bg-yellow-50' },
@@ -14,8 +16,8 @@ export default function RankB() {
 
     return (
         <LayoutB>
-            <div className="px-6 pt-4 pb-4 space-y-5">
-                <HeaderB title="Rank" />
+            <div className="px-6 pt-3 pb-4 space-y-4">
+                <HeaderB title={t('rankTitle', 'Rank')} />
 
                 {/* Bento Grid Layout */}
                 <div className="grid grid-cols-2 gap-3">
@@ -31,18 +33,18 @@ export default function RankB() {
                                 <Crown size={32} fill="currentColor" />
                             </div>
                             <div>
-                                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Current Rank</p>
+                                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t('currentRank', 'Current Rank')}</p>
                                 <h2 className="text-3xl font-black text-gray-900 tracking-tight">Diamond</h2>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
                             <div className="bg-gray-50 p-3 rounded-[20px] hover:bg-gray-100 transition-colors">
-                                <p className="text-[9px] text-gray-400 font-bold uppercase mb-1">Commission</p>
+                                <p className="text-[9px] text-gray-400 font-bold uppercase mb-1">{t('commission', 'Commission')}</p>
                                 <p className="text-xl font-black text-green-600">15%</p>
                             </div>
                             <div className="bg-gray-50 p-3 rounded-[20px] hover:bg-gray-100 transition-colors">
-                                <p className="text-[9px] text-gray-400 font-bold uppercase mb-1">Booster</p>
+                                <p className="text-[9px] text-gray-400 font-bold uppercase mb-1">{t('pointBoost', 'Point Boost')}</p>
                                 <p className="text-xl font-black text-blue-600">60%</p>
                             </div>
                         </div>
@@ -54,7 +56,7 @@ export default function RankB() {
                             <Users size={20} />
                         </div>
                         <div>
-                            <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Direct</p>
+                            <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">{t('direct', 'Direct')}</p>
                             <p className="text-3xl font-black text-gray-900">3</p>
                         </div>
                     </div>
@@ -64,7 +66,7 @@ export default function RankB() {
                             <TrendingUp size={20} />
                         </div>
                         <div>
-                            <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Team</p>
+                            <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">{t('team', 'Team')}</p>
                             <p className="text-3xl font-black text-gray-900">156</p>
                         </div>
                     </div>
@@ -76,7 +78,7 @@ export default function RankB() {
                                 <QrCode size={20} className="text-white" />
                             </div>
                             <div>
-                                <p className="text-[10px] font-bold text-gray-400 uppercase">Referral Link</p>
+                                <p className="text-[10px] font-bold text-gray-400 uppercase">{t('referralLink', 'Referral Link')}</p>
                                 <p className="text-sm font-bold text-white/90">polywallet.app/ref/usr000</p>
                             </div>
                         </div>
@@ -87,13 +89,13 @@ export default function RankB() {
 
                     {/* Team List Header */}
                     <div className="col-span-2 mt-4 flex items-center justify-between px-2">
-                        <h3 className="text-base font-black text-gray-800">Recent Joiners</h3>
+                        <h3 className="text-base font-black text-gray-800">{t('recentJoiners', 'Recent Joiners')}</h3>
                         <button
                             type="button"
                             onClick={() => setShowAllTeam((prev) => !prev)}
                             className="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full cursor-pointer hover:bg-blue-100"
                         >
-                            {showAllTeam ? 'Show Less' : 'View All'}
+                            {showAllTeam ? t('showLess', 'Show less') : t('viewAll', 'View All')}
                         </button>
                     </div>
 
@@ -108,7 +110,7 @@ export default function RankB() {
                                 <span className={`text-[9px] font-black uppercase tracking-wider block mt-0.5 ${member.color} opacity-80`}>{member.rank}</span>
                             </div>
                             <div className="text-right pr-2">
-                                <p className="text-[9px] text-gray-400 font-bold uppercase">Team</p>
+                                <p className="text-[9px] text-gray-400 font-bold uppercase">{t('teamLabel', 'Team')}</p>
                                 <p className="text-sm font-black text-gray-900">{member.team}</p>
                             </div>
                         </div>

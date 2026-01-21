@@ -51,9 +51,9 @@
 }
 
 .animate-breathe {
-  animation: breathe 8s ease-in-out infinite;
+  animation: breathe 16s ease-in-out infinite;
 }
 
 .animate-breathe-strong {
-  animation: breathe-strong 8s ease-in-out infinite;
+  animation: breathe-strong 16s ease-in-out infinite;
 }

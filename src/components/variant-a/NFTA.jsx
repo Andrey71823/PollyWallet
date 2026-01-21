@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LayoutA from './LayoutA';
 import { Box, TrendingUp, Sparkles, ChevronLeft, ShieldCheck, Zap, Layers, X, Plus, Minus } from 'lucide-react';
+import { useLocale } from '../../i18n';
 
 export default function NFTA() {
+    const { t } = useLocale();
     const [showMintModal, setShowMintModal] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const price = 1000;
 
     return (
         <LayoutA>
-            <div className="px-6 pt-3 pb-4 space-y-5">
+            <div className="px-6 pt-2 pb-4 space-y-4">
                 {/* Header - Sticky Clean */}
-                <div className="flex items-center gap-4 sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
+                <div className="flex items-center gap-4 sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-1.5 -mx-6 px-6 border-b border-gray-100/50">
                     <Link to="/soft-white/wallet" className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all hover:scale-105">
                         <ChevronLeft size={22} className="relative right-0.5" />
                     </Link>
-                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">NFT Mint</h1>
+                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">{t('nftMintTitle', 'NFT Mint')}</h1>
                 </div>
 
                 {/* Bento Grid Layout */}
@@ -30,10 +32,10 @@ export default function NFTA() {
                             <div className="flex justify-between items-start z-10">
                                 <div className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-gray-100 flex items-center gap-1.5">
                                     <Sparkles size={12} className="text-blue-600" />
-                                    <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">Diamond Rank</span>
+                                    <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">{t('diamondRank', 'Diamond Rank')}</span>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-[10px] uppercase tracking-wider font-bold text-gray-400">Price</p>
+                                    <p className="text-[10px] uppercase tracking-wider font-bold text-gray-400">{t('price', 'Price')}</p>
                                     <p className="text-lg font-black text-gray-900">$1,000</p>
                                 </div>
                             </div>
@@ -47,16 +49,16 @@ export default function NFTA() {
 
                             <div className="z-10 text-center mt-auto">
                                 <h2 className="text-2xl font-black text-gray-900 tracking-tight">POLY BOX</h2>
-                                <p className="text-xs font-medium text-gray-400">Edition 1</p>
+                                <p className="text-xs font-medium text-gray-400">{t('edition', 'Edition')} 1</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Description Text - RESTORED */}
                     <div className="col-span-2 px-2">
-                        <h2 className="text-gray-900 text-xl font-bold mb-2">PolyWallet NFT</h2>
+                        <h2 className="text-gray-900 text-xl font-bold mb-2">{t('polywalletNft', 'PolyWallet NFT')}</h2>
                         <p className="text-gray-500 text-sm leading-relaxed font-medium">
-                            Mint your NFT to unlock rewards, daily interest, and affiliate benefits.
+                            {t('nftDescription', 'Mint your NFT to unlock rewards, daily interest, and affiliate benefits.')}
                         </p>
                     </div>
 
@@ -67,7 +69,7 @@ export default function NFTA() {
                         </div>
                         <div>
                             <p className="text-2xl font-black text-gray-900 tracking-tight">10%</p>
-                            <p className="text-xs font-bold text-gray-400">APY Daily Interest</p>
+                            <p className="text-xs font-bold text-gray-400">{t('apyDailyInterest', 'APY Daily Interest')}</p>
                         </div>
                     </div>
 
@@ -77,7 +79,7 @@ export default function NFTA() {
                         </div>
                         <div>
                             <p className="text-2xl font-black text-gray-900 tracking-tight">50%</p>
-                            <p className="text-xs font-bold text-gray-400">Point Boost</p>
+                            <p className="text-xs font-bold text-gray-400">{t('pointBoostLabel', 'Point Boost')}</p>
                         </div>
                     </div>
 
@@ -88,29 +90,49 @@ export default function NFTA() {
                                 <Layers size={22} />
                             </div>
                             <div>
-                                <p className="font-bold text-gray-900 text-base">Owned</p>
-                                <p className="text-xs text-gray-500 font-medium">NFTs</p>
+                                <p className="font-bold text-gray-900 text-base">{t('owned', 'Owned')}</p>
+                                <p className="text-xs text-gray-500 font-medium">{t('nfts', 'NFTs')}</p>
                             </div>
                         </div>
                         <div className="text-right">
                             <span className="text-3xl font-black text-gray-900">3</span>
-                            <span className="text-sm font-bold text-gray-400 ml-1">NFTs</span>
+                            <span className="text-sm font-bold text-gray-400 ml-1">{t('nfts', 'NFTs')}</span>
                         </div>
                     </div>
 
                     {/* Benefits List */}
                     <div className="col-span-2 bg-white rounded-[32px] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 space-y-5">
                         <div className="flex items-center justify-between">
-                            <h3 className="font-bold text-gray-900 text-lg">Privileges</h3>
-                            <span className="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded-lg">PRO</span>
+                            <h3 className="font-bold text-gray-900 text-lg">{t('privileges', 'Privileges')}</h3>
+                            <span className="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded-lg">{t('pro', 'PRO')}</span>
                         </div>
 
                         <div className="space-y-4">
                             {[
-                                { icon: Sparkles, label: 'Exclusive Airdrop Rewards', desc: 'Exclusive airdrop rewards.', color: 'text-yellow-600 bg-yellow-50' },
-                                { icon: Zap, label: 'Up to 60% Point Boost', desc: 'Up to 60% point boost.', color: 'text-purple-600 bg-purple-50' },
-                                { icon: TrendingUp, label: '10% APY Daily Interest', desc: '10% APY daily interest.', color: 'text-green-600 bg-green-50' },
-                                { icon: ShieldCheck, label: 'Ambassador Program Access', desc: 'Ambassador program access.', color: 'text-blue-600 bg-blue-50' }
+                                {
+                                    icon: Sparkles,
+                                    label: t('exclusiveAirdropRewards', 'Exclusive Airdrop Rewards'),
+                                    desc: t('exclusiveAirdropRewardsDesc', 'Exclusive airdrop rewards.'),
+                                    color: 'text-yellow-600 bg-yellow-50',
+                                },
+                                {
+                                    icon: Zap,
+                                    label: t('upToPointBoost', 'Up to 60% Point Boost'),
+                                    desc: t('upToPointBoostDesc', 'Up to 60% point boost.'),
+                                    color: 'text-purple-600 bg-purple-50',
+                                },
+                                {
+                                    icon: TrendingUp,
+                                    label: t('apyDailyInterestLabel', '10% APY Daily Interest'),
+                                    desc: t('apyDailyInterestDesc', '10% APY daily interest.'),
+                                    color: 'text-green-600 bg-green-50',
+                                },
+                                {
+                                    icon: ShieldCheck,
+                                    label: t('ambassadorProgramAccess', 'Ambassador Program Access'),
+                                    desc: t('ambassadorProgramAccessDesc', 'Ambassador program access.'),
+                                    color: 'text-blue-600 bg-blue-50',
+                                },
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 items-start group">
                                     <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${item.color}`}>
@@ -129,11 +151,11 @@ export default function NFTA() {
                     <div className="col-span-2 pt-2">
                         <div className="flex justify-between items-end mb-2 px-1">
                             <div>
-                                <p className="text-gray-400 text-xs font-bold mb-0.5 uppercase tracking-wide">Mint Price</p>
+                                <p className="text-gray-400 text-xs font-bold mb-0.5 uppercase tracking-wide">{t('mintPrice', 'Mint Price')}</p>
                                 <p className="text-gray-900 text-2xl font-black tracking-tight">$1,000</p>
                             </div>
                             <div className="text-right">
-                                <p className="text-green-600 text-xs font-bold flex items-center gap-1 justify-end mb-1"><Sparkles size={10} /> Limited</p>
+                                <p className="text-green-600 text-xs font-bold flex items-center gap-1 justify-end mb-1"><Sparkles size={10} /> {t('limited', 'Limited')}</p>
                                 <p className="text-gray-400 text-xs font-mono font-bold">3,247 / 10,000</p>
                             </div>
                         </div>
@@ -145,7 +167,7 @@ export default function NFTA() {
                         {/* Mint Button - NOW STATIC IN FLOW */}
                         <button onClick={() => setShowMintModal(true)} className="w-full h-14 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:bg-black hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
                             <Box size={20} strokeWidth={2} />
-                            Mint NFT
+                            {t('mintNft', 'Mint NFT')}
                         </button>
                     </div>
                 </div>
@@ -159,7 +181,7 @@ export default function NFTA() {
                             <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 sm:hidden"></div>
 
                             <div className="flex justify-between items-center mb-6">
-                                <h2 className="text-2xl font-black text-gray-900">Mint NFT</h2>
+                                <h2 className="text-2xl font-black text-gray-900">{t('mintNft', 'Mint NFT')}</h2>
                                 <button onClick={() => setShowMintModal(false)} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
                                     <X size={18} />
                                 </button>
@@ -168,8 +190,8 @@ export default function NFTA() {
                             <div className="space-y-6">
                                 <div className="bg-gray-50 p-4 rounded-[20px] border border-gray-100">
                                     <div className="flex justify-between items-center mb-4">
-                                        <span className="font-bold text-gray-500 uppercase text-xs tracking-wider">Quantity</span>
-                                        <span className="font-black text-gray-900">{quantity} NFT</span>
+                                        <span className="font-bold text-gray-500 uppercase text-xs tracking-wider">{t('quantity', 'Quantity')}</span>
+                                        <span className="font-black text-gray-900">{quantity} {t('nftLabel', 'NFT')}</span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-50"><Minus size={20} /></button>
@@ -180,26 +202,26 @@ export default function NFTA() {
 
                                 <div className="bg-gray-50 p-4 rounded-[20px] border border-gray-100 space-y-3">
                                     <div className="flex justify-between items-center">
-                                        <span className="text-sm font-medium text-gray-500">Price per NFT</span>
+                                        <span className="text-sm font-medium text-gray-500">{t('pricePerNft', 'Price per NFT')}</span>
                                         <span className="font-bold text-gray-900">${price.toLocaleString()}</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <span className="text-sm font-medium text-gray-500">Quantity</span>
+                                        <span className="text-sm font-medium text-gray-500">{t('quantity', 'Quantity')}</span>
                                         <span className="font-bold text-gray-900">{quantity}</span>
                                     </div>
                                     <div className="h-px bg-gray-200"></div>
                                     <div className="flex justify-between items-center">
-                                        <span className="text-base font-bold text-gray-700">Total Cost</span>
+                                        <span className="text-base font-bold text-gray-700">{t('totalCost', 'Total Cost')}</span>
                                         <span className="text-2xl font-black text-gray-900">${(price * quantity).toLocaleString()}</span>
                                     </div>
                                 </div>
 
                                 <button onClick={() => setShowMintModal(false)} className="w-full py-4 bg-blue-600 text-white rounded-[20px] font-bold text-lg shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all">
-                                    Confirm Mint
+                                    {t('confirmMint', 'Confirm Mint')}
                                 </button>
 
                                 <button onClick={() => setShowMintModal(false)} className="w-full py-3 bg-transparent text-gray-400 font-bold text-sm hover:text-gray-600">
-                                    Cancel
+                                    {t('cancel', 'Cancel')}
                                 </button>
                             </div>
                         </div>

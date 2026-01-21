@@ -2,10 +2,12 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Wallet, Diamond, Disc, Award } from 'lucide-react';
 import clsx from 'clsx';
+import { useLocale } from '../../i18n';
 
 export default function LayoutA({ children }) {
     const location = useLocation();
     const path = location.pathname;
+    const { t } = useLocale();
 
     const NavItem = ({ to, icon: Icon, label, active }) => (
         <Link to={to} className="flex flex-col items-center gap-1 group relative p-1 min-w-[64px]">
@@ -35,17 +37,17 @@ export default function LayoutA({ children }) {
     return (
         <div className="h-[100dvh] w-full bg-grid-dark text-gray-900 font-sans flex justify-center items-start sm:items-center selection:bg-gray-200 overflow-hidden">
             <div className="w-full h-full bg-[#F9FAFB] relative flex flex-col sm:h-[844px] sm:max-w-[400px] sm:rounded-[40px] sm:shadow-2xl sm:border-[8px] sm:border-gray-900 sm:ring-2 sm:ring-gray-700/50 sm:overflow-hidden transition-all duration-300">
-                <main className="flex-1 overflow-y-auto pb-[104px] no-scrollbar relative">
+                <main className="flex-1 overflow-y-auto pb-[120px] no-scrollbar relative">
                     {children}
                 </main>
 
                 {/* Bottom Nav - Floating Pill Style - FIXED TO BOTTOM */}
                 <div className="absolute bottom-6 left-0 right-0 z-50 flex justify-center p-0 pointer-events-none">
                     <div className="bg-white/90 rounded-[32px] shadow-[0_8px_40px_rgba(0,0,0,0.08)] px-6 py-3 flex justify-between items-end backdrop-blur-2xl border border-white/60 w-[90%] pointer-events-auto ring-1 ring-white/60">
-                        <NavItem to="/soft-white/wallet" icon={Wallet} label="Wallet" active={path.includes('wallet')} />
-                        <NavItem to="/soft-white/nft" icon={Disc} label="NFT" active={path.includes('nft')} />
-                        <NavItem to="/soft-white/point" icon={Diamond} label="Point" active={path.includes('point')} />
-                        <NavItem to="/soft-white/rank" icon={Award} label="Rank" active={path.includes('rank')} />
+                        <NavItem to="/soft-white/wallet" icon={Wallet} label={t('navWallet', 'Wallet')} active={path.includes('wallet')} />
+                        <NavItem to="/soft-white/nft" icon={Disc} label={t('navNft', 'NFT')} active={path.includes('nft')} />
+                        <NavItem to="/soft-white/point" icon={Diamond} label={t('navPoint', 'Point')} active={path.includes('point')} />
+                        <NavItem to="/soft-white/rank" icon={Award} label={t('navRank', 'Rank')} active={path.includes('rank')} />
                     </div>
                 </div>
             </div>

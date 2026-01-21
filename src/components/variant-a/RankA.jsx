@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import LayoutA from './LayoutA';
+import HeaderActionsA from './HeaderActionsA';
 import { Crown, Users, TrendingUp, Copy, QrCode, Star, Shield, ChevronLeft } from 'lucide-react';
+import { useLocale } from '../../i18n';
 
 export default function RankA() {
+    const { t } = useLocale();
     const [showQr, setShowQr] = useState(false);
     const [activeMemberId, setActiveMemberId] = useState(null);
 
     const referralLink = 'https://polywallet.app/ref/usr000';
     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(referralLink)}`;
+    const walletAddress = '0x742d...5f3A';
+    const avatarSrc = 'https://i.pravatar.cc/150?img=11';
 
     function DiamondIcon(props) {
         return (
@@ -91,11 +96,11 @@ export default function RankA() {
                 </div>
                 <div className="flex gap-4 text-right">
                     <div>
-                        <span className="block text-[10px] text-gray-400 font-bold uppercase">Own</span>
+                        <span className="block text-[10px] text-gray-400 font-bold uppercase">{t('own', 'Own')}</span>
                         <span className="block font-black text-blue-600 text-lg leading-tight">{member.own}</span>
                     </div>
                     <div>
-                        <span className="block text-[10px] text-gray-400 font-bold uppercase">Team</span>
+                        <span className="block text-[10px] text-gray-400 font-bold uppercase">{t('teamLabel', 'Team')}</span>
                         <span className="block font-black text-green-600 text-lg leading-tight">{member.team}</span>
                     </div>
                 </div>
@@ -123,13 +128,11 @@ export default function RankA() {
 
     return (
         <LayoutA>
-            <div className="px-6 pt-3 pb-4 space-y-5">
+            <div className="px-6 pt-2 pb-4 space-y-4">
                 {/* Premium Header */}
-                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
-                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">Rank & Team</h1>
-                    <div className="w-10 h-10 rounded-full bg-white shadow-soft p-0.5 border border-gray-100">
-                        <img src="https://i.pravatar.cc/150?img=11" alt="Profile" className="w-full h-full rounded-full object-cover" />
-                    </div>
+                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-1.5 -mx-6 px-6 border-b border-gray-100/50">
+                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">{t('rankTeam', 'Rank & Team')}</h1>
+                    <HeaderActionsA walletAddress={walletAddress} avatarSrc={avatarSrc} />
                 </div>
 
                 {/* Current Rank Card - Premium */}
@@ -142,16 +145,16 @@ export default function RankA() {
                             <Crown size={40} className="text-white fill-white/20" />
                         </div>
 
-                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Current Rank</p>
+                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{t('currentRank', 'Current Rank')}</p>
                         <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-6">Diamond</h2>
 
                         <div className="grid grid-cols-2 gap-3">
                             <div className="bg-gray-50 rounded-2xl p-3 border border-gray-100">
-                                <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">Commission</p>
+                                <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('commission', 'Commission')}</p>
                                 <p className="text-xl font-black text-green-600">15%</p>
                             </div>
                             <div className="bg-gray-50 rounded-2xl p-3 border border-gray-100">
-                                <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">Point Boost</p>
+                                <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('pointBoost', 'Point Boost')}</p>
                                 <p className="text-xl font-black text-blue-600">60%</p>
                             </div>
                         </div>
@@ -165,7 +168,7 @@ export default function RankA() {
                             <Users size={20} />
                         </div>
                         <div>
-                            <p className="text-sm font-bold text-gray-500">Direct</p>
+                            <p className="text-sm font-bold text-gray-500">{t('direct', 'Direct')}</p>
                             <p className="text-3xl font-black text-gray-900">3</p>
                         </div>
                     </div>
@@ -174,7 +177,7 @@ export default function RankA() {
                             <TrendingUp size={20} />
                         </div>
                         <div>
-                            <p className="text-sm font-bold text-gray-500">Team</p>
+                            <p className="text-sm font-bold text-gray-500">{t('team', 'Team')}</p>
                             <p className="text-3xl font-black text-gray-900">156</p>
                         </div>
                     </div>
@@ -183,7 +186,7 @@ export default function RankA() {
                 {/* Referral Link - Dark Contrast */}
                 <div className="bg-gray-900 text-white p-6 rounded-[28px] shadow-xl relative overflow-hidden">
                     <div className="flex justify-between items-center mb-4 relative z-10">
-                        <span className="font-bold text-lg">Your Referral Link</span>
+                        <span className="font-bold text-lg">{t('yourReferralLink', 'Your Referral Link')}</span>
                         <button
                             type="button"
                             onClick={() => setShowQr((prev) => !prev)}
@@ -216,8 +219,8 @@ export default function RankA() {
 
                 {/* Map */}
                 <div>
-                    <h3 className="text-lg font-black text-gray-900 tracking-tight mb-1 px-1">Map</h3>
-                    <p className="text-xs text-gray-400 font-medium px-1">Tap members to view their downline</p>
+                    <h3 className="text-lg font-black text-gray-900 tracking-tight mb-1 px-1">{t('map', 'Map')}</h3>
+                    <p className="text-xs text-gray-400 font-medium px-1">{t('mapHint', 'Tap members to view their downline')}</p>
 
                     <div className="mt-4 space-y-3">
                         {selectedMember ? (
@@ -228,16 +231,16 @@ export default function RankA() {
                                     className="flex items-center gap-1.5 text-sm font-bold text-blue-600 px-1"
                                 >
                                     <ChevronLeft size={16} />
-                                    Back
+                                    {t('back', 'Back')}
                                 </button>
 
                                 <div className="space-y-3">
-                                    <p className="text-[10px] font-bold uppercase text-gray-400 px-1">Level 1</p>
+                                    <p className="text-[10px] font-bold uppercase text-gray-400 px-1">{t('level1', 'Level 1')}</p>
                                     {levelOneDetail && <MapRow member={levelOneDetail} />}
                                 </div>
 
                                 <div className="space-y-3 pt-1">
-                                    <p className="text-[10px] font-bold uppercase text-gray-400 px-1">Level 2</p>
+                                    <p className="text-[10px] font-bold uppercase text-gray-400 px-1">{t('level2', 'Level 2')}</p>
                                     {levelTwoMembers.map((member) => (
                                         <MapRow key={member.id} member={member} />
                                     ))}
@@ -245,7 +248,7 @@ export default function RankA() {
                             </>
                         ) : (
                             <>
-                                <p className="text-[10px] font-bold uppercase text-gray-400 px-1">Level 1</p>
+                                <p className="text-[10px] font-bold uppercase text-gray-400 px-1">{t('level1', 'Level 1')}</p>
                                 <div className="space-y-3">
                                     {levelOneMembers.map((member) => (
                                         <MapRow key={member.id} member={member} onClick={() => setActiveMemberId(member.id)} />
