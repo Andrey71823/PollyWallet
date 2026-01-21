@@ -14,7 +14,7 @@ export default function RankB() {
 
     return (
         <LayoutB>
-            <div className="p-6 pt-8 space-y-6">
+            <div className="px-6 pt-4 pb-4 space-y-5">
                 <HeaderB title="Rank" />
 
                 {/* Bento Grid Layout */}

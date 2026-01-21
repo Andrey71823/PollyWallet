@@ -35,7 +35,7 @@ export default function LayoutA({ children }) {
     return (
         <div className="h-[100dvh] w-full bg-grid-dark text-gray-900 font-sans flex justify-center items-start sm:items-center selection:bg-gray-200 overflow-hidden">
             <div className="w-full h-full bg-[#F9FAFB] relative flex flex-col sm:h-[844px] sm:max-w-[400px] sm:rounded-[40px] sm:shadow-2xl sm:border-[8px] sm:border-gray-900 sm:ring-2 sm:ring-gray-700/50 sm:overflow-hidden transition-all duration-300">
-                <main className="flex-1 overflow-y-auto pb-0 no-scrollbar relative">
+                <main className="flex-1 overflow-y-auto pb-[104px] no-scrollbar relative">
                     {children}
                 </main>
 

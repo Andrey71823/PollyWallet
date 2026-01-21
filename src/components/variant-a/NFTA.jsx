@@ -10,9 +10,9 @@ export default function NFTA() {
 
     return (
         <LayoutA>
-            <div className="p-6 space-y-6 pb-24">
+            <div className="px-6 pt-3 pb-4 space-y-5">
                 {/* Header - Sticky Clean */}
-                <div className="flex items-center gap-4 sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-3 -mx-6 px-6 border-b border-gray-100/50">
+                <div className="flex items-center gap-4 sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
                     <Link to="/soft-white/wallet" className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all hover:scale-105">
                         <ChevronLeft size={22} className="relative right-0.5" />
                     </Link>

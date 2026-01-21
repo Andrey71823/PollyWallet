@@ -123,9 +123,9 @@ export default function RankA() {
 
     return (
         <LayoutA>
-            <div className="p-6 space-y-6 pb-20">
+            <div className="px-6 pt-3 pb-4 space-y-5">
                 {/* Premium Header */}
-                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-3 -mx-6 px-6 border-b border-gray-100/50">
+                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
                     <h1 className="text-xl font-bold text-gray-900 tracking-tight">Rank & Team</h1>
                     <div className="w-10 h-10 rounded-full bg-white shadow-soft p-0.5 border border-gray-100">
                         <img src="https://i.pravatar.cc/150?img=11" alt="Profile" className="w-full h-full rounded-full object-cover" />

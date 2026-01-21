@@ -6,7 +6,7 @@ export default function HeaderB({ title = "PolyWallet" }) {
     const navigate = useNavigate();
 
     return (
-        <div className="flex justify-between items-center px-1 mb-6">
+        <div className="flex justify-between items-center px-1 mb-4">
             <button
                 onClick={() => navigate(-1)}
                 className="w-11 h-11 bg-white rounded-[16px] flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.04)] border border-gray-50 text-gray-700 hover:scale-105 active:scale-95 transition-all"

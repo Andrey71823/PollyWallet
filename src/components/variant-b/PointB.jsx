@@ -13,7 +13,7 @@ export default function PointB() {
 
     return (
         <LayoutB>
-            <div className="p-6 pt-8 space-y-6">
+            <div className="px-6 pt-4 pb-4 space-y-5">
                 <HeaderB title="Points" />
 
                 {/* Bento Grid */}

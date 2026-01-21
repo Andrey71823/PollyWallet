@@ -29,7 +29,7 @@ export default function WalletB() {
     return (
         <LayoutB>
             {/* Main Content - PADDING REDUCED START */}
-            <div className="px-6 pt-4 pb-6 space-y-5">
+            <div className="px-6 pt-3 pb-4 space-y-4">
 
                 {/* 1. Header with Reduced Spacing */}
                 <div className="flex justify-between items-start mb-0">
@@ -102,7 +102,7 @@ export default function WalletB() {
                     </div>
 
                     {/* Animated Floating Icon */}
-                    <div className="relative z-10 w-16 h-16 shrink-0 flex items-center justify-center">
+                    <div className="relative z-10 w-20 h-20 shrink-0 flex items-center justify-center">
                         {/* Breathing Ring - Custom Animation */}
                         <div className="absolute w-full h-full rounded-full border border-white/20 animate-breathe"></div>
 

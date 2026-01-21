@@ -40,7 +40,7 @@ export default function WalletA() {
     return (
         <LayoutA>
             <div className="relative">
-                <div className="px-6 pt-2 pb-20 space-y-4">
+                <div className="px-6 pt-2 pb-4 space-y-4">
                     {/* Sticky Header */}
                     <div className="sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50 flex justify-between items-center transition-all duration-300">
                         <div>
@@ -93,8 +93,8 @@ export default function WalletA() {
                     </div>
 
                     {/* Banner */}
-                    <div className="relative w-full h-36 bg-gray-900 rounded-[24px] overflow-hidden flex items-center px-6 shadow-xl border border-black/5 group">
-                        <div className="relative z-10 space-y-1">
+                    <div className="relative w-full h-36 bg-gray-900 rounded-[24px] overflow-hidden flex items-center justify-between px-6 shadow-xl border border-black/5 group">
+                        <div className="relative z-10 space-y-1 max-w-[220px]">
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-white font-black text-lg tracking-wide">UPGRADE PRO</span>
                                 <Rocket size={20} className="text-white" />
@@ -104,13 +104,14 @@ export default function WalletA() {
                             </p>
                         </div>
 
-                        <div className="absolute right-0 top-0 bottom-0 w-[140px] bg-gradient-to-l from-gray-800 to-transparent">
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 w-20 h-20 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,255,255,0.05)] animate-breathe">
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-gray-700 to-gray-600 flex items-center justify-center shadow-inner animate-breathe-strong">
-                                    <TrendingUp className="text-white" size={24} />
-                                </div>
+                        <div className="relative z-10 w-20 h-20 flex items-center justify-center">
+                            <div className="absolute inset-0 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,255,255,0.05)] animate-breathe"></div>
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-gray-700 to-gray-600 flex items-center justify-center shadow-inner animate-breathe-strong">
+                                <TrendingUp className="text-white" size={24} />
                             </div>
                         </div>
+
+                        <div className="absolute right-0 top-0 bottom-0 w-[180px] bg-gradient-to-l from-gray-800 to-transparent"></div>
                     </div>
 
                     {/* Activity List */}
