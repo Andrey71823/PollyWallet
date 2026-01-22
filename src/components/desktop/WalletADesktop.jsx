@@ -55,7 +55,30 @@ export default function WalletADesktop() {
                 </div>
 
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="col-span-7 bg-white/90 rounded-[32px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
+                    <div className="col-span-12">
+                        <div className="relative w-full h-40 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] rounded-[28px] overflow-hidden flex items-center justify-between px-10 shadow-[0_18px_34px_rgba(15,23,42,0.2)] border border-white/5">
+                            <div className="relative z-10 space-y-2 max-w-[360px]">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-white/90 font-semibold text-xl tracking-wide">{t('upgradePro', 'UPGRADE PRO')}</span>
+                                    <Rocket size={20} className="text-white" />
+                                </div>
+                                <p className="text-white/60 text-sm font-medium leading-relaxed">
+                                    {t('upgradeDesc', 'Elevate your productivity and achieve more with our Pro plan!')}
+                                </p>
+                            </div>
+
+                            <div className="relative z-10 w-24 h-24 flex items-center justify-center">
+                                <div className="absolute inset-0 rounded-full border border-white/10 bg-white/6 backdrop-blur-sm shadow-[0_0_26px_rgba(255,255,255,0.04)] animate-breathe"></div>
+                                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-slate-600 to-slate-500 flex items-center justify-center shadow-inner animate-breathe-strong">
+                                    <TrendingUp className="text-white" size={26} />
+                                </div>
+                            </div>
+
+                            <div className="absolute right-0 top-0 bottom-0 w-[280px] bg-gradient-to-l from-[#2A3446] to-transparent"></div>
+                        </div>
+                    </div>
+
+                    <div className="col-span-8 bg-white/90 rounded-[32px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
                         <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest">{t('totalBalance', 'Total balance')}</p>
                         <h2 className="text-5xl font-semibold text-slate-900 mt-3">$5,420.50</h2>
 
@@ -75,7 +98,7 @@ export default function WalletADesktop() {
                         </div>
                     </div>
 
-                    <div className="col-span-5 grid grid-cols-2 gap-4">
+                    <div className="col-span-4 grid gap-4">
                         <div className="bg-emerald-50/70 px-5 py-4 rounded-[26px] border border-emerald-100/80">
                             <p className="text-[10px] uppercase font-semibold text-emerald-700 tracking-wider">{t('totalInvest', 'Total Invest')}</p>
                             <p className="text-2xl font-semibold text-emerald-700 mt-2">$1,248.50</p>
@@ -90,33 +113,8 @@ export default function WalletADesktop() {
                             <p className="text-[11px] text-sky-700 font-semibold mt-3">+ $85.50</p>
                         </div>
                     </div>
-                </div>
 
-                <div className="grid grid-cols-12 gap-6">
-                    <div className="col-span-7">
-                        <div className="relative w-full h-40 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] rounded-[28px] overflow-hidden flex items-center justify-between px-8 shadow-[0_18px_34px_rgba(15,23,42,0.2)] border border-white/5">
-                            <div className="relative z-10 space-y-2 max-w-[320px]">
-                                <div className="flex items-center gap-2">
-                                    <span className="text-white/90 font-semibold text-xl tracking-wide">{t('upgradePro', 'UPGRADE PRO')}</span>
-                                    <Rocket size={20} className="text-white" />
-                                </div>
-                                <p className="text-white/60 text-sm font-medium max-w-[320px] leading-relaxed">
-                                    {t('upgradeDesc', 'Elevate your productivity and achieve more with our Pro plan!')}
-                                </p>
-                            </div>
-
-                            <div className="relative z-10 w-24 h-24 flex items-center justify-center self-center">
-                                <div className="absolute inset-0 rounded-full border border-white/10 bg-white/6 backdrop-blur-sm shadow-[0_0_26px_rgba(255,255,255,0.04)] animate-breathe"></div>
-                                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-slate-600 to-slate-500 flex items-center justify-center shadow-inner animate-breathe-strong">
-                                    <TrendingUp className="text-white" size={26} />
-                                </div>
-                            </div>
-
-                            <div className="absolute right-0 top-0 bottom-0 w-[240px] bg-gradient-to-l from-[#2A3446] to-transparent"></div>
-                        </div>
-                    </div>
-
-                    <div className="col-span-5 bg-white/90 rounded-[28px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
+                    <div className="col-span-12 bg-white/90 rounded-[28px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-lg font-semibold text-slate-900">{t('transactions', 'Transactions')}</h3>
                             <button
@@ -128,7 +126,7 @@ export default function WalletADesktop() {
                             </button>
                         </div>
 
-                        <div className="space-y-3">
+                        <div className="grid grid-cols-2 gap-4">
                             {visibleTransactions.map((tx, i) => (
                                 <div key={i} className="bg-[#F7F8FB] p-4 rounded-[20px] border border-[#E6EAF0] flex items-center gap-4">
                                     <div className={`w-10 h-10 rounded-[14px] flex items-center justify-center ${tx.amount.startsWith('+') ? 'bg-emerald-100/70 text-emerald-600' : 'bg-rose-100/70 text-rose-500'}`}>

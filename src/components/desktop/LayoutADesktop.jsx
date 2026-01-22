@@ -109,7 +109,7 @@ export default function LayoutADesktop({ children }) {
                 </aside>
 
                 <main className="flex-1">
-                    <div className="mx-auto w-full max-w-[1680px] px-10 py-8">
+                    <div className="mx-auto w-full max-w-[1440px] px-10 py-8">
                         {children}
                     </div>
                 </main>
