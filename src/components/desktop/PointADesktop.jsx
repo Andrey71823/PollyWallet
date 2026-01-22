@@ -28,7 +28,7 @@ export default function PointADesktop() {
                 </div>
 
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="col-span-7 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#262F42] text-white p-8 rounded-[36px] shadow-[0_18px_36px_rgba(15,23,42,0.22)] relative overflow-hidden border border-white/5">
+                    <div className="col-span-7 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#262F42] text-white p-8 rounded-[14px] shadow-material-medium relative overflow-hidden border border-white/10">
                         <div className="absolute top-0 right-0 w-72 h-72 bg-blue-400/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                         <div className="absolute bottom-0 left-0 w-56 h-56 bg-purple-400/15 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
 
@@ -59,13 +59,13 @@ export default function PointADesktop() {
                         </div>
                     </div>
 
-                    <div className="col-span-5 bg-white/90 rounded-[32px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
+                    <div className="col-span-5 card-shell p-6">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-lg font-semibold text-slate-900">{t('supportedProjects', 'Supported Projects')}</h3>
                         </div>
                         <div className="space-y-4">
                             {projects.map((p, i) => (
-                                <div key={i} className={`group p-4 rounded-[22px] flex items-center gap-4 transition-all ${p.disabled ? 'bg-[#F7F8FB] border border-dashed border-[#E1E6EF]' : 'bg-white/85 border border-[#E6EAF0] shadow-[0_6px_16px_rgba(15,23,42,0.05)] hover:shadow-[0_10px_22px_rgba(15,23,42,0.08)]'}`}>
+                                <div key={i} className={`group p-4 rounded-[12px] flex items-center gap-4 transition-all ${p.disabled ? 'card-soft border-dashed' : 'card-soft-elevated'}`}>
                                     <div className={`w-14 h-14 rounded-[20px] flex items-center justify-center shrink-0 ${p.disabled ? 'bg-slate-200 text-slate-400' : `bg-gradient-to-br ${p.iconBg} to-white/80 shadow-inner`}`}>
                                         <p.icon size={26} className={p.disabled ? '' : p.color.split(' ')[1]} />
                                     </div>

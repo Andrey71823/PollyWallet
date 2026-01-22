@@ -35,7 +35,7 @@ export default function LayoutADesktop({ children }) {
     ];
 
     return (
-        <div className="min-h-screen bg-[#F6F7FB] text-slate-900 font-desktop">
+        <div className="min-h-screen dashboard-bg text-slate-900 font-desktop">
             <div className="flex min-h-screen">
                 <aside
                     className={clsx(

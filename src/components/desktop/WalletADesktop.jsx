@@ -56,7 +56,7 @@ export default function WalletADesktop() {
 
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12">
-                        <div className="relative w-full h-40 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] rounded-[28px] overflow-hidden flex items-center justify-between px-10 shadow-[0_18px_34px_rgba(15,23,42,0.2)] border border-white/5">
+                        <div className="banner-noise relative w-full h-40 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] rounded-[14px] overflow-hidden flex items-center justify-between px-10 shadow-material-medium border border-white/10">
                             <div className="relative z-10 space-y-2 max-w-[360px]">
                                 <div className="flex items-center gap-2">
                                     <span className="text-white/90 font-semibold text-xl tracking-wide">{t('upgradePro', 'UPGRADE PRO')}</span>
@@ -78,7 +78,7 @@ export default function WalletADesktop() {
                         </div>
                     </div>
 
-                    <div className="col-span-8 bg-white/90 rounded-[32px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
+                    <div className="col-span-8 card-shell p-6">
                         <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest">{t('totalBalance', 'Total balance')}</p>
                         <h2 className="text-5xl font-semibold text-slate-900 mt-3">$5,420.50</h2>
 
@@ -99,22 +99,24 @@ export default function WalletADesktop() {
                     </div>
 
                     <div className="col-span-4 grid gap-4">
-                        <div className="bg-emerald-50/70 px-5 py-4 rounded-[26px] border border-emerald-100/80">
-                            <p className="text-[10px] uppercase font-semibold text-emerald-700 tracking-wider">{t('totalInvest', 'Total Invest')}</p>
-                            <p className="text-2xl font-semibold text-emerald-700 mt-2">$1,248.50</p>
-                            <div className="mt-3 flex items-center justify-between">
-                                <p className="text-[11px] text-emerald-700 font-semibold">+ $11.23</p>
-                                <span className="text-[9px] font-semibold text-emerald-700 bg-emerald-100/80 px-2 py-1 rounded border border-emerald-200/80">{t('apy', 'APY')} 10%</span>
+                        <div className="card-shell p-5">
+                            <div className="flex items-center justify-between">
+                                <span className="stat-tag stat-tag-emerald">{t('totalInvest', 'Total Invest')}</span>
+                                <span className="stat-chip stat-chip-emerald">{t('apy', 'APY')} 10%</span>
                             </div>
+                            <p className="text-2xl font-semibold text-slate-900 mt-4">$1,248.50</p>
+                            <p className="text-sm text-emerald-600 font-medium mt-2">+ $11.23</p>
                         </div>
-                        <div className="bg-sky-50/70 px-5 py-4 rounded-[26px] border border-sky-100/80">
-                            <p className="text-[10px] uppercase font-semibold text-sky-700 tracking-wider">{t('totalBonus', 'Total Bonus')}</p>
-                            <p className="text-2xl font-semibold text-sky-700 mt-2">$398.20</p>
-                            <p className="text-[11px] text-sky-700 font-semibold mt-3">+ $85.50</p>
+                        <div className="card-shell p-5">
+                            <div className="flex items-center justify-between">
+                                <span className="stat-tag stat-tag-sky">{t('totalBonus', 'Total Bonus')}</span>
+                            </div>
+                            <p className="text-2xl font-semibold text-slate-900 mt-4">$398.20</p>
+                            <p className="text-sm text-sky-600 font-medium mt-2">+ $85.50</p>
                         </div>
                     </div>
 
-                    <div className="col-span-12 bg-white/90 rounded-[28px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
+                    <div className="col-span-12 card-shell p-6">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-lg font-semibold text-slate-900">{t('transactions', 'Transactions')}</h3>
                             <button
@@ -128,7 +130,7 @@ export default function WalletADesktop() {
 
                         <div className="grid grid-cols-2 gap-4">
                             {visibleTransactions.map((tx, i) => (
-                                <div key={i} className="bg-[#F7F8FB] p-4 rounded-[20px] border border-[#E6EAF0] flex items-center gap-4">
+                                <div key={i} className="card-soft-elevated p-4 flex items-center gap-4">
                                     <div className={`w-10 h-10 rounded-[14px] flex items-center justify-center ${tx.amount.startsWith('+') ? 'bg-emerald-100/70 text-emerald-600' : 'bg-rose-100/70 text-rose-500'}`}>
                                         {tx.amount.startsWith('+') ? <ArrowDownLeft size={18} /> : <ArrowUpRight size={18} />}
                                     </div>

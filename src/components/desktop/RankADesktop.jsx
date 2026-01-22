@@ -112,7 +112,7 @@ export default function RankADesktop() {
                 <button
                     type="button"
                     onClick={onClick}
-                    className="w-full text-left bg-white/85 p-4 rounded-[22px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex items-center gap-4 hover:shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition-shadow"
+                    className="w-full text-left card-soft-elevated p-4 flex items-center gap-4 transition-shadow hover:shadow-[0_8px_18px_rgba(17,24,39,0.12)]"
                 >
                     {content}
                 </button>
@@ -120,7 +120,7 @@ export default function RankADesktop() {
         }
 
         return (
-            <div className="bg-white/85 p-4 rounded-[22px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex items-center gap-4">
+            <div className="card-soft p-4 flex items-center gap-4">
                 {content}
             </div>
         );
@@ -139,11 +139,11 @@ export default function RankADesktop() {
 
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-7 space-y-6">
-                        <div className="bg-white/90 rounded-[32px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0] relative overflow-hidden">
+                        <div className="card-shell p-6 relative overflow-hidden">
                             <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-200/40 rounded-full blur-3xl"></div>
 
                             <div className="relative z-10">
-                                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[24px] mb-6 flex items-center justify-center shadow-[0_12px_24px_rgba(37,99,235,0.25)]">
+                                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[14px] mb-6 flex items-center justify-center shadow-material-medium">
                                     <Crown size={40} className="text-white fill-white/20" />
                                 </div>
 
@@ -151,11 +151,11 @@ export default function RankADesktop() {
                                 <h2 className="text-3xl font-semibold text-slate-900 tracking-tight mb-6">Diamond</h2>
 
                                 <div className="grid grid-cols-2 gap-3">
-                                    <div className="bg-[#F5F7FB] rounded-2xl p-4 border border-[#E6EAF0]">
+                                    <div className="card-soft p-4">
                                         <p className="text-[10px] text-slate-400 font-semibold uppercase mb-1">{t('commission', 'Commission')}</p>
                                         <p className="text-2xl font-semibold text-green-600">15%</p>
                                     </div>
-                                    <div className="bg-[#F5F7FB] rounded-2xl p-4 border border-[#E6EAF0]">
+                                    <div className="card-soft p-4">
                                         <p className="text-[10px] text-slate-400 font-semibold uppercase mb-1">{t('pointBoost', 'Point Boost')}</p>
                                         <p className="text-2xl font-semibold text-blue-600">60%</p>
                                     </div>
@@ -164,8 +164,8 @@ export default function RankADesktop() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
-                            <div className="bg-white/90 p-5 rounded-[26px] shadow-[0_8px_20px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex flex-col justify-between h-40">
-                                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 mb-2">
+                            <div className="card-soft-elevated p-5 flex flex-col justify-between h-40">
+                                <div className="w-12 h-12 rounded-[10px] bg-slate-100 flex items-center justify-center text-slate-400 mb-2">
                                     <Users size={22} />
                                 </div>
                                 <div>
@@ -173,8 +173,8 @@ export default function RankADesktop() {
                                     <p className="text-3xl font-semibold text-slate-900">3</p>
                                 </div>
                             </div>
-                            <div className="bg-white/90 p-5 rounded-[26px] shadow-[0_8px_20px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex flex-col justify-between h-40">
-                                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 mb-2">
+                            <div className="card-soft-elevated p-5 flex flex-col justify-between h-40">
+                                <div className="w-12 h-12 rounded-[10px] bg-slate-100 flex items-center justify-center text-slate-400 mb-2">
                                     <TrendingUp size={22} />
                                 </div>
                                 <div>
@@ -186,7 +186,7 @@ export default function RankADesktop() {
                     </div>
 
                     <div className="col-span-5 space-y-6">
-                        <div className="bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] text-white p-6 rounded-[28px] shadow-[0_18px_34px_rgba(15,23,42,0.2)] relative overflow-hidden border border-white/5">
+                        <div className="banner-noise bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] text-white p-6 rounded-[14px] shadow-material-medium relative overflow-hidden border border-white/10">
                             <div className="flex justify-between items-center mb-4 relative z-10">
                                 <span className="font-semibold text-lg">{t('yourReferralLink', 'Your Referral Link')}</span>
                                 <button
@@ -218,7 +218,7 @@ export default function RankADesktop() {
                             <div className="absolute right-0 bottom-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
                         </div>
 
-                        <div className="bg-white/90 rounded-[28px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
+                        <div className="card-shell p-6">
                             <h3 className="text-lg font-semibold text-slate-900 tracking-tight mb-1">{t('map', 'Map')}</h3>
                             <p className="text-xs text-slate-400 font-medium">{t('mapHint', 'Tap members to view their downline')}</p>
 

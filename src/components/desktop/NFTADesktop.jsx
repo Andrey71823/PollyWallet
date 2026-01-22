@@ -24,13 +24,13 @@ export default function NFTADesktop() {
                 </div>
 
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="col-span-7 bg-white/90 rounded-[32px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
-                        <div className="bg-[#F5F7FB] rounded-[28px] p-6 h-[420px] relative overflow-hidden flex flex-col justify-between border border-[#E6EAF0]">
+                    <div className="col-span-7 card-shell p-6">
+                        <div className="card-soft p-6 h-[420px] relative overflow-hidden flex flex-col justify-between">
                             <div className="absolute top-0 right-0 w-56 h-56 bg-blue-200/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
                             <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-200/40 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
 
                             <div className="flex justify-between items-start z-10">
-                                <div className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-[0_6px_14px_rgba(15,23,42,0.08)] border border-white/60 flex items-center gap-1.5">
+                                <div className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-[0_4px_10px_rgba(15,23,42,0.08)] border border-white/60 flex items-center gap-1.5">
                                     <Sparkles size={12} className="text-blue-600" />
                                     <span className="text-xs font-semibold text-slate-900 uppercase tracking-wider">{t('diamondRank', 'Diamond Rank')}</span>
                                 </div>
@@ -41,7 +41,7 @@ export default function NFTADesktop() {
                             </div>
 
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                                <div className="w-28 h-28 bg-white rounded-[28px] shadow-[0_14px_30px_rgba(15,23,42,0.12)] flex items-center justify-center border border-white/70 relative">
+                                <div className="w-28 h-28 bg-white rounded-[16px] shadow-[0_8px_18px_rgba(15,23,42,0.12)] flex items-center justify-center border border-white/70 relative">
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[28px]"></div>
                                     <Box size={46} className="text-slate-900 relative z-10" strokeWidth={1.5} />
                                 </div>
@@ -75,7 +75,7 @@ export default function NFTADesktop() {
                             <div className="h-full bg-blue-600 w-[32%] rounded-full shadow-[0_0_10px_rgba(37,99,235,0.2)]"></div>
                         </div>
 
-                        <button onClick={() => setShowMintModal(true)} className="mt-6 w-full h-14 bg-[#1F2532] text-white rounded-[20px] font-semibold text-lg shadow-[0_12px_24px_rgba(15,23,42,0.2)] hover:bg-[#1A202C] hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                        <button onClick={() => setShowMintModal(true)} className="mt-6 w-full h-14 bg-[#1F2532] text-white rounded-[12px] font-semibold text-lg shadow-material-medium hover:bg-[#1A202C] hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
                             <Box size={20} strokeWidth={2} />
                             {t('mintNft', 'Mint NFT')}
                         </button>
@@ -83,24 +83,24 @@ export default function NFTADesktop() {
 
                     <div className="col-span-5 space-y-6">
                         <div className="grid grid-cols-3 gap-4">
-                            <div className="bg-white/90 p-5 rounded-[24px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] border border-[#E6EAF0] text-center">
+                            <div className="card-soft-elevated p-5 text-center">
                                 <Box className="mx-auto mb-2 text-slate-500" size={22} />
                                 <p className="text-2xl font-semibold text-slate-900">3</p>
                                 <p className="text-[9px] uppercase font-semibold text-slate-400 tracking-wider">{t('owned', 'Owned')}</p>
                             </div>
-                            <div className="bg-white/90 p-5 rounded-[24px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] border border-[#E6EAF0] text-center">
+                            <div className="card-soft-elevated p-5 text-center">
                                 <Layers className="mx-auto mb-2 text-blue-600" size={22} />
                                 <p className="text-lg font-semibold text-slate-900">Diamond</p>
                                 <p className="text-[9px] uppercase font-semibold text-slate-400 tracking-wider">{t('rankTitle', 'Rank')}</p>
                             </div>
-                            <div className="bg-white/90 p-5 rounded-[24px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] border border-[#E6EAF0] text-center">
+                            <div className="card-soft-elevated p-5 text-center">
                                 <TrendingUp className="mx-auto mb-2 text-green-600" size={22} />
                                 <p className="text-2xl font-semibold text-emerald-600">50%</p>
                                 <p className="text-[9px] uppercase font-semibold text-slate-400 tracking-wider">{t('boost', 'Boost')}</p>
                             </div>
                         </div>
 
-                        <div className="bg-white/90 rounded-[28px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0] space-y-5">
+                        <div className="card-shell p-6 space-y-5">
                             <div className="flex items-center justify-between">
                                 <h3 className="font-semibold text-slate-900 text-lg">{t('privileges', 'Privileges')}</h3>
                                 <span className="text-xs font-semibold text-slate-400 bg-slate-100 px-2 py-1 rounded-lg">{t('pro', 'PRO')}</span>
