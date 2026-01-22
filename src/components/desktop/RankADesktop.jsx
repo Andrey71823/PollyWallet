@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import LayoutADesktop from './LayoutADesktop';
 import HeaderActionsA from '../variant-a/HeaderActionsA';
 import { Crown, Users, TrendingUp, Copy, QrCode, Star, Shield, ChevronLeft } from 'lucide-react';
@@ -89,19 +89,19 @@ export default function RankADesktop() {
                     <meta.icon size={20} fill="currentColor" className="opacity-80" />
                 </div>
                 <div className="flex-1">
-                    <h4 className="font-bold text-gray-900 text-sm">{member.id}</h4>
-                    <span className={`text-[10px] font-black uppercase tracking-wider bg-gray-50 px-2 py-0.5 rounded-md mt-1 inline-block ${meta.badge}`}>
+                    <h4 className="font-semibold text-slate-900 text-sm">{member.id}</h4>
+                    <span className={`text-[10px] font-semibold uppercase tracking-wider bg-slate-100 px-2 py-0.5 rounded-md mt-1 inline-block ${meta.badge}`}>
                         {member.rank}
                     </span>
                 </div>
                 <div className="flex gap-6 text-right">
                     <div>
-                        <span className="block text-[10px] text-gray-400 font-bold uppercase">{t('own', 'Own')}</span>
-                        <span className="block font-black text-blue-600 text-lg leading-tight">{member.own}</span>
+                        <span className="block text-[10px] text-slate-400 font-semibold uppercase">{t('own', 'Own')}</span>
+                        <span className="block font-semibold text-blue-600 text-lg leading-tight">{member.own}</span>
                     </div>
                     <div>
-                        <span className="block text-[10px] text-gray-400 font-bold uppercase">{t('teamLabel', 'Team')}</span>
-                        <span className="block font-black text-green-600 text-lg leading-tight">{member.team}</span>
+                        <span className="block text-[10px] text-slate-400 font-semibold uppercase">{t('teamLabel', 'Team')}</span>
+                        <span className="block font-semibold text-green-600 text-lg leading-tight">{member.team}</span>
                     </div>
                 </div>
             </>
@@ -112,7 +112,7 @@ export default function RankADesktop() {
                 <button
                     type="button"
                     onClick={onClick}
-                    className="w-full text-left bg-white p-4 rounded-[22px] shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow"
+                    className="w-full text-left bg-white/85 p-4 rounded-[22px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex items-center gap-4 hover:shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition-shadow"
                 >
                     {content}
                 </button>
@@ -120,7 +120,7 @@ export default function RankADesktop() {
         }
 
         return (
-            <div className="bg-white p-4 rounded-[22px] shadow-sm border border-gray-100 flex items-center gap-4">
+            <div className="bg-white/85 p-4 rounded-[22px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex items-center gap-4">
                 {content}
             </div>
         );
@@ -131,70 +131,70 @@ export default function RankADesktop() {
             <div className="space-y-6">
                 <div className="flex items-center justify-between">
                     <div>
-                        <p className="text-sm text-gray-400 font-semibold">{t('rankTeam', 'Rank & Team')}</p>
-                        <h1 className="text-3xl font-black text-gray-900">{t('rankTeam', 'Rank & Team')}</h1>
+                        <p className="text-sm text-slate-400 font-medium">{t('rankTeam', 'Rank & Team')}</p>
+                        <h1 className="text-3xl font-semibold text-slate-900">{t('rankTeam', 'Rank & Team')}</h1>
                     </div>
                     <HeaderActionsA walletAddress={walletAddress} avatarSrc={avatarSrc} />
                 </div>
 
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-7 space-y-6">
-                        <div className="bg-white rounded-[32px] p-6 shadow-[0_16px_40px_rgba(15,23,42,0.06)] border border-gray-100 relative overflow-hidden">
-                            <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-100/50 rounded-full blur-3xl"></div>
+                        <div className="bg-white/90 rounded-[32px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0] relative overflow-hidden">
+                            <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-200/40 rounded-full blur-3xl"></div>
 
                             <div className="relative z-10">
-                                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[24px] mb-6 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[24px] mb-6 flex items-center justify-center shadow-[0_12px_24px_rgba(37,99,235,0.25)]">
                                     <Crown size={40} className="text-white fill-white/20" />
                                 </div>
 
-                                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{t('currentRank', 'Current Rank')}</p>
-                                <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-6">Diamond</h2>
+                                <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">{t('currentRank', 'Current Rank')}</p>
+                                <h2 className="text-3xl font-semibold text-slate-900 tracking-tight mb-6">Diamond</h2>
 
                                 <div className="grid grid-cols-2 gap-3">
-                                    <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('commission', 'Commission')}</p>
-                                        <p className="text-2xl font-black text-green-600">15%</p>
+                                    <div className="bg-[#F5F7FB] rounded-2xl p-4 border border-[#E6EAF0]">
+                                        <p className="text-[10px] text-slate-400 font-semibold uppercase mb-1">{t('commission', 'Commission')}</p>
+                                        <p className="text-2xl font-semibold text-green-600">15%</p>
                                     </div>
-                                    <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('pointBoost', 'Point Boost')}</p>
-                                        <p className="text-2xl font-black text-blue-600">60%</p>
+                                    <div className="bg-[#F5F7FB] rounded-2xl p-4 border border-[#E6EAF0]">
+                                        <p className="text-[10px] text-slate-400 font-semibold uppercase mb-1">{t('pointBoost', 'Point Boost')}</p>
+                                        <p className="text-2xl font-semibold text-blue-600">60%</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
-                            <div className="bg-white p-5 rounded-[26px] shadow-[0_10px_30px_rgba(15,23,42,0.05)] border border-gray-100 flex flex-col justify-between h-40">
-                                <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 mb-2">
+                            <div className="bg-white/90 p-5 rounded-[26px] shadow-[0_8px_20px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex flex-col justify-between h-40">
+                                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 mb-2">
                                     <Users size={22} />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-gray-500">{t('direct', 'Direct')}</p>
-                                    <p className="text-3xl font-black text-gray-900">3</p>
+                                    <p className="text-sm font-semibold text-slate-500">{t('direct', 'Direct')}</p>
+                                    <p className="text-3xl font-semibold text-slate-900">3</p>
                                 </div>
                             </div>
-                            <div className="bg-white p-5 rounded-[26px] shadow-[0_10px_30px_rgba(15,23,42,0.05)] border border-gray-100 flex flex-col justify-between h-40">
-                                <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 mb-2">
+                            <div className="bg-white/90 p-5 rounded-[26px] shadow-[0_8px_20px_rgba(15,23,42,0.05)] border border-[#E6EAF0] flex flex-col justify-between h-40">
+                                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 mb-2">
                                     <TrendingUp size={22} />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-gray-500">{t('team', 'Team')}</p>
-                                    <p className="text-3xl font-black text-gray-900">156</p>
+                                    <p className="text-sm font-semibold text-slate-500">{t('team', 'Team')}</p>
+                                    <p className="text-3xl font-semibold text-slate-900">156</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="col-span-5 space-y-6">
-                        <div className="bg-gray-900 text-white p-6 rounded-[28px] shadow-xl relative overflow-hidden">
+                        <div className="bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] text-white p-6 rounded-[28px] shadow-[0_18px_34px_rgba(15,23,42,0.2)] relative overflow-hidden border border-white/5">
                             <div className="flex justify-between items-center mb-4 relative z-10">
-                                <span className="font-bold text-lg">{t('yourReferralLink', 'Your Referral Link')}</span>
+                                <span className="font-semibold text-lg">{t('yourReferralLink', 'Your Referral Link')}</span>
                                 <button
                                     type="button"
                                     onClick={() => setShowQr((prev) => !prev)}
                                     aria-pressed={showQr}
                                     aria-label="Toggle QR code"
-                                    className="bg-white/10 p-2 rounded-xl backdrop-blur-md"
+                                    className="bg-white/8 p-2 rounded-xl backdrop-blur-md"
                                 >
                                     <QrCode size={20} className="text-white" />
                                 </button>
@@ -208,19 +208,19 @@ export default function RankADesktop() {
                                 <button
                                     type="button"
                                     onClick={handleCopy}
-                                    className="bg-black/50 p-4 rounded-xl flex items-center justify-between border border-white/10 relative z-10 group cursor-pointer hover:bg-black/70 transition-colors w-full text-left"
+                                    className="bg-white/10 p-4 rounded-xl flex items-center justify-between border border-white/10 relative z-10 group cursor-pointer hover:bg-white/15 transition-colors w-full text-left"
                                 >
-                                    <span className="text-sm text-gray-300 truncate font-mono mr-2">{referralLink}</span>
-                                    <Copy size={18} className="text-gray-400 group-hover:text-white transition-colors" />
+                                    <span className="text-sm text-white/70 truncate font-mono mr-2">{referralLink}</span>
+                                    <Copy size={18} className="text-white/50 group-hover:text-white transition-colors" />
                                 </button>
                             )}
 
-                            <div className="absolute right-0 bottom-0 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+                            <div className="absolute right-0 bottom-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
                         </div>
 
-                        <div className="bg-white rounded-[28px] p-6 shadow-[0_16px_40px_rgba(15,23,42,0.06)] border border-gray-100">
-                            <h3 className="text-lg font-black text-gray-900 tracking-tight mb-1">{t('map', 'Map')}</h3>
-                            <p className="text-xs text-gray-400 font-medium">{t('mapHint', 'Tap members to view their downline')}</p>
+                        <div className="bg-white/90 rounded-[28px] p-6 shadow-[0_10px_28px_rgba(15,23,42,0.05)] border border-[#E6EAF0]">
+                            <h3 className="text-lg font-semibold text-slate-900 tracking-tight mb-1">{t('map', 'Map')}</h3>
+                            <p className="text-xs text-slate-400 font-medium">{t('mapHint', 'Tap members to view their downline')}</p>
 
                             <div className="mt-4 space-y-3">
                                 {selectedMember ? (
@@ -228,19 +228,19 @@ export default function RankADesktop() {
                                         <button
                                             type="button"
                                             onClick={() => setActiveMemberId(null)}
-                                            className="flex items-center gap-1.5 text-sm font-bold text-blue-600"
+                                            className="flex items-center gap-1.5 text-sm font-semibold text-blue-600"
                                         >
                                             <ChevronLeft size={16} />
                                             {t('back', 'Back')}
                                         </button>
 
                                         <div className="space-y-3">
-                                            <p className="text-[10px] font-bold uppercase text-gray-400">{t('level1', 'Level 1')}</p>
+                                            <p className="text-[10px] font-semibold uppercase text-slate-400">{t('level1', 'Level 1')}</p>
                                             {levelOneDetail && <MapRow member={levelOneDetail} />}
                                         </div>
 
                                         <div className="space-y-3 pt-2">
-                                            <p className="text-[10px] font-bold uppercase text-gray-400">{t('level2', 'Level 2')}</p>
+                                            <p className="text-[10px] font-semibold uppercase text-slate-400">{t('level2', 'Level 2')}</p>
                                             {levelTwoMembers.map((member) => (
                                                 <MapRow key={member.id} member={member} />
                                             ))}
@@ -248,7 +248,7 @@ export default function RankADesktop() {
                                     </>
                                 ) : (
                                     <>
-                                        <p className="text-[10px] font-bold uppercase text-gray-400">{t('level1', 'Level 1')}</p>
+                                        <p className="text-[10px] font-semibold uppercase text-slate-400">{t('level1', 'Level 1')}</p>
                                         <div className="space-y-3">
                                             {levelOneMembers.map((member) => (
                                                 <MapRow key={member.id} member={member} onClick={() => setActiveMemberId(member.id)} />

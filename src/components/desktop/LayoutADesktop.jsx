@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Wallet, Diamond, Disc, Award, ChevronLeft } from 'lucide-react';
 import clsx from 'clsx';
@@ -35,30 +35,30 @@ export default function LayoutADesktop({ children }) {
     ];
 
     return (
-        <div className="min-h-screen bg-[#EEF2F6] text-gray-900">
+        <div className="min-h-screen bg-[#F6F7FB] text-slate-900 font-desktop">
             <div className="flex min-h-screen">
                 <aside
                     className={clsx(
-                        'sticky top-0 h-screen bg-white/90 backdrop-blur-xl border-r border-gray-100 shadow-[0_10px_40px_rgba(15,23,42,0.04)] flex flex-col transition-all duration-300',
+                        'sticky top-0 h-screen bg-white/75 backdrop-blur-xl border-r border-[#E4E9F0] shadow-[0_8px_20px_rgba(15,23,42,0.05)] flex flex-col transition-all duration-300',
                         collapsed ? 'w-20' : 'w-64'
                     )}
                 >
                     <div className="flex items-center justify-between px-4 py-6">
                         <div className="flex items-center gap-3">
-                            <div className="w-11 h-11 rounded-[18px] bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center font-black shadow-lg">
+                            <div className="w-11 h-11 rounded-[18px] bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center font-semibold shadow-[0_10px_24px_rgba(37,99,235,0.25)]">
                                 PW
                             </div>
                             {!collapsed && (
                                 <div>
-                                    <p className="text-sm font-black tracking-tight">PolyWallet</p>
-                                    <p className="text-[11px] text-gray-400 font-semibold">Desktop</p>
+                                    <p className="text-sm font-semibold tracking-tight">PolyWallet</p>
+                                    <p className="text-[11px] text-slate-400 font-medium">Desktop</p>
                                 </div>
                             )}
                         </div>
                         <button
                             type="button"
                             onClick={() => setCollapsed((prev) => !prev)}
-                            className="w-9 h-9 rounded-full bg-gray-100 text-gray-500 hover:text-gray-900 flex items-center justify-center transition-colors"
+                            className="w-9 h-9 rounded-full bg-white/90 text-slate-400 hover:text-slate-900 flex items-center justify-center transition-colors border border-[#E6EAF0]"
                             aria-label="Toggle sidebar"
                         >
                             <ChevronLeft size={16} className={clsx('transition-transform', collapsed && 'rotate-180')} />
@@ -74,15 +74,15 @@ export default function LayoutADesktop({ children }) {
                                     'group flex items-center gap-3 rounded-xl px-3 py-2.5 font-semibold transition-all',
                                     collapsed ? 'justify-center' : 'justify-start',
                                     isActive
-                                        ? 'bg-gray-900 text-white shadow-[0_8px_20px_rgba(15,23,42,0.15)]'
-                                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                                        ? 'bg-[#1F2432] text-white shadow-[0_10px_24px_rgba(15,23,42,0.18)]'
+                                        : 'text-slate-500 hover:text-slate-900 hover:bg-white/80'
                                 )}
                             >
                                 {({ isActive }) => (
                                     <>
                                         <div className={clsx(
                                             'w-10 h-10 rounded-[14px] flex items-center justify-center transition-all',
-                                            isActive ? 'bg-white/10 text-white' : 'bg-gray-100 text-gray-500 group-hover:text-gray-900'
+                                            isActive ? 'bg-white/10 text-white' : 'bg-white/90 text-slate-500 group-hover:text-slate-900 border border-[#E6EAF0]'
                                         )}>
                                             <item.icon size={20} />
                                         </div>
@@ -98,7 +98,7 @@ export default function LayoutADesktop({ children }) {
                             type="button"
                             onClick={() => setCollapsed((prev) => !prev)}
                             className={clsx(
-                                'w-full rounded-[14px] border border-gray-100 bg-gray-50 text-gray-500 hover:text-gray-900 flex items-center gap-3 px-3 py-2 transition-colors',
+                                'w-full rounded-[14px] border border-[#E6EAF0] bg-white/80 text-slate-500 hover:text-slate-900 flex items-center gap-3 px-3 py-2 transition-colors',
                                 collapsed && 'justify-center'
                             )}
                         >
