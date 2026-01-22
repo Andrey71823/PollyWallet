@@ -23,22 +23,22 @@ export default function Landing() {
                             </div>
                             <div className="flex-1">
                                 <h3 className="text-xl font-bold text-gray-900">{t('variantA', 'Variant A')}</h3>
-                                <p className="text-gray-500 text-sm">{t('variantASub', 'Ultra-Soft White / High Key')}</p>
+                                <p className="text-gray-500 text-sm">{t('mobileVersion', 'Mobile Version')}</p>
                             </div>
                             <ArrowRight className="text-gray-300 group-hover:text-blue-600 transition-colors" />
                         </div>
                     </Link>
 
-                    <Link to="/neumorph/wallet" className="group relative block p-6 bg-[#e0e5ec] rounded-3xl shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] hover:bg-[#e6ebf2] transition-all">
+                    <Link to="/desktop/wallet" className="group relative block p-6 bg-white rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div className="flex items-center gap-4">
-                            <div className="p-3 rounded-2xl text-gray-600 shadow-[inset_4px_4px_8px_rgba(163,177,198,0.6),inset_-4px_-4px_8px_rgba(255,255,255,0.8)]">
+                            <div className="p-3 bg-gray-900 text-white rounded-2xl group-hover:bg-blue-600 transition-colors">
                                 <Layers size={24} />
                             </div>
                             <div className="flex-1">
-                                <h3 className="text-xl font-bold text-gray-800">{t('variantB', 'Variant B')}</h3>
-                                <p className="text-gray-500 text-sm">{t('variantBSub', 'Soft Neumorphism / Clay')}</p>
+                                <h3 className="text-xl font-bold text-gray-900">{t('desktopVersion', 'Desktop Version')}</h3>
+                                <p className="text-gray-500 text-sm">{t('variantASub', 'Ultra-Soft White / High Key')}</p>
                             </div>
-                            <ArrowRight className="text-gray-500" />
+                            <ArrowRight className="text-gray-300 group-hover:text-blue-600 transition-colors" />
                         </div>
                     </Link>
                 </div>

@@ -8,6 +8,10 @@ import WalletB from './components/variant-b/WalletB';
 import NFTB from './components/variant-b/NFTB';
 import PointB from './components/variant-b/PointB';
 import RankB from './components/variant-b/RankB';
+import WalletADesktop from './components/desktop/WalletADesktop';
+import NFTADesktop from './components/desktop/NFTADesktop';
+import PointADesktop from './components/desktop/PointADesktop';
+import RankADesktop from './components/desktop/RankADesktop';
 import { LocaleProvider } from './i18n';
 
 function App() {
@@ -30,6 +34,13 @@ function App() {
                     <Route path="/neumorph/nft" element={<NFTB />} />
                     <Route path="/neumorph/point" element={<PointB />} />
                     <Route path="/neumorph/rank" element={<RankB />} />
+
+                    {/* Desktop dashboards (Variant A) */}
+                    <Route path="/desktop" element={<WalletADesktop />} />
+                    <Route path="/desktop/wallet" element={<WalletADesktop />} />
+                    <Route path="/desktop/nft" element={<NFTADesktop />} />
+                    <Route path="/desktop/point" element={<PointADesktop />} />
+                    <Route path="/desktop/rank" element={<RankADesktop />} />
                 </Routes>
             </BrowserRouter>
         </LocaleProvider>
