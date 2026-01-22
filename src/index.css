@@ -15,38 +15,38 @@
 }
 
 .dashboard-bg {
-  background-color: #f7f8fa;
+  background-color: #f6f7f9;
 }
 
 .card-shell {
   background: #ffffff;
   border: 1px solid #e6e9f0;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.12), 0 2px 6px rgba(17, 24, 39, 0.04);
 }
 
 .card-shell-lg {
   background: #ffffff;
   border: 1px solid #e6e9f0;
-  border-radius: 16px;
-  box-shadow: 0 12px 26px rgba(17, 24, 39, 0.14);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.14), 0 2px 6px rgba(17, 24, 39, 0.05);
 }
 
 .card-soft {
   background: #f8fafc;
   border: 1px solid #e6e9f0;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .card-soft-elevated {
   background: #f8fafc;
   border: 1px solid #e6e9f0;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.1);
 }
 
 .shadow-material-medium {
-  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12);
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.16), 0 2px 6px rgba(17, 24, 39, 0.08);
 }
 
 .stat-tag {
@@ -94,6 +94,16 @@
   border-color: #bfdbfe;
 }
 
+.stat-card-emerald {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, #ffffff 70%);
+  border-color: rgba(167, 243, 208, 0.6);
+}
+
+.stat-card-sky {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, #ffffff 70%);
+  border-color: rgba(191, 219, 254, 0.7);
+}
+
 .banner-noise {
   position: relative;
   overflow: hidden;
@@ -103,9 +113,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
-  opacity: 0.2;
+  opacity: 0.35;
   pointer-events: none;
 }
 

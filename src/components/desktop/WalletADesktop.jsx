@@ -56,7 +56,7 @@ export default function WalletADesktop() {
 
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12">
-                        <div className="banner-noise relative w-full h-40 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] rounded-[14px] overflow-hidden flex items-center justify-between px-10 shadow-material-medium border border-white/10">
+                        <div className="banner-noise relative w-full h-40 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] rounded-[12px] overflow-hidden flex items-center justify-between px-10 shadow-material-medium border border-white/10">
                             <div className="relative z-10 space-y-2 max-w-[360px]">
                                 <div className="flex items-center gap-2">
                                     <span className="text-white/90 font-semibold text-xl tracking-wide">{t('upgradePro', 'UPGRADE PRO')}</span>
@@ -99,7 +99,7 @@ export default function WalletADesktop() {
                     </div>
 
                     <div className="col-span-4 grid gap-4">
-                        <div className="card-shell p-5">
+                        <div className="card-shell stat-card-emerald p-5">
                             <div className="flex items-center justify-between">
                                 <span className="stat-tag stat-tag-emerald">{t('totalInvest', 'Total Invest')}</span>
                                 <span className="stat-chip stat-chip-emerald">{t('apy', 'APY')} 10%</span>
@@ -107,7 +107,7 @@ export default function WalletADesktop() {
                             <p className="text-2xl font-semibold text-slate-900 mt-4">$1,248.50</p>
                             <p className="text-sm text-emerald-600 font-medium mt-2">+ $11.23</p>
                         </div>
-                        <div className="card-shell p-5">
+                        <div className="card-shell stat-card-sky p-5">
                             <div className="flex items-center justify-between">
                                 <span className="stat-tag stat-tag-sky">{t('totalBonus', 'Total Bonus')}</span>
                             </div>

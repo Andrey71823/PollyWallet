@@ -36,13 +36,14 @@ export default function LayoutADesktop({ children }) {
 
     return (
         <div className="min-h-screen dashboard-bg text-slate-900 font-desktop">
-            <div className="flex min-h-screen">
-                <aside
-                    className={clsx(
-                        'sticky top-0 h-screen bg-white/75 backdrop-blur-xl border-r border-[#E4E9F0] shadow-[0_8px_20px_rgba(15,23,42,0.05)] flex flex-col transition-all duration-300',
-                        collapsed ? 'w-20' : 'w-64'
-                    )}
-                >
+            <div className="mx-auto max-w-[1440px] px-6 py-6">
+                <div className="flex min-h-[calc(100vh-48px)] bg-[#F7F8FA] border border-[#E6E9F0] rounded-[24px] overflow-hidden shadow-material-medium">
+                    <aside
+                        className={clsx(
+                            'bg-white/80 backdrop-blur-xl border-r border-[#E4E9F0] flex flex-col transition-all duration-300',
+                            collapsed ? 'w-20' : 'w-64'
+                        )}
+                    >
                     <div className="flex items-center justify-between px-4 py-6">
                         <div className="flex items-center gap-3">
                             <div className="w-11 h-11 rounded-[18px] bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center font-semibold shadow-[0_10px_24px_rgba(37,99,235,0.25)]">
@@ -106,13 +107,14 @@ export default function LayoutADesktop({ children }) {
                             {!collapsed && <span className="text-xs font-semibold">Collapse menu</span>}
                         </button>
                     </div>
-                </aside>
+                    </aside>
 
-                <main className="flex-1">
-                    <div className="mx-auto w-full max-w-[1440px] px-10 py-8">
-                        {children}
-                    </div>
-                </main>
+                    <main className="flex-1 bg-transparent">
+                        <div className="w-full px-10 py-8">
+                            {children}
+                        </div>
+                    </main>
+                </div>
             </div>
         </div>
     );

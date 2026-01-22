@@ -41,8 +41,8 @@ export default function NFTADesktop() {
                             </div>
 
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                                <div className="w-28 h-28 bg-white rounded-[16px] shadow-[0_8px_18px_rgba(15,23,42,0.12)] flex items-center justify-center border border-white/70 relative">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[28px]"></div>
+                                <div className="w-28 h-28 bg-white rounded-[16px] shadow-[0_8px_18px_rgba(15,23,42,0.12)] flex items-center justify-center border border-white/70 relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[16px]"></div>
                                     <Box size={46} className="text-slate-900 relative z-10" strokeWidth={1.5} />
                                 </div>
                             </div>
