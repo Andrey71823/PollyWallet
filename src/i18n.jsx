@@ -453,7 +453,11 @@ export function LocaleProvider({ children }) {
         if (typeof window === 'undefined') {
             return 'en';
         }
-        return window.localStorage.getItem('pw-locale') || 'en';
+        try {
+            return window.localStorage.getItem('pw-locale') || 'en';
+        } catch (error) {
+            return 'en';
+        }
     });
 
     const value = useMemo(() => {
@@ -468,7 +472,11 @@ export function LocaleProvider({ children }) {
     const handleSetLocale = (nextLocale) => {
         setLocale(nextLocale);
         if (typeof window !== 'undefined') {
-            window.localStorage.setItem('pw-locale', nextLocale);
+            try {
+                window.localStorage.setItem('pw-locale', nextLocale);
+            } catch (error) {
+                // Ignore storage errors (e.g., private mode restrictions)
+            }
         }
     };
 

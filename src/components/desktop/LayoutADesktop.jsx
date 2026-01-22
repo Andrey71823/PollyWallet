@@ -10,12 +10,20 @@ export default function LayoutADesktop({ children }) {
         if (typeof window === 'undefined') {
             return false;
         }
-        return window.localStorage.getItem('pw-desktop-sidebar') === 'collapsed';
+        try {
+            return window.localStorage.getItem('pw-desktop-sidebar') === 'collapsed';
+        } catch (error) {
+            return false;
+        }
     });
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            window.localStorage.setItem('pw-desktop-sidebar', collapsed ? 'collapsed' : 'expanded');
+            try {
+                window.localStorage.setItem('pw-desktop-sidebar', collapsed ? 'collapsed' : 'expanded');
+            } catch (error) {
+                // ignore storage errors
+            }
         }
     }, [collapsed]);
 
