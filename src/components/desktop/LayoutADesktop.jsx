@@ -78,13 +78,17 @@ export default function LayoutADesktop({ children }) {
                                         : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
                                 )}
                             >
-                                <div className={clsx(
-                                    'w-10 h-10 rounded-[14px] flex items-center justify-center transition-all',
-                                    isActive ? 'bg-white/10 text-white' : 'bg-gray-100 text-gray-500 group-hover:text-gray-900'
-                                )}>
-                                    <item.icon size={20} />
-                                </div>
-                                {!collapsed && <span className="text-sm">{item.label}</span>}
+                                {({ isActive }) => (
+                                    <>
+                                        <div className={clsx(
+                                            'w-10 h-10 rounded-[14px] flex items-center justify-center transition-all',
+                                            isActive ? 'bg-white/10 text-white' : 'bg-gray-100 text-gray-500 group-hover:text-gray-900'
+                                        )}>
+                                            <item.icon size={20} />
+                                        </div>
+                                        {!collapsed && <span className="text-sm">{item.label}</span>}
+                                    </>
+                                )}
                             </NavLink>
                         ))}
                     </nav>
