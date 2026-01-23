@@ -8,11 +8,12 @@ import Logo from '../../assets/LOGO-black.svg';
 export default function PointA() {
     const { t } = useLocale();
     const walletAddress = '0x742d...5f3A';
+    const formatNumber = (value) => value.toLocaleString('en-US');
 
     const projects = [
-        { name: 'Polymarket', points: '15 420', change: '+564', icon: Target, color: 'bg-blue-50 text-blue-600', iconBg: 'bg-blue-100' },
-        { name: 'Probable', points: '8 934', change: '+413', icon: BarChart3, color: 'bg-green-50 text-green-600', iconBg: 'bg-green-100' },
-        { name: 'Predict Fun', points: '12 567', change: '+778', icon: Gamepad2, color: 'bg-purple-50 text-purple-600', iconBg: 'bg-purple-100' },
+        { name: 'Polymarket', points: 15420, change: 564, icon: Target, color: 'bg-blue-50 text-blue-600', iconBg: 'bg-blue-100' },
+        { name: 'Probable', points: 8934, change: 413, icon: BarChart3, color: 'bg-green-50 text-green-600', iconBg: 'bg-green-100' },
+        { name: 'Predict Fun', points: 12567, change: 778, icon: Gamepad2, color: 'bg-purple-50 text-purple-600', iconBg: 'bg-purple-100' },
         { name: 'OPINION', points: 'Coming Soon', change: '', icon: MessageCircle, color: 'bg-gray-50 text-gray-400', iconBg: 'bg-gray-100', disabled: true },
     ];
 
@@ -38,23 +39,22 @@ export default function PointA() {
                             </div>
                         </div>
 
-                        <h2 className="text-5xl font-black tracking-tight mb-6">125 840</h2>
+                        <h2 className="text-5xl font-black tracking-tight mb-6">{formatNumber(125840)}</h2>
 
                         <div className="flex gap-3">
                             <div className="flex-1 bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/5 hover:bg-white/15 transition-colors">
                                 <div className="flex items-center gap-2 text-green-400 mb-1">
                                     <TrendingUp size={16} />
-                                    <span className="text-xs font-bold">+1 234 {t('pointsTitle', 'Points')}</span>
+                                    <span className="text-xs font-bold">+{formatNumber(1234)} {t('pointsTitle', 'Points')}</span>
                                 </div>
-                                <p className="text-[10px] text-white/60 font-medium">{t('yesterday', 'yesterday')}</p>
+                                <p className="text-[10px] text-white/60 font-medium">{t('sinceLastCycle', 'Since last cycle')}</p>
                             </div>
 
                             <div className="flex-1 bg-gradient-to-br from-blue-600/80 to-blue-500/80 backdrop-blur-md rounded-2xl p-3 border border-white/10 shadow-lg shadow-blue-900/20">
                                 <div className="flex items-center gap-2 text-white mb-1">
                                     <Zap size={16} fill="currentColor" />
-                                    <span className="text-xs font-bold">50% {t('boost', 'Boost')}</span>
+                                    <span className="text-xs font-bold">{t('pointsApyBoost', 'Get 50% APY on held points')}</span>
                                 </div>
-                                <p className="text-[10px] text-white/80 font-medium">{t('boost', 'Boost')}</p>
                             </div>
                         </div>
                     </div>
@@ -78,8 +78,6 @@ export default function PointA() {
                                     {!p.disabled && (
                                         <div className="flex items-center gap-2">
                                             <span className="text-xs font-bold text-gray-500">{t('pointsTitle', 'Points')}</span>
-                                            <div className="h-1 w-1 rounded-full bg-gray-300"></div>
-                                            <span className="text-xs font-bold text-green-500">{p.change}</span>
                                         </div>
                                     )}
                                 </div>
@@ -89,9 +87,12 @@ export default function PointA() {
                                         <span className="text-[10px] font-black uppercase tracking-wider px-3 py-1.5 bg-gray-200 text-gray-500 rounded-lg">{t('comingSoon', 'Coming Soon')}</span>
                                     ) : (
                                         <div className="flex flex-col items-end">
-                                            <div className="text-lg font-black text-gray-900 tracking-tight">{p.points}</div>
-                                            <div className="bg-gray-50 rounded-full p-1 -mr-1 mt-1">
-                                                <ChevronRight size={14} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
+                                            <div className="text-lg font-black text-gray-900 tracking-tight">{formatNumber(p.points)}</div>
+                                            <div className="flex items-center gap-2 mt-1">
+                                                <span className="text-xs font-bold text-green-500">+{formatNumber(p.change)}</span>
+                                                <div className="bg-gray-50 rounded-full p-1">
+                                                    <ChevronRight size={14} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
+                                                </div>
                                             </div>
                                         </div>
                                     )}

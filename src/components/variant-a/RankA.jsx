@@ -220,7 +220,6 @@ export default function RankA() {
                 {/* Map */}
                 <div>
                     <h3 className="text-lg font-black text-gray-900 tracking-tight mb-1 px-1">{t('map', 'Map')}</h3>
-                    <p className="text-xs text-gray-400 font-medium px-1">{t('mapHint', 'Tap members to view their downline')}</p>
 
                     <div className="mt-4 space-y-3">
                         {selectedMember ? (

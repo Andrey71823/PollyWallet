@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
-import { Box, TrendingUp, Sparkles, ChevronLeft, ShieldCheck, Zap, Layers, X, Plus, Minus } from 'lucide-react';
+import { Box, TrendingUp, Sparkles, ShieldCheck, Zap, Layers, X, Plus, Minus } from 'lucide-react';
 import { useLocale } from '../../i18n';
 import Logo from '../../assets/LOGO-black.svg';
 
@@ -24,66 +23,6 @@ export default function NFTA() {
 
                 {/* Bento Grid Layout */}
                 <div className="grid grid-cols-2 gap-4">
-                    {/* Poly NFT Box */}
-                    <div className="col-span-2 bg-white rounded-[32px] p-1 shadow-[0_2px_20px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden group relative">
-                        <div className="bg-gray-50 rounded-[28px] p-6 h-72 relative overflow-hidden flex flex-col justify-between">
-                            <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-100/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
-
-                            <div className="flex justify-between items-start z-10">
-                                <div className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-gray-100 flex items-center gap-1.5">
-                                    <Sparkles size={12} className="text-blue-600" />
-                                    <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">{t('diamondRank', 'Diamond Rank')}</span>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-[10px] uppercase tracking-wider font-bold text-gray-400">{t('price', 'Price')}</p>
-                                    <p className="text-lg font-black text-gray-900">$1,000</p>
-                                </div>
-                            </div>
-
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 group-hover:scale-105 transition-transform duration-500">
-                                <div className="w-24 h-24 bg-white rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex items-center justify-center border border-white/50 relative">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[24px]"></div>
-                                    <Box size={40} className="text-gray-900 relative z-10" strokeWidth={1.5} />
-                                </div>
-                            </div>
-
-                            <div className="z-10 text-center mt-auto">
-                                <h2 className="text-2xl font-black text-gray-900 tracking-tight">POLY BOX</h2>
-                                <p className="text-xs font-medium text-gray-400">{t('edition', 'Edition')} 1</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Description Text */}
-                    <div className="col-span-2 px-2">
-                        <h2 className="text-gray-900 text-xl font-bold mb-2">{t('polywalletNft', 'PolyWallet NFT')}</h2>
-                        <p className="text-gray-500 text-sm leading-relaxed font-medium">
-                            {t('nftDescription', 'Mint your NFT to unlock rewards, daily interest, and affiliate benefits.')}
-                        </p>
-                    </div>
-
-                    {/* Stats Grid */}
-                    <div className="bg-white p-5 rounded-[28px] shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col justify-between">
-                        <div className="w-10 h-10 rounded-2xl bg-green-50 flex items-center justify-center mb-2 text-green-600">
-                            <TrendingUp size={20} />
-                        </div>
-                        <div>
-                            <p className="text-2xl font-black text-gray-900 tracking-tight">10%</p>
-                            <p className="text-xs font-bold text-gray-400">{t('apyDailyInterest', 'APY Daily Interest')}</p>
-                        </div>
-                    </div>
-
-                    <div className="bg-white p-5 rounded-[28px] shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col justify-between">
-                        <div className="w-10 h-10 rounded-2xl bg-purple-50 flex items-center justify-center mb-2 text-purple-600">
-                            <Zap size={20} />
-                        </div>
-                        <div>
-                            <p className="text-2xl font-black text-gray-900 tracking-tight">50%</p>
-                            <p className="text-xs font-bold text-gray-400">{t('pointBoostLabel', 'Point Boost')}</p>
-                        </div>
-                    </div>
-
                     {/* Owned Status */}
                     <div className="col-span-2 bg-white p-5 rounded-[28px] shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 flex items-center justify-between">
                         <div className="flex items-center gap-4">
@@ -93,58 +32,14 @@ export default function NFTA() {
                             <div>
                                 <p className="font-bold text-gray-900 text-base">{t('owned', 'Owned')}</p>
                                 <p className="text-xs text-gray-500 font-medium">{t('nfts', 'NFTs')}</p>
+                                <span className="mt-1 inline-flex items-center rounded-full bg-blue-50 text-blue-600 text-[9px] font-bold px-2 py-0.5 border border-blue-100">
+                                    {t('diamondRank', 'Diamond Rank')}
+                                </span>
                             </div>
                         </div>
                         <div className="text-right">
-                            <span className="text-3xl font-black text-gray-900">3</span>
+                            <span className="text-3xl font-black text-gray-900">{(3).toLocaleString('en-US')}</span>
                             <span className="text-sm font-bold text-gray-400 ml-1">{t('nfts', 'NFTs')}</span>
-                        </div>
-                    </div>
-
-                    {/* Benefits List */}
-                    <div className="col-span-2 bg-white rounded-[32px] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 space-y-5">
-                        <div className="flex items-center justify-between">
-                            <h3 className="font-bold text-gray-900 text-lg">{t('privileges', 'Privileges')}</h3>
-                            <span className="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded-lg">{t('pro', 'PRO')}</span>
-                        </div>
-
-                        <div className="space-y-4">
-                            {[
-                                {
-                                    icon: Sparkles,
-                                    label: t('exclusiveAirdropRewards', 'Exclusive Airdrop Rewards'),
-                                    desc: t('exclusiveAirdropRewardsDesc', 'Exclusive airdrop rewards.'),
-                                    color: 'text-yellow-600 bg-yellow-50',
-                                },
-                                {
-                                    icon: Zap,
-                                    label: t('upToPointBoost', 'Up to 60% Point Boost'),
-                                    desc: t('upToPointBoostDesc', 'Up to 60% point boost.'),
-                                    color: 'text-purple-600 bg-purple-50',
-                                },
-                                {
-                                    icon: TrendingUp,
-                                    label: t('apyDailyInterestLabel', '10% APY Daily Interest'),
-                                    desc: t('apyDailyInterestDesc', '10% APY daily interest.'),
-                                    color: 'text-green-600 bg-green-50',
-                                },
-                                {
-                                    icon: ShieldCheck,
-                                    label: t('ambassadorProgramAccess', 'Ambassador Program Access'),
-                                    desc: t('ambassadorProgramAccessDesc', 'Ambassador program access.'),
-                                    color: 'text-blue-600 bg-blue-50',
-                                },
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-4 items-start group">
-                                    <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${item.color}`}>
-                                        <item.icon size={20} />
-                                    </div>
-                                    <div className="pt-0.5">
-                                        <p className="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors">{item.label}</p>
-                                        <p className="text-xs text-gray-400 leading-relaxed mt-0.5 font-medium">{item.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
                         </div>
                     </div>
 
@@ -153,7 +48,7 @@ export default function NFTA() {
                         <div className="flex justify-between items-end mb-2 px-1">
                             <div>
                                 <p className="text-gray-400 text-xs font-bold mb-0.5 uppercase tracking-wide">{t('mintPrice', 'Mint Price')}</p>
-                                <p className="text-gray-900 text-2xl font-black tracking-tight">$1,000</p>
+                                <p className="text-gray-900 text-2xl font-black tracking-tight">${price.toLocaleString('en-US')}</p>
                             </div>
                             <div className="text-right">
                                 <p className="text-green-600 text-xs font-bold flex items-center gap-1 justify-end mb-1"><Sparkles size={10} /> {t('limited', 'Limited')}</p>
@@ -170,6 +65,71 @@ export default function NFTA() {
                             <Box size={20} strokeWidth={2} />
                             {t('mintNft', 'Mint NFT')}
                         </button>
+                    </div>
+
+                    {/* Poly NFT Box */}
+                    <div className="col-span-2 bg-white rounded-[32px] p-1 shadow-[0_2px_20px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden group relative">
+                        <div className="bg-gray-50 rounded-[28px] p-6 h-72 relative overflow-hidden flex items-center justify-center">
+                            <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-100/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+
+                            <div className="relative z-10 group-hover:scale-105 transition-transform duration-500">
+                                <div className="w-24 h-24 bg-white rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex items-center justify-center border border-white/50 relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[24px]"></div>
+                                    <Box size={40} className="text-gray-900 relative z-10" strokeWidth={1.5} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Description Text */}
+                    <div className="col-span-2 px-2">
+                        <h2 className="text-gray-900 text-xl font-bold mb-2">{t('polywalletNft', 'PolyWallet NFT')}</h2>
+                        <p className="text-gray-500 text-sm leading-relaxed font-medium">
+                            {t('nftDescription', 'Mint your NFT to unlock rewards, daily interest, and affiliate benefits.')}
+                        </p>
+                    </div>
+
+                    {/* Benefits List */}
+                    <div className="col-span-2 bg-white rounded-[32px] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 space-y-5">
+                        <div className="flex items-center justify-between">
+                            <h3 className="font-bold text-gray-900 text-lg">{t('privileges', 'Privileges')}</h3>
+                            <span className="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded-lg">{t('pro', 'PRO')}</span>
+                        </div>
+
+                        <div className="space-y-4">
+                            {[
+                                {
+                                    icon: Sparkles,
+                                    label: t('exclusiveAirdropRewards', 'Exclusive Airdrop Rewards'),
+                                    color: 'text-yellow-600 bg-yellow-50',
+                                },
+                                {
+                                    icon: Zap,
+                                    label: t('upToPointBoost', 'Up to 60% Point Boost'),
+                                    color: 'text-purple-600 bg-purple-50',
+                                },
+                                {
+                                    icon: TrendingUp,
+                                    label: t('apyDailyInterestLabel', '10% APY Daily Interest'),
+                                    color: 'text-green-600 bg-green-50',
+                                },
+                                {
+                                    icon: ShieldCheck,
+                                    label: t('ambassadorProgramAccess', 'Ambassador Program Access'),
+                                    color: 'text-blue-600 bg-blue-50',
+                                },
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-4 items-start group">
+                                    <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${item.color}`}>
+                                        <item.icon size={20} />
+                                    </div>
+                                    <div className="pt-0.5">
+                                        <p className="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors">{item.label}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 

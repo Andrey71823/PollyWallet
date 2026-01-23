@@ -220,7 +220,6 @@ export default function RankADesktop() {
 
                         <div className="card-shell p-6">
                             <h3 className="text-lg font-semibold text-slate-900 tracking-tight mb-1">{t('map', 'Map')}</h3>
-                            <p className="text-xs text-slate-400 font-medium">{t('mapHint', 'Tap members to view their downline')}</p>
 
                             <div className="mt-4 space-y-3">
                                 {selectedMember ? (
