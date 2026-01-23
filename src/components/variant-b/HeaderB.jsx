@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Globe, ChevronDown, Wallet, Power, Check } from 'lucide-react';
 import { useLocale, languageOptions } from '../../i18n';
+import Logo from '../../assets/LOGO.svg';
 
 export default function HeaderB({ title = "PolyWallet" }) {
     const navigate = useNavigate();
@@ -34,16 +35,9 @@ export default function HeaderB({ title = "PolyWallet" }) {
 
     return (
         <div className="flex justify-between items-center px-1 mb-3">
-            <button
-                onClick={() => navigate(-1)}
-                className="w-11 h-11 bg-white rounded-[16px] flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.04)] border border-gray-50 text-gray-700 hover:scale-105 active:scale-95 transition-all"
-            >
-                <ChevronLeft size={22} strokeWidth={2.5} />
-            </button>
-
-            <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-black text-[10px] shadow-md shadow-blue-200">PW</div>
-                <span className="font-black text-xl text-gray-900 tracking-tight">{title}</span>
+            {/* Logo Section replacing Greeting/Title */}
+            <div className="flex items-center">
+                <img src={Logo} alt="PolyWallet Logo" className="h-8 w-auto text-black" />
             </div>
 
             <div ref={menuRef} className="relative flex items-center gap-2">
@@ -51,14 +45,16 @@ export default function HeaderB({ title = "PolyWallet" }) {
                     type="button"
                     onClick={toggleLanguage}
                     aria-label={t('language', 'Language')}
-                    className="w-11 h-11 bg-white rounded-[16px] flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.04)] border border-gray-50 text-gray-400 hover:text-blue-500 transition-colors"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 text-gray-400 hover:text-blue-500 transition-colors"
                 >
-                    <Globe size={20} strokeWidth={2} />
+                    <Globe size={18} strokeWidth={2} />
                 </button>
+
+                {/* Wallet Address Display replacing Avatar */}
                 <button
                     type="button"
                     onClick={toggleWallet}
-                    className="bg-[#1A1D1F] text-white pl-3.5 pr-2.5 py-3 rounded-[16px] flex items-center gap-2 shadow-[0_10px_20px_rgba(0,0,0,0.15)] text-[11px] font-bold tracking-wide"
+                    className="bg-[#1A1D1F] text-white px-4 py-2.5 rounded-full flex items-center gap-2 shadow-md text-xs font-bold tracking-wide"
                 >
                     <span>{walletAddress}</span>
                     <ChevronDown size={14} className="opacity-50" />

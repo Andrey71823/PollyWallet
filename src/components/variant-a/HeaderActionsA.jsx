@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Globe, Wallet, Power, Check } from 'lucide-react';
+import { Globe, Wallet, Power, Check, ChevronDown } from 'lucide-react';
 import { useLocale, languageOptions } from '../../i18n';
 
-export default function HeaderActionsA({ walletAddress = '0x742d...5f3A', avatarSrc }) {
+export default function HeaderActionsA({ walletAddress = '0x742d...5f3A' }) {
     const { locale, setLocale, t } = useLocale();
     const [showWalletMenu, setShowWalletMenu] = useState(false);
     const [showLangMenu, setShowLangMenu] = useState(false);
@@ -44,18 +44,16 @@ export default function HeaderActionsA({ walletAddress = '0x742d...5f3A', avatar
                 <Globe size={18} />
             </button>
 
+            {/* Wallet Address Button (replaces avatar) */}
             <button
                 type="button"
                 onClick={toggleWallet}
                 aria-haspopup="true"
                 aria-expanded={showWalletMenu}
-                className="w-10 h-10 rounded-full bg-white shadow-soft p-0.5 border border-gray-100"
+                className="bg-[#1A1D1F] text-white px-3 py-2 rounded-full flex items-center gap-1.5 shadow-md text-[10px] font-bold tracking-wide hover:bg-[#2D3748] transition-colors"
             >
-                <img
-                    src={avatarSrc}
-                    alt="Profile"
-                    className="w-full h-full rounded-full object-cover"
-                />
+                <span>{walletAddress}</span>
+                <ChevronDown size={12} className="opacity-50" />
             </button>
 
             {showWalletMenu && (

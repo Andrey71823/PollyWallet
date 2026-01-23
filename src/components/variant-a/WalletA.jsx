@@ -56,28 +56,28 @@ export default function WalletA() {
                     <div className="space-y-4">
                         <div>
                             <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase ml-1">{t('totalBalance', 'TOTAL BALANCE')}</p>
-                            <h2 className="text-5xl font-black text-gray-900 tracking-tight mt-2">$5,420.50</h2>
+                            <h2 className="text-5xl font-black text-gray-900 tracking-tight mt-3">$5,420.50</h2>
                         </div>
 
-                        <div className="flex gap-4">
-                            <div className="bg-white px-4 py-3 rounded-2xl flex-1 border border-gray-100">
+                        <div className="flex gap-6">
+                            <div className="bg-white px-4 py-6 rounded-2xl flex-1 border border-gray-300">
                                 <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
-                                <p className="text-lg font-black text-gray-900">$1,248.50</p>
-                                <div className="mt-1 flex items-center justify-between">
-                                    <p className="text-[10px] text-green-600 font-bold">+ $11.23</p>
-                                    <span className="text-[9px] font-bold text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded border border-gray-200">{t('apy', 'APY')} 10%</span>
+                                <p className="text-[22px] font-black text-gray-900 mt-3">$1,248.50</p>
+                                <div className="mt-2 flex items-center justify-between">
+                                    <p className="text-[12px] text-green-600 font-bold">+ $11.23</p>
+                                    <span className="text-[11px] font-bold text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded border border-gray-200">{t('apy', 'APY')} 10%</span>
                                 </div>
                             </div>
-                            <div className="bg-white px-4 py-3 rounded-2xl flex-1 border border-gray-100">
-                                <p className="text-[10px] uppercase font-bold text-gray-500 mb-0.5 tracking-wider">{t('totalBonus', 'Total Bonus')}</p>
-                                <p className="text-lg font-black text-gray-900">$398.20</p>
-                                <p className="text-[10px] text-blue-600 font-bold mt-0.5">+ $85.50</p>
+                            <div className="bg-white px-4 py-6 rounded-2xl flex-1 border border-gray-300">
+                                <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">{t('totalBonus', 'Total Bonus')}</p>
+                                <p className="text-[22px] font-black text-gray-900 mt-3">$398.20</p>
+                                <p className="text-[12px] text-blue-600 font-bold mt-2">+ $85.50</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Actions */}
-                    <div className="mt-6 flex items-center gap-3">
+                    <div className="mt-14 flex items-center gap-[27px]">
                         <button onClick={() => openModal('deposit')} className="flex-1 h-12 bg-blue-600 text-white rounded-[18px] shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 font-bold text-[14px] ring-4 ring-blue-500/10">
                             <ArrowDown size={16} strokeWidth={2.5} />
                             {t('deposit', 'Deposit')}
@@ -115,7 +115,7 @@ export default function WalletA() {
                     </div>
 
                     {/* Activity List */}
-                    <div className="space-y-4">
+                    <div className="space-y-10 mt-12">
                         <div className="flex justify-between items-end px-1">
                             <h3 className="text-lg font-black text-gray-900 tracking-tight">{t('transactions', 'Transactions')}</h3>
                             <button
@@ -129,7 +129,7 @@ export default function WalletA() {
 
                         <div className="space-y-2.5">
                             {visibleTransactions.map((tx, i) => (
-                                <div key={i} className="group bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 hover:shadow-md transition-all flex items-center gap-4">
+                                <div key={i} className="group bg-white p-4 rounded-[20px] shadow-sm border border-gray-200 hover:shadow-md transition-all flex items-center gap-4">
                                     <div className={`w-10 h-10 rounded-[14px] flex items-center justify-center transition-colors ${tx.amount.startsWith('+') ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500'}`}>
                                         {tx.amount.startsWith('+') ? <ArrowDownLeft size={20} /> : <ArrowUpRight size={20} />}
                                     </div>

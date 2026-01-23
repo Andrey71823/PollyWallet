@@ -14,39 +14,54 @@
   font-family: 'Manrope', 'Inter', sans-serif;
 }
 
-.dashboard-bg {
-  background-color: #f6f7f9;
+/* Custom Hide Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.bg-grid-dark {
+  background-color: #111827;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+}
+
+/* Updated card-shell to have lighter, "nicer" shadows matching WalletADesktop overrides */
 .card-shell {
   background: #ffffff;
   border: 1px solid #e6e9f0;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.12), 0 2px 6px rgba(17, 24, 39, 0.04);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.03);
 }
 
 .card-shell-lg {
   background: #ffffff;
   border: 1px solid #e6e9f0;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.14), 0 2px 6px rgba(17, 24, 39, 0.05);
+  box-shadow: 0 8px 16px rgba(17, 24, 39, 0.04);
 }
 
 .card-soft {
   background: #f8fafc;
   border: 1px solid #e6e9f0;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .card-soft-elevated {
-  background: #f8fafc;
+  background: #ffffff;
   border: 1px solid #e6e9f0;
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(17, 24, 39, 0.02);
 }
 
 .shadow-material-medium {
-  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.16), 0 2px 6px rgba(17, 24, 39, 0.08);
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.06);
 }
 
 .stat-tag {
@@ -113,58 +128,94 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
-  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
   pointer-events: none;
 }
 
-/* Custom Hide Scrollbar */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.bg-grid-dark {
-  background-color: #111827;
-  background-image:
-    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
-}
-
 @keyframes breathe {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
 
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes breathe-strong {
   0%,
   100% {
     transform: scale(1);
   }
 
   50% {
-    transform: scale(2);
+    transform: scale(1.05);
   }
 }
 
 .animate-breathe {
-  animation: breathe 16s ease-in-out infinite;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe-strong {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
 }
 
 .animate-breathe-strong {
-  animation: breathe-strong 16s ease-in-out infinite;
+  animation: breathe-strong 8s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 7s ease-in-out 3s infinite;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 10s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }

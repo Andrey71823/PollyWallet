@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import LayoutB from './LayoutB';
-import { Plus, ArrowUpRight, ArrowDownLeft, X, Send, Sparkles, Gift, Box, Rocket, ChevronRight } from 'lucide-react';
+import { Plus, ArrowUpRight, ArrowDownLeft, X, Send, Sparkles, Gift, Box, Rocket, ChevronRight, Clock, Globe, ChevronDown } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import Logo from '../../assets/LOGO.svg';
 
 export default function WalletB() {
     const { t } = useLocale();
@@ -9,6 +10,7 @@ export default function WalletB() {
     const [amount, setAmount] = useState('');
     const [recipient, setRecipient] = useState('');
     const [showAllTransactions, setShowAllTransactions] = useState(false);
+    const walletAddress = '0x742d...5f3A';
 
     const transactions = [
         { type: t('dailyInterest', 'Daily Interest'), date: '2026-01-16 14:30:45', amount: '+$11.23', color: 'text-green-600', iconBg: 'bg-yellow-50', iconColor: 'text-yellow-600', Icon: Sparkles },
@@ -33,37 +35,38 @@ export default function WalletB() {
             {/* Main Content - PADDING REDUCED START */}
             <div className="px-6 pt-2 pb-4 space-y-3">
 
-                {/* 1. Header with Reduced Spacing */}
-                <div className="flex justify-between items-start mb-0">
-                    <div>
-                        <p className="text-gray-400 font-bold text-sm">{t('greeting', 'Good Afternoon,')}</p>
-                        <h2 className="text-2xl font-black text-gray-900 tracking-tight">Tobechukwu!</h2>
+                {/* 1. Header with Logo and Wallet Address */}
+                <div className="flex justify-between items-center mb-2">
+                    <img src={Logo} alt="PolyWallet Logo" className="h-7 w-auto" style={{ filter: 'invert(0)' }} />
+                    <div className="flex items-center gap-2">
+                        <button className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 text-gray-400">
+                            <Globe size={16} />
+                        </button>
+                        <div className="bg-[#1A1D1F] text-white px-3 py-2 rounded-full flex items-center gap-1.5 shadow-md text-[10px] font-bold">
+                            <span>{walletAddress}</span>
+                            <ChevronDown size={12} className="opacity-50" />
+                        </div>
                     </div>
-                    <img
-                        src="https://i.pravatar.cc/150?img=11"
-                        alt="User"
-                        className="w-12 h-12 rounded-full border-2 border-white shadow-lg"
-                    />
                 </div>
 
                 {/* Main Balance - Gap Reduced */}
                 <div className="text-center space-y-4 py-0">
                     <div>
-                        <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase mb-1">{t('totalBalance', 'Total balance')}</p>
+                        <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase mb-1">{t('totalBalance', 'TOTAL BALANCE')}</p>
                         <h1 className="text-[44px] font-black text-gray-900 tracking-tight leading-none">$5,420<span className="text-gray-400">.50</span></h1>
                     </div>
 
-                    {/* Stats Cards */}
+                    {/* Stats Cards - REDUCED SHADOWS */}
                     <div className="flex gap-4 px-1">
-                        <div className="flex-1 bg-white p-4 rounded-[24px] shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] text-left border border-gray-50">
-                            <p className="text-[9px] text-gray-400 font-bold uppercase tracking-wider">{t('totalInvest', 'Total Invest')}</p>
+                        <div className="flex-1 bg-white p-4 rounded-[24px] shadow-[0_6px_20px_-5px_rgba(0,0,0,0.02)] text-left border border-gray-50">
+                            <p className="text-[9px] text-gray-400 font-bold uppercase tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
                             <p className="text-xl font-black text-green-600">$1,248.50</p>
                             <div className="mt-1 flex items-center justify-between">
                                 <p className="text-[10px] text-green-500 font-bold">+ $11.23</p>
                                 <span className="bg-green-50 text-green-600 text-[8px] font-black px-1.5 py-0.5 rounded border border-green-100">{t('apy', 'APY')} 10%</span>
                             </div>
                         </div>
-                        <div className="flex-1 bg-white p-4 rounded-[24px] shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] text-left border border-gray-50">
+                        <div className="flex-1 bg-white p-4 rounded-[24px] shadow-[0_6px_20px_-5px_rgba(0,0,0,0.02)] text-left border border-gray-50">
                             <p className="text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-1">{t('totalBonus', 'Total Bonus')}</p>
                             <p className="text-xl font-black text-blue-600">$398.20</p>
                             <p className="text-[10px] text-blue-500 font-bold mt-1">+ $85.50</p>
@@ -71,25 +74,25 @@ export default function WalletB() {
                     </div>
                 </div>
 
-                {/* Action Buttons - 3 Buttons row */}
+                {/* Action Buttons - 3 Buttons row - REDUCED SHADOWS */}
                 <div className="flex items-center gap-3 px-1">
-                    <button onClick={() => setActiveModal('deposit')} className="flex-1 h-14 bg-black rounded-[20px] flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(0,0,0,0.15)] hover:scale-[1.02] active:scale-[0.98] transition-all relative overflow-hidden group">
+                    <button onClick={() => setActiveModal('deposit')} className="flex-1 h-14 bg-black rounded-[20px] flex items-center justify-center gap-2 shadow-[0_6px_15px_rgba(0,0,0,0.1)] hover:scale-[1.02] active:scale-[0.98] transition-all relative overflow-hidden group">
                         <div className="absolute top-0 inset-x-0 h-1/2 bg-white/10 rounded-t-[20px] pointer-events-none"></div>
                         <ArrowDownLeft size={18} className="text-white relative z-10" />
                         <span className="text-white font-bold text-[16px] relative z-10">{t('deposit', 'Deposit')}</span>
                     </button>
-                    <button onClick={() => setActiveModal('withdraw')} className="flex-1 h-14 bg-white rounded-[20px] flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(0,0,0,0.04)] border border-gray-50 hover:bg-gray-50 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                    <button onClick={() => setActiveModal('withdraw')} className="flex-1 h-14 bg-white rounded-[20px] flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-gray-50 hover:bg-gray-50 hover:scale-[1.02] active:scale-[0.98] transition-all">
                         <ArrowUpRight size={18} className="text-gray-900" />
                         <span className="text-gray-900 font-bold text-[16px]">{t('withdraw', 'Withdraw')}</span>
                     </button>
-                    <button onClick={() => setActiveModal('send')} className="flex-1 h-14 bg-white rounded-[20px] flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(0,0,0,0.04)] border border-gray-50 hover:bg-gray-50 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                    <button onClick={() => setActiveModal('send')} className="flex-1 h-14 bg-white rounded-[20px] flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-gray-50 hover:bg-gray-50 hover:scale-[1.02] active:scale-[0.98] transition-all">
                         <Send size={16} className="text-gray-900" />
                         <span className="text-gray-900 font-bold text-[16px]">{t('send', 'Send')}</span>
                     </button>
                 </div>
 
-                {/* 2. Upgrade Pro Banner - NEW & ANIMATED */}
-                <div className="relative overflow-hidden bg-[#1A1D1F] p-6 rounded-[32px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] text-white flex justify-between items-center group cursor-pointer hover:scale-[1.02] transition-transform duration-500">
+                {/* 2. Upgrade Pro Banner - NEW & ANIMATED - REDUCED SHADOWS */}
+                <div className="hidden relative overflow-hidden bg-[#1A1D1F] p-6 rounded-[32px] shadow-[0_15px_30px_-10px_rgba(0,0,0,0.2)] text-white flex justify-between items-center group cursor-pointer hover:scale-[1.02] transition-transform duration-500">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
 
                     <div className="relative z-10">
@@ -114,7 +117,7 @@ export default function WalletB() {
                     </div>
                 </div>
 
-                {/* Transactions */}
+                {/* Transactions - REDUCED SHADOWS */}
                 <div className="px-1 pb-12">
                     <div className="flex justify-between items-center mb-4 px-1">
                         <h3 className="text-lg font-black text-gray-900">{t('transactions', 'Transactions')}</h3>
@@ -129,7 +132,7 @@ export default function WalletB() {
 
                     <div className="space-y-3">
                         {visibleTransactions.map((tx, i) => (
-                            <div key={i} className="group bg-white p-4 rounded-[24px] shadow-[0_4px_15px_rgba(0,0,0,0.02)] border border-gray-50 flex items-center gap-4 transition-all hover:scale-[1.01] hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] cursor-default">
+                            <div key={i} className="group bg-white p-4 rounded-[24px] shadow-[0_2px_8px_rgba(0,0,0,0.01)] border border-gray-50 flex items-center gap-4 transition-all hover:scale-[1.01] hover:shadow-[0_8px_20px_rgba(0,0,0,0.03)] cursor-default">
                                 <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tx.iconBg}`}>
                                     <tx.Icon size={18} className={tx.iconColor} />
                                 </div>
@@ -153,7 +156,7 @@ export default function WalletB() {
                             <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 sm:hidden"></div>
 
                             <div className="flex justify-between items-center mb-6">
-                                <h2 className="text-2xl font-black text-gray-900">{t('depositUsdc', 'Deposit USDC')}</h2>
+                                <h2 className="text-2xl font-black text-gray-900">{t('depositUsdc', 'Deposit')}</h2>
                                 <button onClick={closeModal} className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
                                     <X size={20} />
                                 </button>
@@ -211,6 +214,18 @@ export default function WalletB() {
                                         className="w-full bg-gray-50 border border-gray-100 rounded-[16px] px-5 py-4 text-lg font-bold text-gray-900 outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100 transition-all placeholder:text-gray-300"
                                     />
                                 </div>
+
+                                {/* Processing Time Info */}
+                                <div className="bg-yellow-50 rounded-[16px] p-4 flex items-center gap-3 border border-yellow-100">
+                                    <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+                                        <Clock size={16} className="text-yellow-600" />
+                                    </div>
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <p className="text-sm font-bold text-yellow-700">{t('processing', 'Processing')}</p>
+                                        <p className="text-xs font-medium text-yellow-600/80">{t('processingTime', 'Within 3 business days')}</p>
+                                    </div>
+                                </div>
+
                                 <button onClick={closeModal} className="w-full h-14 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-base rounded-[16px] shadow-lg shadow-blue-200 hover:shadow-xl hover:shadow-blue-300 active:scale-[0.98] transition-all">
                                     {t('requestWithdrawal', 'Request Withdrawal')}
                                 </button>
