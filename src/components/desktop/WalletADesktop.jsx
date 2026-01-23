@@ -279,8 +279,7 @@ export default function WalletADesktop() {
                                     <div className="bg-yellow-50 p-4 rounded-[20px] flex items-center gap-3 border border-yellow-100">
                                         <Clock size={18} className="text-yellow-600" />
                                         <div className="flex items-center gap-2 flex-wrap">
-                                            <p className="text-sm font-semibold text-amber-800">{t('processing', 'Processing')}</p>
-                                            <p className="text-xs text-yellow-700">{t('withinBusinessDays', 'Within 3 business days')}</p>
+                                            <p className="text-sm font-semibold text-yellow-700">{t('processing', 'Processing')} {t('withinBusinessDays', 'Within 3 business days')}</p>
                                         </div>
                                     </div>
                                     <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-semibold text-lg shadow-[0_8px_20px_rgba(15,23,42,0.1)] hover:bg-black active:scale-[0.98] transition-all">
@@ -299,7 +298,7 @@ export default function WalletADesktop() {
                                                 placeholder={t('enterUserId', 'Enter user ID')}
                                                 value={recipient}
                                                 onChange={(event) => setRecipient(event.target.value)}
-                                                className="w-full bg-gray-50 rounded-[20px] px-5 py-4 font-semibold text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
+                                                className="w-full bg-gray-50 rounded-[20px] px-5 py-4 font-semibold text-xl text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
                                             />
                                         </div>
                                     </div>

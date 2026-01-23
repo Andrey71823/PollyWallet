@@ -45,7 +45,7 @@ export default function WalletA() {
     return (
         <LayoutA>
             <div className="relative">
-                <div className="px-6 pt-1 pb-4 space-y-3">
+            <div className="px-6 pt-2 pb-4 space-y-3">
                     {/* Header with Logo and Wallet Address (with dropdowns) */}
                     <div className="sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50 flex justify-between items-center transition-all duration-300">
                         <img src={Logo} alt="PolyWallet" className="h-5 w-auto" />
@@ -56,21 +56,21 @@ export default function WalletA() {
                     <div className="space-y-4">
                         <div>
                             <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase ml-1">{t('totalBalance', 'TOTAL BALANCE')}</p>
-                            <h2 className="text-5xl font-black text-gray-900 tracking-tight">$5,420.50</h2>
+                            <h2 className="text-5xl font-black text-gray-900 tracking-tight mt-2">$5,420.50</h2>
                         </div>
 
                         <div className="flex gap-4">
-                            <div className="bg-green-50 px-4 py-3 rounded-2xl flex-1 border border-green-200">
-                                <p className="text-[10px] uppercase font-bold text-green-600 tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
-                                <p className="text-lg font-black text-green-700">$1,248.50</p>
+                            <div className="bg-white px-4 py-3 rounded-2xl flex-1 border border-gray-100">
+                                <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
+                                <p className="text-lg font-black text-gray-900">$1,248.50</p>
                                 <div className="mt-1 flex items-center justify-between">
                                     <p className="text-[10px] text-green-600 font-bold">+ $11.23</p>
-                                    <span className="text-[9px] font-black text-green-700 bg-green-100 px-1.5 py-0.5 rounded border border-green-300">{t('apy', 'APY')} 10%</span>
+                                    <span className="text-[9px] font-bold text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded border border-gray-200">{t('apy', 'APY')} 10%</span>
                                 </div>
                             </div>
-                            <div className="bg-blue-50 px-4 py-3 rounded-2xl flex-1 border border-blue-100">
-                                <p className="text-[10px] uppercase font-bold text-blue-600 mb-0.5 tracking-wider">{t('totalBonus', 'Total Bonus')}</p>
-                                <p className="text-lg font-black text-blue-700">$398.20</p>
+                            <div className="bg-white px-4 py-3 rounded-2xl flex-1 border border-gray-100">
+                                <p className="text-[10px] uppercase font-bold text-gray-500 mb-0.5 tracking-wider">{t('totalBonus', 'Total Bonus')}</p>
+                                <p className="text-lg font-black text-gray-900">$398.20</p>
                                 <p className="text-[10px] text-blue-600 font-bold mt-0.5">+ $85.50</p>
                             </div>
                         </div>
@@ -227,12 +227,11 @@ export default function WalletA() {
                                         <div className="bg-yellow-50 p-4 rounded-[20px] flex items-center gap-3 border border-yellow-100">
                                             <Clock size={18} className="text-yellow-600" />
                                         <div className="flex items-center gap-2 flex-wrap">
-                                            <p className="text-sm font-bold text-amber-800">{t('processing', 'Processing')}</p>
-                                            <p className="text-xs text-yellow-600/80">{t('withinBusinessDays', 'Within 3 business days')}</p>
+                                            <p className="text-sm font-bold text-yellow-700">{t('processing', 'Processing')} {t('withinBusinessDays', 'Within 3 business days')}</p>
                                         </div>
                                     </div>
-                                        <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-lg hover:bg-black active:scale-[0.98] transition-all">
-                                            {t('requestWithdrawal', 'Request Withdrawal')}
+                                    <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-lg hover:bg-black active:scale-[0.98] transition-all">
+                                        {t('requestWithdrawal', 'Request Withdrawal')}
                                         </button>
                                     </>
                                 )}
@@ -247,9 +246,9 @@ export default function WalletA() {
                                                     placeholder={t('enterUserId', 'Enter user ID')}
                                                     value={recipient}
                                                     onChange={(event) => setRecipient(event.target.value)}
-                                                    className="w-full bg-gray-50 rounded-[20px] px-5 py-4 font-bold text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
-                                                />
-                                            </div>
+                                                className="w-full bg-gray-50 rounded-[20px] px-5 py-4 font-bold text-xl text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
+                                            />
+                                        </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t('amount', 'Amount')}</label>

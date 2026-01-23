@@ -31,7 +31,6 @@ export default function NFTA() {
                             </div>
                             <div>
                                 <p className="font-bold text-gray-900 text-base">{t('owned', 'Owned')}</p>
-                                <p className="text-xs text-gray-500 font-medium">{t('nfts', 'NFTs')}</p>
                                 <span className="mt-1 inline-flex items-center rounded-full bg-blue-50 text-blue-600 text-[9px] font-bold px-2 py-0.5 border border-blue-100">
                                     {t('diamondRank', 'Diamond Rank')}
                                 </span>

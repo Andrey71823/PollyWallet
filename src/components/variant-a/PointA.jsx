@@ -1,7 +1,7 @@
 import React from 'react';
 import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
-import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, ChevronRight, Zap } from 'lucide-react';
+import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, Zap } from 'lucide-react';
 import { useLocale } from '../../i18n';
 import Logo from '../../assets/LOGO-black.svg';
 
@@ -47,14 +47,15 @@ export default function PointA() {
                                     <TrendingUp size={16} />
                                     <span className="text-xs font-bold">+{formatNumber(1234)} {t('pointsTitle', 'Points')}</span>
                                 </div>
-                                <p className="text-[10px] text-white/60 font-medium">{t('sinceLastCycle', 'Since last cycle')}</p>
+                                <p className="text-[10px] text-white/60 font-medium">{t('sinceLastCycle', 'since last cycle')}</p>
                             </div>
 
                             <div className="flex-1 bg-gradient-to-br from-blue-600/80 to-blue-500/80 backdrop-blur-md rounded-2xl p-3 border border-white/10 shadow-lg shadow-blue-900/20">
                                 <div className="flex items-center gap-2 text-white mb-1">
                                     <Zap size={16} fill="currentColor" />
-                                    <span className="text-xs font-bold">{t('pointsApyBoost', 'Get 50% APY on held points')}</span>
+                                    <span className="text-xs font-bold uppercase">50% APY</span>
                                 </div>
+                                <p className="text-[10px] text-white/80 font-medium">{t('onHeldPoints', 'on held points')}</p>
                             </div>
                         </div>
                     </div>
@@ -75,11 +76,6 @@ export default function PointA() {
 
                                 <div className="flex-1 min-w-0">
                                     <h4 className={`font-bold text-base mb-0.5 ${p.disabled ? 'text-gray-400' : 'text-gray-900'}`}>{p.name}</h4>
-                                    {!p.disabled && (
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-xs font-bold text-gray-500">{t('pointsTitle', 'Points')}</span>
-                                        </div>
-                                    )}
                                 </div>
 
                                 <div className="text-right shrink-0">
@@ -90,9 +86,6 @@ export default function PointA() {
                                             <div className="text-lg font-black text-gray-900 tracking-tight">{formatNumber(p.points)}</div>
                                             <div className="flex items-center gap-2 mt-1">
                                                 <span className="text-xs font-bold text-green-500">+{formatNumber(p.change)}</span>
-                                                <div className="bg-gray-50 rounded-full p-1">
-                                                    <ChevronRight size={14} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
-                                                </div>
                                             </div>
                                         </div>
                                     )}

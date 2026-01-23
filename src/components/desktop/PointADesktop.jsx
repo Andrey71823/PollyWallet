@@ -1,7 +1,7 @@
 import React from 'react';
 import LayoutADesktop from './LayoutADesktop';
 import HeaderActionsA from '../variant-a/HeaderActionsA';
-import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, ChevronRight, Zap } from 'lucide-react';
+import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, Zap } from 'lucide-react';
 import { useLocale } from '../../i18n';
 
 export default function PointADesktop() {
@@ -52,13 +52,14 @@ export default function PointADesktop() {
                                             <TrendingUp size={16} />
                                             <span className="text-sm font-semibold">+{formatNumber(1234)} {t('pointsTitle', 'Points')}</span>
                                         </div>
-                                        <p className="text-xs text-gray-400 font-medium">{t('sinceLastCycle', 'Since last cycle')}</p>
+                                        <p className="text-xs text-gray-400 font-medium">{t('sinceLastCycle', 'since last cycle')}</p>
                                     </div>
                                     <div className="flex-1 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl p-4 border border-blue-400/20 shadow-lg shadow-blue-900/20">
                                         <div className="flex items-center gap-2 text-white mb-2">
                                             <Zap size={16} fill="currentColor" />
-                                            <span className="text-sm font-semibold">{t('pointsApyBoost', 'Get 50% APY on held points')}</span>
+                                            <span className="text-sm font-semibold uppercase">50% APY</span>
                                         </div>
+                                        <p className="text-xs text-blue-100 font-medium">{t('onHeldPoints', 'on held points')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -140,11 +141,6 @@ export default function PointADesktop() {
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <h4 className={`font-semibold text-base mb-0.5 ${p.disabled ? 'text-slate-400' : 'text-slate-900'}`}>{p.name}</h4>
-                                        {!p.disabled && (
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-semibold text-slate-500">{t('pointsTitle', 'Points')}</span>
-                                            </div>
-                                        )}
                                     </div>
                                     <div className="text-right shrink-0">
                                         {p.disabled ? (
@@ -154,9 +150,6 @@ export default function PointADesktop() {
                                                 <div className="text-lg font-semibold text-slate-900 tracking-tight">{formatNumber(p.points)}</div>
                                                 <div className="flex items-center gap-2 mt-1">
                                                     <span className="text-xs font-semibold text-emerald-600">+{formatNumber(p.change)}</span>
-                                                    <div className="bg-slate-100 rounded-full p-1">
-                                                        <ChevronRight size={14} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
-                                                    </div>
                                                 </div>
                                             </div>
                                         )}
