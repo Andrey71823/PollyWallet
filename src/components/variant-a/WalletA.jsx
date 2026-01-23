@@ -3,6 +3,7 @@ import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
 import { useLocale } from '../../i18n';
 import { Send, ArrowDown, ArrowUp, ArrowUpRight, ArrowDownLeft, TrendingUp, X, Clock, Rocket } from 'lucide-react';
+import Logo from '../../assets/LOGO-black.svg';
 
 export default function WalletA() {
     const { t } = useLocale();
@@ -14,7 +15,6 @@ export default function WalletA() {
     const totalBalance = 5420.5;
     const depositBalance = 8234.56;
     const walletAddress = '0x742d...5f3A';
-    const avatarSrc = 'https://i.pravatar.cc/150?img=11';
     const formatAmount = (value) =>
         value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -46,29 +46,26 @@ export default function WalletA() {
         <LayoutA>
             <div className="relative">
                 <div className="px-6 pt-1 pb-4 space-y-3">
-                    {/* Sticky Header */}
-                    <div className="sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-1.5 -mx-6 px-6 border-b border-gray-100/50 flex justify-between items-center transition-all duration-300">
-                        <div>
-                            <p className="text-gray-400 text-sm font-bold tracking-wide">{t('greeting', 'Good Afternoon,')}</p>
-                            <h1 className="text-xl font-black text-gray-900 leading-none">Tobechukwu!</h1>
-                        </div>
-                        <HeaderActionsA walletAddress={walletAddress} avatarSrc={avatarSrc} />
+                    {/* Header with Logo and Wallet Address (with dropdowns) */}
+                    <div className="sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50 flex justify-between items-center transition-all duration-300">
+                        <img src={Logo} alt="PolyWallet" className="h-5 w-auto" />
+                        <HeaderActionsA walletAddress={walletAddress} />
                     </div>
 
                     {/* Balance Section */}
                     <div className="space-y-4">
                         <div>
-                            <p className="text-gray-400 font-bold text-sm tracking-wide ml-1">{t('totalBalance', 'Total balance')}</p>
+                            <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase ml-1">{t('totalBalance', 'TOTAL BALANCE')}</p>
                             <h2 className="text-5xl font-black text-gray-900 tracking-tight">$5,420.50</h2>
                         </div>
 
                         <div className="flex gap-4">
-                            <div className="bg-green-50 px-4 py-3 rounded-2xl flex-1 border border-green-100">
-                                <p className="text-[10px] uppercase font-bold text-green-600 tracking-wider">{t('totalInvest', 'Total Invest')}</p>
+                            <div className="bg-green-50 px-4 py-3 rounded-2xl flex-1 border border-green-200">
+                                <p className="text-[10px] uppercase font-bold text-green-600 tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
                                 <p className="text-lg font-black text-green-700">$1,248.50</p>
                                 <div className="mt-1 flex items-center justify-between">
                                     <p className="text-[10px] text-green-600 font-bold">+ $11.23</p>
-                                    <span className="text-[9px] font-black text-green-700 bg-green-100 px-1.5 py-0.5 rounded border border-green-200">{t('apy', 'APY')} 10%</span>
+                                    <span className="text-[9px] font-black text-green-700 bg-green-100 px-1.5 py-0.5 rounded border border-green-300">{t('apy', 'APY')} 10%</span>
                                 </div>
                             </div>
                             <div className="bg-blue-50 px-4 py-3 rounded-2xl flex-1 border border-blue-100">
@@ -80,7 +77,7 @@ export default function WalletA() {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-3">
+                    <div className="mt-6 flex items-center gap-3">
                         <button onClick={() => openModal('deposit')} className="flex-1 h-12 bg-blue-600 text-white rounded-[18px] shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 font-bold text-[14px] ring-4 ring-blue-500/10">
                             <ArrowDown size={16} strokeWidth={2.5} />
                             {t('deposit', 'Deposit')}
@@ -96,7 +93,7 @@ export default function WalletA() {
                     </div>
 
                     {/* Banner */}
-                    <div className="relative w-full h-36 bg-gray-900 rounded-[24px] overflow-hidden flex items-center justify-between px-6 shadow-xl border border-black/5 group">
+                    <div className="hidden relative w-full h-36 bg-gray-900 rounded-[24px] overflow-hidden flex items-center justify-between px-6 shadow-xl border border-black/5 group">
                         <div className="relative z-10 space-y-1 max-w-[220px]">
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-white font-black text-lg tracking-wide">{t('upgradePro', 'UPGRADE PRO')}</span>
@@ -130,7 +127,7 @@ export default function WalletA() {
                             </button>
                         </div>
 
-                        <div className="space-y-3">
+                        <div className="space-y-2.5">
                             {visibleTransactions.map((tx, i) => (
                                 <div key={i} className="group bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 hover:shadow-md transition-all flex items-center gap-4">
                                     <div className={`w-10 h-10 rounded-[14px] flex items-center justify-center transition-colors ${tx.amount.startsWith('+') ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500'}`}>
@@ -164,7 +161,7 @@ export default function WalletA() {
                             <div className="flex justify-between items-center mb-6">
                                 <h2 className="text-2xl font-black text-gray-900">
                                     {activeModal === 'deposit'
-                                        ? t('depositUsdc', 'Deposit USDC')
+                                        ? t('depositUsdc', 'Deposit')
                                         : activeModal === 'withdraw'
                                             ? t('withdraw', 'Withdraw')
                                             : t('send', 'Send')}
@@ -229,11 +226,11 @@ export default function WalletA() {
                                         </div>
                                         <div className="bg-yellow-50 p-4 rounded-[20px] flex items-center gap-3 border border-yellow-100">
                                             <Clock size={18} className="text-yellow-600" />
-                                            <div>
-                                                <p className="text-sm font-bold text-gray-900">{t('processing', 'Processing')}</p>
-                                                <p className="text-xs text-yellow-700">{t('withinBusinessDays', 'Within 3 business days')}</p>
-                                            </div>
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                            <p className="text-sm font-bold text-amber-800">{t('processing', 'Processing')}</p>
+                                            <p className="text-xs text-yellow-600/80">{t('withinBusinessDays', 'Within 3 business days')}</p>
                                         </div>
+                                    </div>
                                         <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-lg hover:bg-black active:scale-[0.98] transition-all">
                                             {t('requestWithdrawal', 'Request Withdrawal')}
                                         </button>

@@ -3,6 +3,7 @@ import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
 import { Crown, Users, TrendingUp, Copy, QrCode, Star, Shield, ChevronLeft } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import Logo from '../../assets/LOGO-black.svg';
 
 export default function RankA() {
     const { t } = useLocale();
@@ -12,7 +13,6 @@ export default function RankA() {
     const referralLink = 'https://polywallet.app/ref/usr000';
     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(referralLink)}`;
     const walletAddress = '0x742d...5f3A';
-    const avatarSrc = 'https://i.pravatar.cc/150?img=11';
 
     function DiamondIcon(props) {
         return (
@@ -129,10 +129,10 @@ export default function RankA() {
     return (
         <LayoutA>
             <div className="px-6 pt-2 pb-4 space-y-4">
-                {/* Premium Header */}
-                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-1.5 -mx-6 px-6 border-b border-gray-100/50">
-                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">{t('rankTeam', 'Rank & Team')}</h1>
-                    <HeaderActionsA walletAddress={walletAddress} avatarSrc={avatarSrc} />
+                {/* Header with Logo */}
+                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
+                    <img src={Logo} alt="PolyWallet" className="h-5 w-auto" />
+                    <HeaderActionsA walletAddress={walletAddress} />
                 </div>
 
                 {/* Current Rank Card - Premium */}

@@ -56,67 +56,127 @@ export default function WalletADesktop() {
 
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12">
-                        <div className="banner-noise relative w-full h-40 bg-gradient-to-br from-[#1F2532] via-[#20283A] to-[#252D3E] rounded-[12px] overflow-hidden flex items-center justify-between px-10 shadow-material-medium border border-white/10">
-                            <div className="relative z-10 space-y-2 max-w-[360px]">
+                        {/* Banner - Darker + Noise + "Bento/Tech" Illustration - Reduced Height (h-36) */}
+                        <div className="relative w-full h-36 bg-[#0D1117] rounded-[24px] overflow-hidden flex items-center justify-between px-10 shadow-[0_8px_20px_rgba(0,0,0,0.3)] border border-white/5 group">
+                            {/* Noise Overlay - Class handles visibility via index.css */}
+                            <div className="banner-noise absolute inset-0 z-0"></div>
+
+                            {/* Subtle Glow */}
+                            <div className="absolute right-0 top-0 bottom-0 w-[500px] bg-gradient-to-l from-[#1e293b] via-[#1e293b]/50 to-transparent opacity-80 pointer-events-none z-0"></div>
+
+                            {/* Left Content - STRICTLY LEFT */}
+                            <div className="relative z-10 space-y-3 max-w-[400px] flex-shrink-0 mr-auto self-center">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-white/90 font-semibold text-xl tracking-wide">{t('upgradePro', 'UPGRADE PRO')}</span>
-                                    <Rocket size={20} className="text-white" />
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 font-bold text-2xl tracking-wide">{t('upgradePro', 'UPGRADE PRO')}</span>
+                                    <Rocket size={22} className="text-blue-400" />
                                 </div>
-                                <p className="text-white/60 text-sm font-medium leading-relaxed">
+                                <p className="text-slate-400 text-sm font-medium leading-relaxed">
                                     {t('upgradeDesc', 'Elevate your productivity and achieve more with our Pro plan!')}
                                 </p>
                             </div>
 
-                            <div className="relative z-10 w-24 h-24 flex items-center justify-center">
-                                <div className="absolute inset-0 rounded-full border border-white/10 bg-white/6 backdrop-blur-sm shadow-[0_0_26px_rgba(255,255,255,0.04)] animate-breathe"></div>
-                                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-slate-600 to-slate-500 flex items-center justify-center shadow-inner animate-breathe-strong">
-                                    <TrendingUp className="text-white" size={26} />
+                            {/* Right Content - "Bento" Style Tech Illustration - SLOW FLOAT ANIMATION */}
+                            <div className="relative z-10 w-64 h-full flex items-center justify-end mr-6">
+                                <div className="relative w-full h-32">
+                                    {/* Decor Lines */}
+                                    <div className="absolute inset-0 opacity-20 pointer-events-none">
+                                        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+                                        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent"></div>
+                                    </div>
+
+                                    {/* Node 1 (Center) */}
+                                    <div className="absolute top-[35%] right-12 -translate-y-1/2 w-16 h-16 rounded-2xl bg-[#1F2937] border border-blue-500/30 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)] animate-breathe z-20">
+                                        <div className="absolute inset-0 bg-blue-500/10 rounded-2xl blur-sm"></div>
+                                        <TrendingUp className="text-blue-400 relative z-10" size={28} />
+                                    </div>
+
+                                    {/* Node 2 (Satellite Top) - Smooth Float */}
+                                    <div className="absolute top-2 right-0 w-10 h-10 rounded-xl bg-[#1F2937] border border-white/10 flex items-center justify-center shadow-lg animate-float">
+                                        <Rocket size={16} className="text-purple-400" />
+                                    </div>
+
+                                    {/* Node 3 (Satellite Bottom) - Smooth Float Delayed - LIFTED UP (bottom-6) */}
+                                    <div className="absolute bottom-6 right-32 w-10 h-10 rounded-xl bg-[#1F2937] border border-white/10 flex items-center justify-center shadow-lg animate-float-delayed">
+                                        <Clock size={16} className="text-green-400" />
+                                    </div>
+
+                                    {/* Connecting Lines (SVG) */}
+                                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30" style={{ overflow: 'visible' }}>
+                                        <path d="M 180 45 L 230 30" stroke="url(#lineGrad)" strokeWidth="1" strokeDasharray="4 4" />
+                                        <path d="M 180 45 L 140 100" stroke="url(#lineGrad)" strokeWidth="1" strokeDasharray="4 4" />
+                                        <defs>
+                                            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" stopColor="transparent" />
+                                                <stop offset="50%" stopColor="#60A5FA" />
+                                                <stop offset="100%" stopColor="transparent" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
                                 </div>
                             </div>
-
-                            <div className="absolute right-0 top-0 bottom-0 w-[280px] bg-gradient-to-l from-[#2A3446] to-transparent"></div>
                         </div>
                     </div>
 
-                    <div className="col-span-8 card-shell p-6">
-                        <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest">{t('totalBalance', 'Total balance')}</p>
-                        <h2 className="text-5xl font-semibold text-slate-900 mt-3">$5,420.50</h2>
+                    {/* Total Balance Card (First/Left) - Fill 8 cols */}
+                    <div className="col-span-8 bg-white border border-[#E6E9F0] rounded-[12px] shadow-[0_4px_12px_rgba(17,24,39,0.03)] p-8 flex flex-col">
+                        <div>
+                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('totalBalance', 'Total Balance')}</p>
+                            <h2 className="text-5xl font-bold text-slate-900 tracking-tight">${formatAmount(totalBalance)}</h2>
+                        </div>
 
-                        <div className="mt-6 flex items-center gap-4">
-                            <button onClick={() => openModal('deposit')} className="flex-1 h-12 bg-blue-600 text-white rounded-[18px] shadow-[0_8px_18px_rgba(37,99,235,0.25)] hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-semibold text-[14px] ring-4 ring-blue-500/15">
-                                <ArrowDown size={16} strokeWidth={2.5} />
+                        <div className="grid grid-cols-3 gap-4 mt-8">
+                            <button
+                                onClick={() => openModal('deposit')}
+                                className="h-14 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-[16px] shadow-[0_4px_12px_rgba(37,99,235,0.2)] flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                            >
+                                <ArrowDown size={20} />
                                 {t('deposit', 'Deposit')}
                             </button>
-                            <button onClick={() => openModal('withdraw')} className="flex-1 h-12 bg-white/90 rounded-[18px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] hover:shadow-[0_10px_20px_rgba(15,23,42,0.07)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-semibold text-slate-900 text-[14px] border border-[#E6EAF0]">
-                                <ArrowUp size={16} strokeWidth={2.5} />
+
+                            <button
+                                onClick={() => openModal('withdraw')}
+                                className="h-14 bg-white border border-slate-200 text-slate-700 font-semibold rounded-[16px] hover:bg-slate-50 hover:border-slate-300 flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                            >
+                                <ArrowUp size={20} />
                                 {t('withdraw', 'Withdraw')}
                             </button>
-                            <button onClick={() => openModal('send')} className="flex-1 h-12 bg-white/90 rounded-[18px] shadow-[0_6px_16px_rgba(15,23,42,0.05)] hover:shadow-[0_10px_20px_rgba(15,23,42,0.07)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-semibold text-slate-900 text-[14px] border border-[#E6EAF0]">
-                                <Send size={16} className="text-slate-900" strokeWidth={2.5} />
+
+                            <button
+                                onClick={() => openModal('send')}
+                                className="h-14 bg-white border border-slate-200 text-slate-700 font-semibold rounded-[16px] hover:bg-slate-50 hover:border-slate-300 flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                            >
+                                <Send size={20} />
                                 {t('send', 'Send')}
                             </button>
                         </div>
                     </div>
 
+                    {/* Colored Stats Cards (Second/Right) - Fill 4 cols */}
                     <div className="col-span-4 grid gap-4">
-                        <div className="card-shell stat-card-emerald p-5">
-                            <div className="flex items-center justify-between">
-                                <span className="stat-tag stat-tag-emerald">{t('totalInvest', 'Total Invest')}</span>
-                                <span className="stat-chip stat-chip-emerald">{t('apy', 'APY')} 10%</span>
+                        <div className="bg-[#F0FDF4] border border-green-100 rounded-[12px] shadow-[0_4px_12px_rgba(22,163,74,0.04)] p-5 flex flex-col justify-between">
+                            <div className="flex items-center justify-between mb-3">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-green-800">{t('totalInvest', 'Total Invest')}</span>
+                                <span className="text-[10px] font-bold bg-white text-green-700 px-2 py-0.5 rounded border border-green-200">{t('apy', 'APY')} 10%</span>
                             </div>
-                            <p className="text-2xl font-semibold text-slate-900 mt-4">$1,248.50</p>
-                            <p className="text-sm text-emerald-600 font-medium mt-2">+ $11.23</p>
+                            {/* Inner White Card */}
+                            <div className="bg-white rounded-[10px] p-4 shadow-sm border border-green-100/50">
+                                <p className="text-2xl font-semibold text-slate-900">$1,248.50</p>
+                                <p className="text-sm text-green-600 font-bold mt-1">+ $11.23</p>
+                            </div>
                         </div>
-                        <div className="card-shell stat-card-sky p-5">
-                            <div className="flex items-center justify-between">
-                                <span className="stat-tag stat-tag-sky">{t('totalBonus', 'Total Bonus')}</span>
+                        <div className="bg-[#F0F9FF] border border-sky-100 rounded-[12px] shadow-[0_4px_12px_rgba(14,165,233,0.04)] p-5 flex flex-col justify-between">
+                            <div className="flex items-center justify-between mb-3">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-sky-800">{t('totalBonus', 'Total Bonus')}</span>
                             </div>
-                            <p className="text-2xl font-semibold text-slate-900 mt-4">$398.20</p>
-                            <p className="text-sm text-sky-600 font-medium mt-2">+ $85.50</p>
+                            {/* Inner White Card */}
+                            <div className="bg-white rounded-[10px] p-4 shadow-sm border border-sky-100/50">
+                                <p className="text-2xl font-semibold text-slate-900">$398.20</p>
+                                <p className="text-sm text-sky-600 font-bold mt-1">+ $85.50</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="col-span-12 card-shell p-6">
+                    <div className="col-span-12 bg-white border border-[#E6E9F0] rounded-[12px] shadow-[0_4px_12px_rgba(17,24,39,0.03)] p-6">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-lg font-semibold text-slate-900">{t('transactions', 'Transactions')}</h3>
                             <button
@@ -130,7 +190,7 @@ export default function WalletADesktop() {
 
                         <div className="grid grid-cols-2 gap-4">
                             {visibleTransactions.map((tx, i) => (
-                                <div key={i} className="card-soft-elevated p-4 flex items-center gap-4">
+                                <div key={i} className="bg-[#F8FAFC] border border-[#E6E9F0] rounded-[12px] p-4 flex items-center gap-4 hover:bg-white hover:shadow-[0_4px_12px_rgba(0,0,0,0.02)] transition-all">
                                     <div className={`w-10 h-10 rounded-[14px] flex items-center justify-center ${tx.amount.startsWith('+') ? 'bg-emerald-100/70 text-emerald-600' : 'bg-rose-100/70 text-rose-500'}`}>
                                         {tx.amount.startsWith('+') ? <ArrowDownLeft size={18} /> : <ArrowUpRight size={18} />}
                                     </div>
@@ -148,8 +208,8 @@ export default function WalletADesktop() {
 
             {activeModal && (
                 <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center px-0 sm:px-4 pb-0 sm:pb-0">
-                    <div className="absolute inset-0 bg-gray-900/30 backdrop-blur-md transition-opacity" onClick={closeModal}></div>
-                    <div className="bg-white w-full sm:w-[420px] rounded-t-[32px] sm:rounded-[40px] p-6 pb-12 sm:pb-6 shadow-[0_30px_80px_rgba(15,23,42,0.25)] relative z-10 animate-slide-up sm:animate-pop-in">
+                    <div className="absolute inset-0 bg-gray-900/20 backdrop-blur-sm transition-opacity" onClick={closeModal}></div>
+                    <div className="bg-white w-full sm:w-[420px] rounded-t-[32px] sm:rounded-[40px] p-6 pb-12 sm:pb-6 shadow-[0_20px_60px_rgba(15,23,42,0.15)] relative z-10 animate-slide-up sm:animate-pop-in">
                         <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 sm:hidden"></div>
                         <div className="flex justify-between items-center mb-6">
                             <h2 className="text-2xl font-semibold text-gray-900">
@@ -189,7 +249,7 @@ export default function WalletADesktop() {
                                             <span>{t('balance', 'Balance')}: {formatAmount(depositBalance)} USDC (Polygon)</span>
                                         </p>
                                     </div>
-                                    <button onClick={closeModal} className="w-full py-4 bg-blue-600 text-white rounded-[20px] font-semibold text-lg shadow-[0_12px_24px_rgba(37,99,235,0.25)] hover:bg-blue-700 active:scale-[0.98] transition-all">
+                                    <button onClick={closeModal} className="w-full py-4 bg-blue-600 text-white rounded-[20px] font-semibold text-lg shadow-[0_8px_20px_rgba(37,99,235,0.15)] hover:bg-blue-700 active:scale-[0.98] transition-all">
                                         {t('confirmDeposit', 'Confirm Deposit')}
                                     </button>
                                 </>
@@ -218,12 +278,12 @@ export default function WalletADesktop() {
                                     </div>
                                     <div className="bg-yellow-50 p-4 rounded-[20px] flex items-center gap-3 border border-yellow-100">
                                         <Clock size={18} className="text-yellow-600" />
-                                        <div>
-                                            <p className="text-sm font-semibold text-gray-900">{t('processing', 'Processing')}</p>
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                            <p className="text-sm font-semibold text-amber-800">{t('processing', 'Processing')}</p>
                                             <p className="text-xs text-yellow-700">{t('withinBusinessDays', 'Within 3 business days')}</p>
                                         </div>
                                     </div>
-                                    <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-semibold text-lg shadow-[0_16px_30px_rgba(15,23,42,0.2)] hover:bg-black active:scale-[0.98] transition-all">
+                                    <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-semibold text-lg shadow-[0_8px_20px_rgba(15,23,42,0.1)] hover:bg-black active:scale-[0.98] transition-all">
                                         {t('requestWithdrawal', 'Request Withdrawal')}
                                     </button>
                                 </>
@@ -262,7 +322,7 @@ export default function WalletADesktop() {
                                             </button>
                                         </div>
                                     </div>
-                                    <button onClick={closeModal} className="w-full py-4 bg-blue-600 text-white rounded-[20px] font-semibold text-lg shadow-[0_12px_24px_rgba(37,99,235,0.25)] hover:bg-blue-700 active:scale-[0.98] transition-all">
+                                    <button onClick={closeModal} className="w-full py-4 bg-blue-600 text-white rounded-[20px] font-semibold text-lg shadow-[0_8px_20px_rgba(37,99,235,0.15)] hover:bg-blue-700 active:scale-[0.98] transition-all">
                                         {t('sendNow', 'Send Now')}
                                     </button>
                                 </>

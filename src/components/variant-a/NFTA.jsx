@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LayoutA from './LayoutA';
+import HeaderActionsA from './HeaderActionsA';
 import { Box, TrendingUp, Sparkles, ChevronLeft, ShieldCheck, Zap, Layers, X, Plus, Minus } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import Logo from '../../assets/LOGO-black.svg';
 
 export default function NFTA() {
     const { t } = useLocale();
     const [showMintModal, setShowMintModal] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const price = 1000;
+    const walletAddress = '0x742d...5f3A';
 
     return (
         <LayoutA>
             <div className="px-6 pt-2 pb-4 space-y-4">
-                {/* Header - Sticky Clean */}
-                <div className="flex items-center gap-4 sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-1.5 -mx-6 px-6 border-b border-gray-100/50">
-                    <Link to="/soft-white/wallet" className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all hover:scale-105">
-                        <ChevronLeft size={22} className="relative right-0.5" />
-                    </Link>
-                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">{t('nftMintTitle', 'NFT Mint')}</h1>
+                {/* Header with Logo */}
+                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
+                    <img src={Logo} alt="PolyWallet" className="h-5 w-auto" />
+                    <HeaderActionsA walletAddress={walletAddress} />
                 </div>
 
                 {/* Bento Grid Layout */}
@@ -54,7 +55,7 @@ export default function NFTA() {
                         </div>
                     </div>
 
-                    {/* Description Text - RESTORED */}
+                    {/* Description Text */}
                     <div className="col-span-2 px-2">
                         <h2 className="text-gray-900 text-xl font-bold mb-2">{t('polywalletNft', 'PolyWallet NFT')}</h2>
                         <p className="text-gray-500 text-sm leading-relaxed font-medium">
@@ -147,7 +148,7 @@ export default function NFTA() {
                         </div>
                     </div>
 
-                    {/* Progress Bar & Price Section - RESTORED */}
+                    {/* Progress Bar & Price Section */}
                     <div className="col-span-2 pt-2">
                         <div className="flex justify-between items-end mb-2 px-1">
                             <div>
@@ -164,7 +165,7 @@ export default function NFTA() {
                             <div className="h-full bg-blue-600 w-[32%] rounded-full shadow-[0_0_10px_rgba(37,99,235,0.3)]"></div>
                         </div>
 
-                        {/* Mint Button - NOW STATIC IN FLOW */}
+                        {/* Mint Button */}
                         <button onClick={() => setShowMintModal(true)} className="w-full h-14 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:bg-black hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
                             <Box size={20} strokeWidth={2} />
                             {t('mintNft', 'Mint NFT')}

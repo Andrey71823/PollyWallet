@@ -3,11 +3,11 @@ import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
 import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, ChevronRight, Zap } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import Logo from '../../assets/LOGO-black.svg';
 
 export default function PointA() {
     const { t } = useLocale();
     const walletAddress = '0x742d...5f3A';
-    const avatarSrc = 'https://i.pravatar.cc/150?img=11';
 
     const projects = [
         { name: 'Polymarket', points: '15 420', change: '+564', icon: Target, color: 'bg-blue-50 text-blue-600', iconBg: 'bg-blue-100' },
@@ -19,10 +19,10 @@ export default function PointA() {
     return (
         <LayoutA>
             <div className="px-6 pt-2 pb-4 space-y-4">
-                {/* Premium Header */}
-                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-1.5 -mx-6 px-6 border-b border-gray-100/50">
-                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">{t('pointsAirdrops', 'Points & Airdrops')}</h1>
-                    <HeaderActionsA walletAddress={walletAddress} avatarSrc={avatarSrc} />
+                {/* Header with Logo */}
+                <div className="flex items-center justify-between sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50">
+                    <img src={Logo} alt="PolyWallet" className="h-5 w-auto" />
+                    <HeaderActionsA walletAddress={walletAddress} />
                 </div>
 
                 {/* Hero Card - Premium Dark/Light Mix */}
