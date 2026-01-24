@@ -132,7 +132,18 @@ export default function NFTB() {
                                             <Minus size={24} />
                                         </button>
                                         <div className="bg-gray-50 border border-gray-100 rounded-[20px] px-10 py-4 text-center min-w-[140px]">
-                                            <span className="text-4xl font-black text-gray-900 block">{quantity}</span>
+                                            <input
+                                                type="number"
+                                                inputMode="numeric"
+                                                min={1}
+                                                max={100}
+                                                value={quantity}
+                                                onChange={(event) => {
+                                                    const next = Math.max(1, Math.min(100, Number.parseInt(event.target.value || '1', 10)));
+                                                    setQuantity(Number.isFinite(next) ? next : 1);
+                                                }}
+                                                className="w-24 bg-transparent text-center text-4xl font-black text-gray-900 outline-none mx-auto block"
+                                            />
                                             <span className="text-xs font-bold text-gray-400 uppercase">{t('nftLabel', 'NFT')}</span>
                                         </div>
                                         <button

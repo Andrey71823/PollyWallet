@@ -54,7 +54,7 @@ export default function WalletA() {
 
                     {/* Balance Section */}
                     <div>
-                        <div className="p-[13px]">
+                        <div className="-mx-[13px] -mt-1 px-[13px] py-[13px]">
                             <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase">{t('totalBalance', 'TOTAL BALANCE')}</p>
                             <h2 className="text-5xl font-black text-gray-900 tracking-tight mt-3">$5,420.50</h2>
                         </div>
@@ -77,7 +77,7 @@ export default function WalletA() {
                     </div>
 
                     {/* Actions */}
-                    <div className="mt-[9px] flex items-center gap-[9px]">
+                    <div className="mt-[11px] flex items-center gap-[9px]">
                         <button onClick={() => openModal('deposit')} className="flex-1 h-12 bg-blue-600 text-white rounded-[18px] shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 font-bold text-[14px] ring-4 ring-blue-500/10">
                             <ArrowDown size={16} strokeWidth={2.5} />
                             {t('deposit', 'Deposit')}
@@ -115,7 +115,7 @@ export default function WalletA() {
                     </div>
 
                     {/* Activity List */}
-                    <div className="space-y-5 mt-12">
+                    <div className="space-y-[18px] mt-[52px]">
                         <div className="flex justify-between items-end px-1">
                             <h3 className="text-lg font-black text-gray-900 tracking-tight">{t('transactions', 'Transactions')}</h3>
                             <button

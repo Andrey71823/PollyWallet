@@ -142,9 +142,20 @@ export default function NFTA() {
                                         <span className="font-bold text-gray-500 uppercase text-xs tracking-wider">{t('quantity', 'Quantity')}</span>
                                         <span className="font-black text-gray-900">{quantity} {t('nftLabel', 'NFT')}</span>
                                     </div>
-                                    <div className="flex justify-between items-center">
+                                    <div className="flex justify-between items-center gap-4">
                                         <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-50"><Minus size={20} /></button>
-                                        <span className="text-3xl font-black text-gray-900">{quantity}</span>
+                                        <input
+                                            type="number"
+                                            inputMode="numeric"
+                                            min={1}
+                                            max={100}
+                                            value={quantity}
+                                            onChange={(event) => {
+                                                const next = Math.max(1, Math.min(100, Number.parseInt(event.target.value || '1', 10)));
+                                                setQuantity(Number.isFinite(next) ? next : 1);
+                                            }}
+                                            className="w-24 bg-transparent text-center text-3xl font-black text-gray-900 outline-none"
+                                        />
                                         <button onClick={() => setQuantity(Math.min(100, quantity + 1))} className="w-12 h-12 bg-gray-900 rounded-xl shadow-lg flex items-center justify-center text-white hover:bg-black"><Plus size={20} /></button>
                                     </div>
                                 </div>
