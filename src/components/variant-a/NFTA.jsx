@@ -38,6 +38,7 @@ export default function NFTA() {
                         </div>
                         <div className="text-right">
                             <span className="text-3xl font-black text-gray-900">{(3).toLocaleString('en-US')}</span>
+                            <span className="text-sm font-bold text-gray-400 ml-1">{t('nfts', 'NFTs')}</span>
                         </div>
                     </div>
 
@@ -80,19 +81,10 @@ export default function NFTA() {
                         </div>
                     </div>
 
-                    {/* Description Text */}
-                    <div className="col-span-2 px-2">
-                        <h2 className="text-gray-900 text-xl font-bold mb-2">{t('polywalletNft', 'PolyWallet NFT')}</h2>
-                        <p className="text-gray-500 text-sm leading-relaxed font-medium">
-                            {t('nftDescription', 'Mint your NFT to unlock rewards, daily interest, and affiliate benefits.')}
-                        </p>
-                    </div>
-
                     {/* Benefits List */}
                     <div className="col-span-2 bg-white rounded-[32px] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 space-y-5">
                         <div className="flex items-center justify-between">
                             <h3 className="font-bold text-gray-900 text-lg">{t('privileges', 'Privileges')}</h3>
-                            <span className="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded-lg">{t('pro', 'PRO')}</span>
                         </div>
 
                         <div className="space-y-4">
@@ -118,13 +110,11 @@ export default function NFTA() {
                                     color: 'text-blue-600 bg-blue-50',
                                 },
                             ].map((item, i) => (
-                                <div key={i} className="flex gap-4 items-start group">
+                                <div key={i} className="flex gap-4 items-center group">
                                     <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${item.color}`}>
                                         <item.icon size={20} />
                                     </div>
-                                    <div className="pt-0.5">
-                                        <p className="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors">{item.label}</p>
-                                    </div>
+                                    <p className="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors">{item.label}</p>
                                 </div>
                             ))}
                         </div>
@@ -155,7 +145,7 @@ export default function NFTA() {
                                     <div className="flex justify-between items-center">
                                         <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-50"><Minus size={20} /></button>
                                         <span className="text-3xl font-black text-gray-900">{quantity}</span>
-                                        <button onClick={() => setQuantity(Math.min(10, quantity + 1))} className="w-12 h-12 bg-gray-900 rounded-xl shadow-lg flex items-center justify-center text-white hover:bg-black"><Plus size={20} /></button>
+                                        <button onClick={() => setQuantity(Math.min(100, quantity + 1))} className="w-12 h-12 bg-gray-900 rounded-xl shadow-lg flex items-center justify-center text-white hover:bg-black"><Plus size={20} /></button>
                                     </div>
                                 </div>
 

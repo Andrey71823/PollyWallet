@@ -53,18 +53,18 @@ export default function WalletA() {
                     </div>
 
                     {/* Balance Section */}
-                    <div className="space-y-4">
-                        <div>
-                            <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase ml-1">{t('totalBalance', 'TOTAL BALANCE')}</p>
+                    <div>
+                        <div className="p-[13px]">
+                            <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase">{t('totalBalance', 'TOTAL BALANCE')}</p>
                             <h2 className="text-5xl font-black text-gray-900 tracking-tight mt-3">$5,420.50</h2>
                         </div>
 
-                        <div className="flex gap-[13px]">
+                        <div className="mt-[10px] flex gap-[13px]">
                             <div className="bg-white px-4 py-[15px] h-[121px] rounded-2xl flex-1 border border-gray-300">
                                 <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
                                 <p className="text-[22px] font-black text-gray-900 mt-3">$1,248.50</p>
                                 <div className="mt-2 flex items-center justify-between">
-                                    <p className="text-[12px] text-green-600 font-bold">+ $11.23</p>
+                                    <p className="text-[12px] text-blue-600 font-bold">+ $11.23</p>
                                     <span className="text-[11px] font-bold text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded border border-gray-200">{t('apy', 'APY')} 10%</span>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@ export default function WalletA() {
                     </div>
 
                     {/* Actions */}
-                    <div className="!-mt-[9px] flex items-center gap-[9px]">
+                    <div className="mt-[9px] flex items-center gap-[9px]">
                         <button onClick={() => openModal('deposit')} className="flex-1 h-12 bg-blue-600 text-white rounded-[18px] shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 font-bold text-[14px] ring-4 ring-blue-500/10">
                             <ArrowDown size={16} strokeWidth={2.5} />
                             {t('deposit', 'Deposit')}

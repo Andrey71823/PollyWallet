@@ -151,7 +151,7 @@ export default function NFTADesktop() {
                                     <div className="flex justify-between items-center">
                                         <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-50"><Minus size={20} /></button>
                                         <span className="text-3xl font-semibold text-slate-900">{quantity}</span>
-                                        <button onClick={() => setQuantity(Math.min(10, quantity + 1))} className="w-12 h-12 bg-[#1F2532] rounded-xl shadow-[0_10px_18px_rgba(15,23,42,0.2)] flex items-center justify-center text-white hover:bg-[#1A202C]"><Plus size={20} /></button>
+                                        <button onClick={() => setQuantity(Math.min(100, quantity + 1))} className="w-12 h-12 bg-[#1F2532] rounded-xl shadow-[0_10px_18px_rgba(15,23,42,0.2)] flex items-center justify-center text-white hover:bg-[#1A202C]"><Plus size={20} /></button>
                                     </div>
                                 </div>
 

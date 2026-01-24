@@ -136,7 +136,7 @@ export default function NFTB() {
                                             <span className="text-xs font-bold text-gray-400 uppercase">{t('nftLabel', 'NFT')}</span>
                                         </div>
                                         <button
-                                            onClick={() => setQuantity(Math.min(10, quantity + 1))}
+                                            onClick={() => setQuantity(Math.min(100, quantity + 1))}
                                             className="w-14 h-14 bg-gray-100 rounded-[16px] flex items-center justify-center text-gray-600 hover:bg-gray-200 active:scale-95 transition-all"
                                         >
                                             <Plus size={24} />
