@@ -21,52 +21,11 @@ export default function NFTA() {
                     <HeaderActionsA walletAddress={walletAddress} />
                 </div>
 
-                {/* Bento Grid Layout */}
+
+
+                {/* Bento Grid Layout - REORDERED */}
                 <div className="grid grid-cols-2 gap-4">
-                    {/* Owned Status */}
-                    <div className="col-span-2 bg-white p-5 rounded-[28px] shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-2xl bg-gray-900 text-white flex items-center justify-center shadow-lg shadow-gray-200">
-                                <Layers size={22} />
-                            </div>
-                            <div>
-                                <p className="font-bold text-gray-900 text-base">{t('owned', 'Owned')}</p>
-                                <span className="mt-1 inline-flex items-center rounded-full bg-blue-50 text-blue-600 text-[9px] font-bold px-2 py-0.5 border border-blue-100">
-                                    {t('diamondRank', 'Diamond Rank')}
-                                </span>
-                            </div>
-                        </div>
-                        <div className="text-right">
-                            <span className="text-3xl font-black text-gray-900">{(3).toLocaleString('en-US')}</span>
-                            <span className="text-sm font-bold text-gray-400 ml-1">{t('nfts', 'NFTs')}</span>
-                        </div>
-                    </div>
-
-                    {/* Progress Bar & Price Section */}
-                    <div className="col-span-2 pt-2">
-                        <div className="flex justify-between items-end mb-2 px-1">
-                            <div>
-                                <p className="text-gray-400 text-xs font-bold mb-0.5 uppercase tracking-wide">{t('mintPrice', 'Mint Price')}</p>
-                                <p className="text-gray-900 text-2xl font-black tracking-tight">${price.toLocaleString('en-US')}</p>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-green-600 text-xs font-bold flex items-center gap-1 justify-end mb-1"><Sparkles size={10} /> {t('limited', 'Limited')}</p>
-                                <p className="text-gray-400 text-xs font-mono font-bold">3,247 / 10,000</p>
-                            </div>
-                        </div>
-
-                        <div className="h-2.5 w-full bg-gray-100 rounded-full overflow-hidden mb-6">
-                            <div className="h-full bg-blue-600 w-[32%] rounded-full shadow-[0_0_10px_rgba(37,99,235,0.3)]"></div>
-                        </div>
-
-                        {/* Mint Button */}
-                        <button onClick={() => setShowMintModal(true)} className="w-full h-14 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:bg-black hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
-                            <Box size={20} strokeWidth={2} />
-                            {t('mintNft', 'Mint NFT')}
-                        </button>
-                    </div>
-
-                    {/* Poly NFT Box */}
+                    {/* 1. Poly NFT Box (Image) */}
                     <div className="col-span-2 bg-white rounded-[32px] p-1 shadow-[0_2px_20px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden group relative">
                         <div className="bg-gray-50 rounded-[28px] p-6 h-72 relative overflow-hidden flex items-center justify-center">
                             <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
@@ -81,7 +40,33 @@ export default function NFTA() {
                         </div>
                     </div>
 
-                    {/* Benefits List */}
+                    {/* 2. Mint Button */}
+                    <div className="col-span-2">
+                        <button onClick={() => setShowMintModal(true)} className="w-full h-14 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:bg-black hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                            <Box size={20} strokeWidth={2} />
+                            {t('mintNft', 'Mint NFT')}
+                        </button>
+                    </div>
+
+                    {/* 3. Progress Bar & Price Section */}
+                    <div className="col-span-2 pt-2 pb-2">
+                        <div className="flex justify-between items-end mb-2 px-1">
+                            <div>
+                                <p className="text-gray-400 text-xs font-bold mb-0.5 uppercase tracking-wide">{t('mintPrice', 'Mint Price')}</p>
+                                <p className="text-gray-900 text-2xl font-black tracking-tight">${price.toLocaleString('en-US')}</p>
+                            </div>
+                            <div className="text-right">
+                                <p className="text-green-600 text-xs font-bold flex items-center gap-1 justify-end mb-1"><Sparkles size={10} /> {t('limited', 'Limited')}</p>
+                                <p className="text-gray-400 text-xs font-mono font-bold">3,247 / 10,000</p>
+                            </div>
+                        </div>
+
+                        <div className="h-2.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-blue-600 w-[32%] rounded-full shadow-[0_0_10px_rgba(37,99,235,0.3)]"></div>
+                        </div>
+                    </div>
+
+                    {/* 4. Benefits List (Privileges) */}
                     <div className="col-span-2 bg-white rounded-[32px] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 space-y-5">
                         <div className="flex items-center justify-between">
                             <h3 className="font-bold text-gray-900 text-lg">{t('privileges', 'Privileges')}</h3>
@@ -117,6 +102,25 @@ export default function NFTA() {
                                     <p className="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors">{item.label}</p>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+
+                    {/* 5. Owned Status (Moved to Bottom) */}
+                    <div className="col-span-2 bg-white p-5 rounded-[28px] shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-2xl bg-gray-900 text-white flex items-center justify-center shadow-lg shadow-gray-200">
+                                <Layers size={22} />
+                            </div>
+                            <div>
+                                <p className="font-bold text-gray-900 text-base">{t('owned', 'Owned')}</p>
+                                <span className="mt-1 inline-flex items-center rounded-full bg-blue-50 text-blue-600 text-[9px] font-bold px-2 py-0.5 border border-blue-100">
+                                    {t('diamondRank', 'Diamond Rank')}
+                                </span>
+                            </div>
+                        </div>
+                        <div className="text-right">
+                            <span className="text-3xl font-black text-gray-900">{(3).toLocaleString('en-US')}</span>
+                            <span className="text-sm font-bold text-gray-400 ml-1">{t('nfts', 'NFTs')}</span>
                         </div>
                     </div>
                 </div>

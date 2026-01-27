@@ -220,7 +220,7 @@ export default function WalletB() {
                                     <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
                                         <Clock size={16} className="text-yellow-600" />
                                     </div>
-                                    <div className="flex items-center gap-2 flex-wrap">
+                                    <div className="flex items-center gap-2">
                                         <p className="text-sm font-bold text-yellow-700">{t('processing', 'Processing')}</p>
                                         <p className="text-xs font-medium text-yellow-600/80">{t('processingTime', 'Within 3 business days')}</p>
                                     </div>

@@ -45,7 +45,7 @@ export default function WalletA() {
     return (
         <LayoutA>
             <div className="relative">
-            <div className="px-6 pt-2 pb-4 space-y-3">
+                <div className="px-6 pt-2 pb-4 space-y-3">
                     {/* Header with Logo and Wallet Address (with dropdowns) */}
                     <div className="sticky top-0 z-40 bg-[#F9FAFB]/80 backdrop-blur-xl py-2 -mx-6 px-6 border-b border-gray-100/50 flex justify-between items-center transition-all duration-300">
                         <img src={Logo} alt="PolyWallet" className="h-5 w-auto" />
@@ -115,8 +115,8 @@ export default function WalletA() {
                     </div>
 
                     {/* Activity List */}
-                    <div className="space-y-[18px] mt-[52px]">
-                        <div className="flex justify-between items-end px-1">
+                    <div className="mt-[40px]">
+                        <div className="flex justify-between items-end px-1 mb-2">
                             <h3 className="text-lg font-black text-gray-900 tracking-tight">{t('transactions', 'Transactions')}</h3>
                             <button
                                 type="button"
@@ -226,12 +226,12 @@ export default function WalletA() {
                                         </div>
                                         <div className="bg-yellow-50 p-4 rounded-[20px] flex items-center gap-3 border border-yellow-100">
                                             <Clock size={18} className="text-yellow-600" />
-                                        <div className="flex items-center gap-2 flex-wrap">
-                                            <p className="text-sm font-bold text-yellow-700">{t('processing', 'Processing')} {t('withinBusinessDays', 'Within 3 business days')}</p>
+                                            <div className="flex items-center gap-2 flex-wrap">
+                                                <p className="text-sm font-bold text-yellow-700">{t('processing', 'Processing')} {t('withinBusinessDays', 'Within 3 business days')}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-lg hover:bg-black active:scale-[0.98] transition-all">
-                                        {t('requestWithdrawal', 'Request Withdrawal')}
+                                        <button onClick={closeModal} className="w-full py-4 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-lg hover:bg-black active:scale-[0.98] transition-all">
+                                            {t('requestWithdrawal', 'Request Withdrawal')}
                                         </button>
                                     </>
                                 )}
@@ -246,9 +246,9 @@ export default function WalletA() {
                                                     placeholder={t('enterUserId', 'Enter user ID')}
                                                     value={recipient}
                                                     onChange={(event) => setRecipient(event.target.value)}
-                                                className="w-full bg-gray-50 rounded-[20px] px-5 py-4 font-bold text-xl text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
-                                            />
-                                        </div>
+                                                    className="w-full bg-gray-50 rounded-[20px] px-5 py-4 font-bold text-xl text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
+                                                />
+                                            </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t('amount', 'Amount')}</label>

@@ -26,6 +26,8 @@ export default function PointA() {
                     <HeaderActionsA walletAddress={walletAddress} />
                 </div>
 
+
+
                 {/* Hero Card - Premium Dark/Light Mix */}
                 <div className="bg-gray-900 text-white p-6 rounded-[32px] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>

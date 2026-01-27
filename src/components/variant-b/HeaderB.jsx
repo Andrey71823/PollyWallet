@@ -3,14 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Globe, ChevronDown, Wallet, Power, Check } from 'lucide-react';
 import { useLocale, languageOptions } from '../../i18n';
 import Logo from '../../assets/LOGO.svg';
+import { useAuth } from '../../AuthContext';
 
 export default function HeaderB({ title = "PolyWallet" }) {
     const navigate = useNavigate();
     const { t, locale, setLocale } = useLocale();
+    const { user, logout } = useAuth();
     const [showWalletMenu, setShowWalletMenu] = useState(false);
     const [showLangMenu, setShowLangMenu] = useState(false);
     const menuRef = useRef(null);
-    const walletAddress = '0x742d...5f3A';
+    const walletAddress = user?.walletAddress || '0x742d...5f3A';
 
     useEffect(() => {
         const handleClick = (event) => {
@@ -73,7 +75,11 @@ export default function HeaderB({ title = "PolyWallet" }) {
                         </div>
                         <button
                             type="button"
-                            onClick={() => setShowWalletMenu(false)}
+                            onClick={() => {
+                                setShowWalletMenu(false);
+                                logout();
+                                navigate('/');
+                            }}
                             className="w-full px-4 py-3 flex items-center gap-2 text-sm font-semibold text-red-400 hover:bg-white/5 transition-colors"
                         >
                             <Power size={16} />

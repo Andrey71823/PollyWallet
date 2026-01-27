@@ -217,43 +217,43 @@ export default function RankA() {
                     <div className="absolute right-0 bottom-0 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
                 </div>
 
-                {/* Map */}
+                {/* Your Team (Map) */}
                 <div>
-                    <h3 className="text-lg font-black text-gray-900 tracking-tight mb-1 px-1">{t('map', 'Map')}</h3>
+                    <div className="flex items-center justify-between mb-4 px-1">
+                        <h3 className="text-lg font-black text-gray-900 tracking-tight">{t('map', 'Your Team')}</h3>
+                        {selectedMember && (
+                            <button
+                                type="button"
+                                onClick={() => setActiveMemberId(null)}
+                                className="flex items-center gap-1 text-sm font-bold text-blue-600 transition-colors hover:text-blue-700"
+                            >
+                                <ChevronLeft size={16} strokeWidth={2.5} />
+                                {t('back', 'Back')}
+                            </button>
+                        )}
+                    </div>
 
-                    <div className="mt-4 space-y-3">
-                        {selectedMember ? (
-                            <>
-                                <button
-                                    type="button"
-                                    onClick={() => setActiveMemberId(null)}
-                                    className="flex items-center gap-1.5 text-sm font-bold text-blue-600 px-1"
-                                >
-                                    <ChevronLeft size={16} />
-                                    {t('back', 'Back')}
-                                </button>
+                    <div className="space-y-3">
+                        {/* Level 1 Section */}
+                        <div className="space-y-3">
+                            <p className="text-[10px] font-bold uppercase text-gray-400 px-1 tracking-wider">{t('level1', 'Level 1')}</p>
+                            {selectedMember ? (
+                                <MapRow member={levelOneDetail} />
+                            ) : (
+                                levelOneMembers.map((member) => (
+                                    <MapRow key={member.id} member={member} onClick={() => setActiveMemberId(member.id)} />
+                                ))
+                            )}
+                        </div>
 
-                                <div className="space-y-3">
-                                    <p className="text-[10px] font-bold uppercase text-gray-400 px-1">{t('level1', 'Level 1')}</p>
-                                    {levelOneDetail && <MapRow member={levelOneDetail} />}
-                                </div>
-
-                                <div className="space-y-3 pt-1">
-                                    <p className="text-[10px] font-bold uppercase text-gray-400 px-1">{t('level2', 'Level 2')}</p>
-                                    {levelTwoMembers.map((member) => (
-                                        <MapRow key={member.id} member={member} />
-                                    ))}
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <p className="text-[10px] font-bold uppercase text-gray-400 px-1">{t('level1', 'Level 1')}</p>
-                                <div className="space-y-3">
-                                    {levelOneMembers.map((member) => (
-                                        <MapRow key={member.id} member={member} onClick={() => setActiveMemberId(member.id)} />
-                                    ))}
-                                </div>
-                            </>
+                        {/* Level 2 Section (Zoomed) */}
+                        {selectedMember && (
+                            <div className="space-y-3 pt-4 animate-slide-up">
+                                <p className="text-[10px] font-bold uppercase text-gray-400 px-1 tracking-wider">{t('level2', 'Level 2')}</p>
+                                {levelTwoMembers.map((member) => (
+                                    <MapRow key={member.id} member={member} />
+                                ))}
+                            </div>
                         )}
                     </div>
                 </div>

@@ -50,7 +50,7 @@ const translations = {
         direct: 'Direct',
         team: 'Team',
         yourReferralLink: 'Your Referral Link',
-        map: 'Map',
+        map: 'Your Team',
         mapHint: 'Tap members to view their downline',
         back: 'Back',
         level1: 'Level 1',

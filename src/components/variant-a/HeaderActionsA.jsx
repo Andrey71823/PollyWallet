@@ -1,9 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Globe, Wallet, Power, Check, ChevronDown } from 'lucide-react';
 import { useLocale, languageOptions } from '../../i18n';
+import { useAuth } from '../../AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-export default function HeaderActionsA({ walletAddress = '0x742d...5f3A' }) {
+export default function HeaderActionsA({ walletAddress: propWalletAddress }) {
     const { locale, setLocale, t } = useLocale();
+    const { user, logout } = useAuth();
+    const navigate = useNavigate();
+
+    // Prioritize Context User address, fallback to prop
+    const walletAddress = user?.walletAddress || propWalletAddress || '0x742d...5f3A';
+
     const [showWalletMenu, setShowWalletMenu] = useState(false);
     const [showLangMenu, setShowLangMenu] = useState(false);
     const containerRef = useRef(null);
@@ -31,6 +39,8 @@ export default function HeaderActionsA({ walletAddress = '0x742d...5f3A' }) {
 
     const handleDisconnect = () => {
         setShowWalletMenu(false);
+        logout();
+        navigate('/');
     };
 
     return (
@@ -52,7 +62,7 @@ export default function HeaderActionsA({ walletAddress = '0x742d...5f3A' }) {
                 aria-expanded={showWalletMenu}
                 className="bg-[#1A1D1F] text-white px-3 py-2 rounded-full flex items-center gap-1.5 shadow-md text-[10px] font-bold tracking-wide hover:bg-[#2D3748] transition-colors"
             >
-                <span>{walletAddress}</span>
+                <span>{walletAddress?.substring(0, 11)}</span>
                 <ChevronDown size={12} className="opacity-50" />
             </button>
 

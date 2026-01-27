@@ -4,6 +4,7 @@ import { Wallet, Diamond, Disc, Award, ChevronLeft } from 'lucide-react';
 import clsx from 'clsx';
 import { useLocale } from '../../i18n';
 import lumaBg from '../../assets/Luma2016.jpeg';
+import LogoBlack from '../../assets/LOGO-black.svg';
 
 export default function LayoutADesktop({ children }) {
     const { t } = useLocale();
@@ -46,7 +47,7 @@ export default function LayoutADesktop({ children }) {
     ];
 
     return (
-        <div className="min-h-screen w-full relative overflow-hidden font-desktop flex justify-center items-center p-6 bg-[#F2F4F7]">
+        <div className="min-h-screen w-full relative overflow-hidden font-sans flex justify-center items-center p-6 bg-[#F2F4F7]">
             {/* Background: LightGlow - 08 style Gradient (50% opacity) */}
             {/* Background: Luma Effect Image */}
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -76,73 +77,72 @@ export default function LayoutADesktop({ children }) {
                             collapsed ? 'w-20' : 'w-64'
                         )}
                     >
-                        <div className="flex items-center justify-between px-4 py-6">
-                            <div className="flex items-center gap-3">
-                                <div className="w-11 h-11 rounded-[18px] bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center font-semibold shadow-[0_4px_12px_rgba(37,99,235,0.15)]">
-                                    PW
+                        <div className="flex items-center justify-between px-6 py-6 h-20">
+                            {/* Logo Section */}
+                            {!collapsed ? (
+                                <img src={LogoBlack} alt="PolyWallet" className="h-5 w-auto" />
+                            ) : (
+                                <div className="w-full flex justify-center">
+                                    <img src={LogoBlack} alt="PW" className="h-5 w-auto" />
                                 </div>
-                                {!collapsed && (
-                                    <div>
-                                        <p className="text-sm font-semibold tracking-tight text-gray-900">PolyWallet</p>
-                                        <p className="text-[11px] text-slate-400 font-medium">Desktop</p>
-                                    </div>
-                                )}
-                            </div>
-                            <button
-                                type="button"
-                                onClick={() => setCollapsed((prev) => !prev)}
-                                className="w-9 h-9 rounded-full bg-white text-slate-400 hover:text-slate-900 flex items-center justify-center transition-colors border border-gray-100 shadow-sm"
-                                aria-label="Toggle sidebar"
-                            >
-                                <ChevronLeft size={16} className={clsx('transition-transform', collapsed && 'rotate-180')} />
-                            </button>
+                            )}
+
+                            {!collapsed && (
+                                <button
+                                    type="button"
+                                    onClick={() => setCollapsed(true)}
+                                    className="w-8 h-8 rounded-full bg-white text-slate-400 hover:text-slate-900 flex items-center justify-center transition-colors border border-gray-100 shadow-sm"
+                                    aria-label="Collapse sidebar"
+                                >
+                                    <ChevronLeft size={16} />
+                                </button>
+                            )}
                         </div>
 
-                        <nav className="px-3 flex-1 space-y-2">
+                        {collapsed && (
+                            <div className="flex justify-center mb-6">
+                                <button
+                                    type="button"
+                                    onClick={() => setCollapsed(false)}
+                                    className="w-8 h-8 rounded-full bg-white text-slate-400 hover:text-slate-900 flex items-center justify-center transition-colors border border-gray-100 shadow-sm rotate-180"
+                                    aria-label="Expand sidebar"
+                                >
+                                    <ChevronLeft size={16} />
+                                </button>
+                            </div>
+                        )}
+
+                        <nav className="flex-1 px-3 space-y-2 py-4">
                             {navItems.map((item) => (
                                 <NavLink
                                     key={item.to}
                                     to={item.to}
-                                    className={({ isActive }) => clsx(
-                                        'group flex items-center gap-3 rounded-[20px] px-3 py-2.5 font-semibold transition-all',
-                                        collapsed ? 'justify-center' : 'justify-start',
-                                        isActive
-                                            ? 'bg-[#1F2432] text-white shadow-[0_4px_12px_rgba(15,23,42,0.1)]'
-                                            : 'text-slate-500 hover:text-slate-900 hover:bg-white/60'
-                                    )}
+                                    className={({ isActive }) =>
+                                        clsx(
+                                            'flex items-center gap-3 px-3 py-3 rounded-[16px] transition-all duration-200 group',
+                                            isActive
+                                                ? 'bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg shadow-gray-900/10'
+                                                : 'text-slate-500 hover:bg-white hover:text-slate-900 hover:shadow-sm'
+                                        )
+                                    }
                                 >
-                                    {({ isActive }) => (
-                                        <>
-                                            <div className={clsx(
-                                                'w-10 h-10 rounded-[14px] flex items-center justify-center transition-all',
-                                                isActive ? 'bg-white/10 text-white' : 'bg-white/80 text-slate-500 group-hover:text-slate-900 border border-[#E6EAF0]'
-                                            )}>
-                                                <item.icon size={20} />
-                                            </div>
-                                            {!collapsed && <span className="text-sm">{item.label}</span>}
-                                        </>
-                                    )}
+                                    <div className={clsx(
+                                        'rounded-xl p-0.5 transition-colors',
+                                        // isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-600'
+                                    )}>
+                                        <item.icon size={20} strokeWidth={2} />
+                                    </div>
+                                    {!collapsed && <span className="font-semibold text-[15px]">{item.label}</span>}
                                 </NavLink>
                             ))}
                         </nav>
 
-                        <div className="px-4 pb-6">
-                            <button
-                                type="button"
-                                onClick={() => setCollapsed((prev) => !prev)}
-                                className={clsx(
-                                    'w-full rounded-[14px] border border-[#E6EAF0] bg-white/60 text-slate-500 hover:text-slate-900 flex items-center gap-3 px-3 py-2 transition-colors',
-                                    collapsed && 'justify-center'
-                                )}
-                            >
-                                <ChevronLeft size={18} className={clsx('transition-transform', collapsed && 'rotate-180')} />
-                                {!collapsed && <span className="text-xs font-semibold">Collapse menu</span>}
-                            </button>
-                        </div>
+                        {/* User Profile / Footer - Removed as per request */}
                     </aside>
 
-                    <main className="flex-1 overflow-y-auto no-scrollbar bg-[#F9FAFB]/60 relative">
-                        <div className="w-full px-10 py-8">
+                    <main className="flex-1 overflow-y-auto no-scrollbar relative bg-[#FAFAFA]/50">
+                        {/* Reduced padding from p-8 to p-5 to reduce gaps from sidebar */}
+                        <div className="max-w-5xl mx-auto p-5 pb-24">
                             {children}
                         </div>
                     </main>
