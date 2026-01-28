@@ -18,7 +18,7 @@ export default function Landing() {
 
             {/* 1. Logo (Centered vertically in the main area) */}
             <div className="flex-1 flex items-center justify-center p-6 md:flex-none md:p-0 md:mb-12">
-                <img src={Logo} alt="PolyWallet" className="h-8 w-auto" />
+                <img src={Logo} alt="PolyWallet" className="h-10 w-auto" />
             </div>
 
             {/* 2. Footer Section (Button + Encrypted Badge) */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
 import { useLocale } from '../../i18n';
@@ -6,11 +7,25 @@ import { Send, ArrowDown, ArrowUp, ArrowUpRight, ArrowDownLeft, TrendingUp, X, C
 import Logo from '../../assets/LOGO-black.svg';
 
 export default function WalletA() {
+    const navigate = useNavigate();
     const { t } = useLocale();
     const [activeModal, setActiveModal] = useState(null); // 'deposit', 'withdraw', 'send'
     const [amount, setAmount] = useState('');
     const [recipient, setRecipient] = useState('');
     const [showAllTransactions, setShowAllTransactions] = useState(false);
+
+    // Responsive Guard: Redirect to Desktop if screen grows (>= 768px)
+    React.useEffect(() => {
+        const checkSize = () => {
+            if (window.innerWidth >= 768) {
+                navigate('/desktop/wallet', { replace: true });
+            }
+        };
+
+        checkSize(); // Check on mount
+        window.addEventListener('resize', checkSize);
+        return () => window.removeEventListener('resize', checkSize);
+    }, [navigate]);
 
     const totalBalance = 5420.5;
     const depositBalance = 8234.56;
@@ -41,6 +56,8 @@ export default function WalletA() {
         { type: t('dailyInterest', 'Daily Interest'), date: '2026-01-15 14:30:45', amount: '+$10.87', color: 'text-green-500' },
     ];
     const visibleTransactions = showAllTransactions ? transactions : transactions.slice(0, 4);
+
+
 
     return (
         <LayoutA>

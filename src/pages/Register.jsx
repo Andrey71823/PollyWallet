@@ -103,7 +103,7 @@ export default function Register() {
                 >
                     <ChevronLeft size={24} />
                 </button>
-                <img src={Logo} alt="PolyWallet" className="h-8 w-auto" />
+                <img src={Logo} alt="PolyWallet" className="h-9 w-auto" />
             </header>
 
             <main className="flex-1 flex flex-col items-center justify-center px-6 pb-12 w-full max-w-md mx-auto relative z-10">

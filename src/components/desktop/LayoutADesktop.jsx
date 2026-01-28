@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Wallet, Diamond, Disc, Award, ChevronLeft } from 'lucide-react';
 import clsx from 'clsx';
 import { useLocale } from '../../i18n';
@@ -38,6 +38,41 @@ export default function LayoutADesktop({ children }) {
             }
         }
     }, [collapsed]);
+
+    // Responsive Guard: Redirect to Mobile if screen is too small (< 768px)
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                // Redirect to mobile wallet if screen shrinks
+                // Using window.location to ensure clean state or useNavigate
+                // But since we are inside Router, use navigate.
+                // We need to import navigate first.
+            }
+        };
+
+        // Check on mount
+        if (window.innerWidth < 768) {
+            // We can't use navigate here easily without the hook.
+            // Let's add the hook.
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Better implementation with Hook:
+    const navigate = useNavigate();
+    useEffect(() => {
+        const checkSize = () => {
+            if (window.innerWidth < 768) {
+                navigate('/soft-white/wallet', { replace: true });
+            }
+        };
+
+        checkSize(); // Check on mount
+        window.addEventListener('resize', checkSize);
+        return () => window.removeEventListener('resize', checkSize);
+    }, [navigate]);
 
     const navItems = [
         { to: '/desktop/wallet', icon: Wallet, label: t('navWallet', 'Wallet') },
