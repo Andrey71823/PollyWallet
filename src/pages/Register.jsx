@@ -96,7 +96,7 @@ export default function Register() {
             <div className="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-purple-50 to-transparent pointer-events-none"></div>
 
             {/* Header */}
-            <header className="px-6 py-6 flex justify-center items-center relative z-10 w-full max-w-md mx-auto">
+            <header className="px-6 py-6 mt-10 flex justify-center items-center relative z-10 w-full max-w-md mx-auto">
                 <button
                     onClick={() => navigate('/')}
                     className="absolute left-6 w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors"
