@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
-import { Crown, Users, TrendingUp, Copy, QrCode, Star, Shield, ChevronLeft } from 'lucide-react';
+import { Users, TrendingUp, Copy, QrCode, ChevronLeft } from 'lucide-react';
 import { useLocale } from '../../i18n';
 import Logo from '../../assets/LOGO-black.svg';
+import { RANKS, RANK_ORDER, getRank, RankBadge } from '../../assets/rankAssets';
 
 export default function RankA() {
     const { t } = useLocale();
@@ -14,30 +15,8 @@ export default function RankA() {
     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(referralLink)}`;
     const walletAddress = '0x742d...5f3A';
 
-    function DiamondIcon(props) {
-        return (
-            <svg
-                {...props}
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            >
-                <path d="M6 3h12l4 6-10 13L2 9Z" />
-            </svg>
-        );
-    }
-
-    const rankMeta = {
-        Gold: { color: 'bg-yellow-100 text-yellow-700', badge: 'text-yellow-700', icon: Star },
-        Diamond: { color: 'bg-blue-100 text-blue-700', badge: 'text-blue-600', icon: DiamondIcon },
-        Bronze: { color: 'bg-orange-100 text-orange-700', badge: 'text-orange-700', icon: Shield },
-    };
+    const currentRank = 'Diamond';
+    const currentRankMeta = getRank(currentRank);
 
     const levelOneMembers = [
         {
@@ -82,15 +61,13 @@ export default function RankA() {
     };
 
     const MapRow = ({ member, onClick }) => {
-        const meta = rankMeta[member.rank] || rankMeta.Bronze;
+        const meta = getRank(member.rank);
         const content = (
             <>
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${meta.color}`}>
-                    <meta.icon size={20} fill="currentColor" className="opacity-80" />
-                </div>
+                <RankBadge rank={member.rank} size={48} radius="16px" />
                 <div className="flex-1">
                     <h4 className="font-bold text-gray-900 text-sm">{member.id}</h4>
-                    <span className={`text-[10px] font-black uppercase tracking-wider bg-gray-50 px-2 py-0.5 rounded-md mt-1 inline-block ${meta.badge}`}>
+                    <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md mt-1 inline-block ${meta.badge}`}>
                         {member.rank}
                     </span>
                 </div>
@@ -141,12 +118,12 @@ export default function RankA() {
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-100/50 rounded-full blur-3xl group-hover:bg-blue-200/50 transition-colors duration-500"></div>
 
                     <div className="relative z-10">
-                        <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[24px] mx-auto mb-4 flex items-center justify-center shadow-lg shadow-blue-500/30 transform group-hover:scale-110 transition-transform duration-500 rotate-3">
-                            <Crown size={40} className="text-white fill-white/20" />
+                        <div className="mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-500 rotate-3">
+                            <RankBadge rank={currentRank} size={80} radius="24px" />
                         </div>
 
                         <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{t('currentRank', 'Current Rank')}</p>
-                        <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-6">Diamond</h2>
+                        <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-6">{currentRank}</h2>
 
                         <div className="grid grid-cols-2 gap-3">
                             <div className="bg-gray-50 rounded-2xl p-3 border border-gray-100">
@@ -157,6 +134,24 @@ export default function RankA() {
                                 <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('pointBoost', 'Point Boost')}</p>
                                 <p className="text-xl font-black text-blue-600">60%</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Rank Ladder - All 8 ranks */}
+                <div>
+                    <h3 className="text-lg font-black text-gray-900 tracking-tight mb-3 px-1">{t('rankLadder', 'Rank Ladder')}</h3>
+                    <div className="bg-white rounded-[26px] p-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100">
+                        <div className="grid grid-cols-4 gap-3">
+                            {RANK_ORDER.map((name) => {
+                                const isCurrent = name === currentRank;
+                                return (
+                                    <div key={name} className={`flex flex-col items-center gap-1.5 p-2 rounded-2xl transition-all ${isCurrent ? 'bg-blue-50/60 ring-1 ring-blue-200' : ''}`}>
+                                        <RankBadge rank={name} size={44} radius="14px" />
+                                        <span className={`text-[10px] font-black uppercase tracking-wider text-center leading-tight ${isCurrent ? 'text-blue-600' : 'text-gray-500'}`}>{name}</span>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

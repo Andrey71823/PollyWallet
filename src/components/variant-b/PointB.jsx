@@ -1,16 +1,17 @@
 import React from 'react';
 import LayoutB from './LayoutB';
 import HeaderB from './HeaderB';
-import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, ChevronRight, Zap, Trophy } from 'lucide-react';
+import { TrendingUp, Zap, Trophy } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import { ProjectIconTile } from '../../assets/projectIcons';
 
 export default function PointB() {
     const { t } = useLocale();
     const projects = [
-        { name: 'Polymarket', points: '15 420', change: '+564', icon: Target, color: 'text-blue-600', iconBg: 'bg-blue-50' },
-        { name: 'Probable', points: '8 934', change: '+413', icon: BarChart3, color: 'text-green-600', iconBg: 'bg-green-50' },
-        { name: 'Predict Fun', points: '12 567', change: '+778', icon: Gamepad2, color: 'text-purple-600', iconBg: 'bg-purple-50' },
-        { name: 'OPINION', points: 'Coming Soon', change: '', icon: MessageCircle, color: 'text-gray-400', iconBg: 'bg-gray-50', disabled: true },
+        { name: 'Polymarket', points: '15 420', change: '+564' },
+        { name: 'Probable', points: '8 934', change: '+413' },
+        { name: 'Predict Fun', points: '12 567', change: '+778' },
+        { name: 'OPINION', points: 'Coming Soon', change: '', disabled: true },
     ];
 
     return (
@@ -61,8 +62,8 @@ export default function PointB() {
                     {projects.map((p, i) => (
                         <div key={i} className={`col-span-2 p-4 rounded-[24px] flex items-center gap-4 transition-all duration-300 group ${p.disabled ? 'opacity-60 border border-gray-200 border-dashed bg-transparent' : 'bg-white shadow-[0_8px_25px_-5px_rgba(0,0,0,0.04)] border border-gray-50 hover:scale-[1.01]'}`}>
 
-                            <div className={`w-12 h-12 rounded-[18px] flex items-center justify-center shrink-0 ${p.disabled ? 'bg-gray-100' : p.iconBg} group-hover:scale-110 transition-transform`}>
-                                <p.icon size={22} className={p.color} />
+                            <div className="group-hover:scale-110 transition-transform">
+                                <ProjectIconTile name={p.name} size={48} radius="18px" disabled={p.disabled} />
                             </div>
 
                             <div className="flex-1 min-w-0">

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import LayoutB from './LayoutB';
 import HeaderB from './HeaderB';
-import { Crown, Users, TrendingUp, Copy, QrCode, Shield, Star, Award, Zap } from 'lucide-react';
+import { Users, TrendingUp, Copy, QrCode } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import { RANK_ORDER, getRank, RankBadge } from '../../assets/rankAssets';
 
 export default function RankB() {
     const { t } = useLocale();
     const [showAllTeam, setShowAllTeam] = useState(false);
+    const currentRank = 'Diamond';
     const team = [
-        { id: 'user1000', rank: 'Gold', team: '0', own: '4', color: 'text-yellow-600', icon: Award, bg: 'bg-yellow-50' },
-        { id: 'user1001', rank: 'Diamond', team: '42', own: '4', color: 'text-blue-600', icon: Crown, bg: 'bg-blue-50' },
-        { id: 'user1002', rank: 'Bronze', team: '47', own: '1', color: 'text-orange-700', icon: Shield, bg: 'bg-orange-50' },
+        { id: 'user1000', rank: 'Gold', team: '0', own: '4' },
+        { id: 'user1001', rank: 'Diamond', team: '42', own: '4' },
+        { id: 'user1002', rank: 'Bronze', team: '47', own: '1' },
     ];
     const visibleTeam = showAllTeam ? team : team.slice(0, 2);
 
@@ -24,17 +26,15 @@ export default function RankB() {
 
                     {/* Main Rank Card - Col Span 2 */}
                     <div className="col-span-2 bg-white p-6 rounded-[32px] shadow-[0_15px_30px_rgba(0,0,0,0.04)] border border-white relative overflow-hidden group hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500">
-                        <div className="absolute top-0 right-0 p-8 opacity-5">
-                            <Crown size={120} />
+                        <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                            <RankBadge rank={currentRank} size={110} radius="32px" />
                         </div>
 
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-16 h-16 rounded-[20px] bg-blue-50 flex items-center justify-center text-blue-600 animate-pulse-slow">
-                                <Crown size={32} fill="currentColor" />
-                            </div>
+                            <RankBadge rank={currentRank} size={64} radius="20px" className="animate-pulse-slow" />
                             <div>
                                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t('currentRank', 'Current Rank')}</p>
-                                <h2 className="text-3xl font-black text-gray-900 tracking-tight">Diamond</h2>
+                                <h2 className="text-3xl font-black text-gray-900 tracking-tight">{currentRank}</h2>
                             </div>
                         </div>
 
@@ -100,21 +100,38 @@ export default function RankB() {
                     </div>
 
                     {/* Team List Items (Full Width Bento Strips) */}
-                    {visibleTeam.map((member, i) => (
-                        <div key={i} className="col-span-2 bg-white p-4 rounded-[24px] shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-gray-50 flex items-center gap-4 hover:translate-x-1 transition-transform cursor-default">
-                            <div className={`w-10 h-10 rounded-[14px] flex items-center justify-center ${member.bg}`}>
-                                <member.icon size={18} className={member.color} />
+                    {visibleTeam.map((member, i) => {
+                        const meta = getRank(member.rank);
+                        return (
+                            <div key={i} className="col-span-2 bg-white p-4 rounded-[24px] shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-gray-50 flex items-center gap-4 hover:translate-x-1 transition-transform cursor-default">
+                                <RankBadge rank={member.rank} size={40} radius="14px" />
+                                <div className="flex-1">
+                                    <h4 className="font-bold text-gray-900 text-sm">{member.id}</h4>
+                                    <span className={`text-[9px] font-black uppercase tracking-wider block mt-0.5 ${meta.text} opacity-90`}>{member.rank}</span>
+                                </div>
+                                <div className="text-right pr-2">
+                                    <p className="text-[9px] text-gray-400 font-bold uppercase">{t('teamLabel', 'Team')}</p>
+                                    <p className="text-sm font-black text-gray-900">{member.team}</p>
+                                </div>
                             </div>
-                            <div className="flex-1">
-                                <h4 className="font-bold text-gray-900 text-sm">{member.id}</h4>
-                                <span className={`text-[9px] font-black uppercase tracking-wider block mt-0.5 ${member.color} opacity-80`}>{member.rank}</span>
-                            </div>
-                            <div className="text-right pr-2">
-                                <p className="text-[9px] text-gray-400 font-bold uppercase">{t('teamLabel', 'Team')}</p>
-                                <p className="text-sm font-black text-gray-900">{member.team}</p>
-                            </div>
+                        );
+                    })}
+
+                    {/* Rank Ladder - all 8 ranks */}
+                    <div className="col-span-2 mt-4 px-2">
+                        <h3 className="text-base font-black text-gray-800 mb-3">{t('rankLadder', 'Rank Ladder')}</h3>
+                        <div className="bg-white rounded-[24px] p-4 shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-gray-50 grid grid-cols-4 gap-3">
+                            {RANK_ORDER.map((name) => {
+                                const isCurrent = name === currentRank;
+                                return (
+                                    <div key={name} className={`flex flex-col items-center gap-1.5 p-2 rounded-2xl ${isCurrent ? 'bg-blue-50/60 ring-1 ring-blue-200' : ''}`}>
+                                        <RankBadge rank={name} size={40} radius="14px" />
+                                        <span className={`text-[9px] font-black uppercase tracking-wider text-center leading-tight ${isCurrent ? 'text-blue-600' : 'text-gray-500'}`}>{name}</span>
+                                    </div>
+                                );
+                            })}
                         </div>
-                    ))}
+                    </div>
 
                 </div>
 

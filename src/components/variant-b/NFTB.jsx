@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import LayoutB from './LayoutB';
 import HeaderB from './HeaderB';
-import { Box, Diamond, TrendingUp, Sparkles, Check, Star, X, Plus, Minus } from 'lucide-react';
+import { Gift, Box, Diamond, TrendingUp, Sparkles, Check, X, Plus, Minus } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import GiftBoxNFT from '../../assets/GiftBoxNFT';
 
 export default function NFTB() {
     const { t } = useLocale();
@@ -45,17 +46,16 @@ export default function NFTB() {
                 <div className="bg-white p-2 rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-50">
                     <div className="bg-gradient-to-b from-gray-50 to-white rounded-[32px] p-6 pb-8 relative overflow-hidden">
 
-                        {/* Hero NFT Card - Premium Black/Gold */}
-                        <div className="w-full aspect-[4/3] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-[28px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] mb-8 flex flex-col items-center justify-center text-white relative overflow-hidden">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"></div>
-                            <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent"></div>
-                            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+                        {/* Hero NFT Card - Soft Gift Box */}
+                        <div className="w-full aspect-[4/3] bg-gradient-to-br from-sky-100 via-indigo-50 to-pink-100 rounded-[28px] shadow-[0_30px_60px_-15px_rgba(99,102,241,0.25)] mb-8 flex flex-col items-center justify-center relative overflow-hidden">
+                            <div className="absolute -top-10 -right-10 w-48 h-48 bg-blue-200/40 rounded-full blur-3xl"></div>
+                            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-pink-200/40 rounded-full blur-3xl"></div>
 
-                            <div className="w-20 h-20 rounded-[20px] bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20 shadow-xl">
-                                <Star size={36} className="text-yellow-400" fill="currentColor" />
+                            <div className="relative z-10">
+                                <GiftBoxNFT size={220} />
                             </div>
-                            <span className="font-black text-2xl tracking-[0.15em] mb-1">POLY</span>
-                            <span className="text-xs font-bold text-white/60 tracking-widest uppercase">NFT BOX</span>
+                            <span className="font-black text-2xl tracking-[0.15em] text-gray-900 mt-2 relative z-10">POLY</span>
+                            <span className="text-xs font-bold text-gray-500 tracking-widest uppercase relative z-10">NFT GIFT BOX</span>
                         </div>
 
                         <div className="space-y-5">
@@ -98,7 +98,7 @@ export default function NFTB() {
                                 className="w-full h-16 bg-black rounded-[24px] text-white font-bold text-lg shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] active:scale-[0.98] transition-all flex items-center justify-center gap-3 relative overflow-hidden hover:shadow-[0_25px_50px_-10px_rgba(0,0,0,0.4)]"
                             >
                                 <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/15 to-transparent pointer-events-none rounded-t-[24px]"></div>
-                                <Diamond size={20} className="relative z-10" />
+                                <Gift size={20} className="relative z-10" />
                                 <span className="relative z-10">{t('mintNft', 'Mint NFT')}</span>
                             </button>
                         </div>

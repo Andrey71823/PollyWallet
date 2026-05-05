@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import LayoutA from './LayoutA';
 import HeaderActionsA from './HeaderActionsA';
-import { Box, TrendingUp, Sparkles, ShieldCheck, Zap, Layers, X, Plus, Minus } from 'lucide-react';
+import { Gift, TrendingUp, Sparkles, ShieldCheck, Zap, Layers, X, Plus, Minus } from 'lucide-react';
 import { useLocale } from '../../i18n';
 import Logo from '../../assets/LOGO-black.svg';
+import GiftBoxNFT from '../../assets/GiftBoxNFT';
 
 export default function NFTA() {
     const { t } = useLocale();
@@ -25,17 +26,14 @@ export default function NFTA() {
 
                 {/* Bento Grid Layout - REORDERED */}
                 <div className="grid grid-cols-2 gap-4">
-                    {/* 1. Poly NFT Box (Image) */}
+                    {/* 1. Poly NFT Box (Gift illustration) */}
                     <div className="col-span-2 bg-white rounded-[32px] p-1 shadow-[0_2px_20px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden group relative">
-                        <div className="bg-gray-50 rounded-[28px] p-6 h-72 relative overflow-hidden flex items-center justify-center">
-                            <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-100/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+                        <div className="bg-gradient-to-br from-blue-50 via-white to-pink-50 rounded-[28px] p-6 h-72 relative overflow-hidden flex items-center justify-center">
+                            <div className="absolute top-0 right-0 w-48 h-48 bg-blue-200/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-pink-200/40 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
 
-                            <div className="relative z-10 group-hover:scale-105 transition-transform duration-500">
-                                <div className="w-24 h-24 bg-white rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex items-center justify-center border border-white/50 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[24px]"></div>
-                                    <Box size={40} className="text-gray-900 relative z-10" strokeWidth={1.5} />
-                                </div>
+                            <div className="relative z-10 group-hover:scale-105 group-hover:-translate-y-1 transition-transform duration-500">
+                                <GiftBoxNFT size={210} />
                             </div>
                         </div>
                     </div>
@@ -43,7 +41,7 @@ export default function NFTA() {
                     {/* 2. Mint Button */}
                     <div className="col-span-2">
                         <button onClick={() => setShowMintModal(true)} className="w-full h-14 bg-gray-900 text-white rounded-[20px] font-bold text-lg shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:bg-black hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
-                            <Box size={20} strokeWidth={2} />
+                            <Gift size={20} strokeWidth={2} />
                             {t('mintNft', 'Mint NFT')}
                         </button>
                     </div>

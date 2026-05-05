@@ -1,8 +1,9 @@
 import React from 'react';
 import LayoutADesktop from './LayoutADesktop';
 import HeaderActionsA from '../variant-a/HeaderActionsA';
-import { Sparkles, TrendingUp, Target, BarChart3, Gamepad2, MessageCircle, Zap } from 'lucide-react';
+import { Sparkles, TrendingUp, Zap } from 'lucide-react';
 import { useLocale } from '../../i18n';
+import { ProjectIconTile } from '../../assets/projectIcons';
 
 export default function PointADesktop() {
     const { t } = useLocale();
@@ -10,10 +11,10 @@ export default function PointADesktop() {
     const formatNumber = (value) => value.toLocaleString('en-US');
 
     const projects = [
-        { name: 'Polymarket', points: 15420, change: 564, icon: Target, color: 'bg-blue-50 text-blue-600', iconBg: 'bg-blue-100' },
-        { name: 'Probable', points: 8934, change: 413, icon: BarChart3, color: 'bg-green-50 text-green-600', iconBg: 'bg-green-100' },
-        { name: 'Predict Fun', points: 12567, change: 778, icon: Gamepad2, color: 'bg-purple-50 text-purple-600', iconBg: 'bg-purple-100' },
-        { name: 'OPINION', points: 'Coming Soon', change: '', icon: MessageCircle, color: 'bg-gray-50 text-gray-400', iconBg: 'bg-gray-100', disabled: true },
+        { name: 'Polymarket', points: 15420, change: 564 },
+        { name: 'Probable', points: 8934, change: 413 },
+        { name: 'Predict Fun', points: 12567, change: 778 },
+        { name: 'OPINION', points: 'Coming Soon', change: '', disabled: true },
     ];
 
     return (
@@ -69,9 +70,7 @@ export default function PointADesktop() {
                     <div className="grid gap-3">
                         {projects.map((p, i) => (
                             <div key={i} className={`group relative p-4 rounded-[26px] flex items-center gap-4 transition-all duration-300 ${p.disabled ? 'bg-gray-50 border border-dashed border-gray-200' : 'bg-white shadow-sm border border-gray-200 hover:shadow-md hover:scale-[1.01]'}`}>
-                                <div className={`w-14 h-14 rounded-[20px] flex items-center justify-center shrink-0 ${p.disabled ? 'bg-gray-200 text-gray-400' : `bg-gradient-to-br ${p.iconBg} to-white shadow-inner`}`}>
-                                    <p.icon size={26} className={p.disabled ? '' : p.color.split(' ')[1]} />
-                                </div>
+                                <ProjectIconTile name={p.name} size={56} radius="20px" disabled={p.disabled} />
 
                                 <div className="flex-1 min-w-0">
                                     <h4 className={`font-bold text-base mb-0.5 ${p.disabled ? 'text-gray-400' : 'text-gray-900'}`}>{p.name}</h4>
