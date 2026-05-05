@@ -63,7 +63,7 @@ export default function PointB() {
                         <div key={i} className={`col-span-2 p-4 rounded-[24px] flex items-center gap-4 transition-all duration-300 group ${p.disabled ? 'opacity-60 border border-gray-200 border-dashed bg-transparent' : 'bg-white shadow-[0_8px_25px_-5px_rgba(0,0,0,0.04)] border border-gray-50 hover:scale-[1.01]'}`}>
 
                             <div className="group-hover:scale-110 transition-transform">
-                                <ProjectIconTile name={p.name} size={48} radius="18px" disabled={p.disabled} />
+                                <ProjectIconTile name={p.name} size={48} radius={16} disabled={p.disabled} />
                             </div>
 
                             <div className="flex-1 min-w-0">

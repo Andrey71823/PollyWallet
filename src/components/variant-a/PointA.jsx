@@ -73,7 +73,7 @@ export default function PointA() {
                     <div className="grid gap-3">
                         {projects.map((p, i) => (
                             <div key={i} className={`group relative p-4 rounded-[26px] flex items-center gap-4 transition-all duration-300 ${p.disabled ? 'bg-gray-50 border border-dashed border-gray-200' : 'bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:scale-[1.01]'}`}>
-                                <ProjectIconTile name={p.name} size={56} radius="20px" disabled={p.disabled} />
+                                <ProjectIconTile name={p.name} size={56} radius={20} disabled={p.disabled} />
 
                                 <div className="flex-1 min-w-0">
                                     <h4 className={`font-bold text-base mb-0.5 ${p.disabled ? 'text-gray-400' : 'text-gray-900'}`}>{p.name}</h4>

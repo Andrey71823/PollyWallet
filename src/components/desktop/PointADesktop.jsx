@@ -70,7 +70,7 @@ export default function PointADesktop() {
                     <div className="grid gap-3">
                         {projects.map((p, i) => (
                             <div key={i} className={`group relative p-4 rounded-[26px] flex items-center gap-4 transition-all duration-300 ${p.disabled ? 'bg-gray-50 border border-dashed border-gray-200' : 'bg-white shadow-sm border border-gray-200 hover:shadow-md hover:scale-[1.01]'}`}>
-                                <ProjectIconTile name={p.name} size={56} radius="20px" disabled={p.disabled} />
+                                <ProjectIconTile name={p.name} size={56} radius={20} disabled={p.disabled} />
 
                                 <div className="flex-1 min-w-0">
                                     <h4 className={`font-bold text-base mb-0.5 ${p.disabled ? 'text-gray-400' : 'text-gray-900'}`}>{p.name}</h4>

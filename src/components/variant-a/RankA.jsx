@@ -118,7 +118,7 @@ export default function RankA() {
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-100/50 rounded-full blur-3xl group-hover:bg-blue-200/50 transition-colors duration-500"></div>
 
                     <div className="relative z-10">
-                        <div className="mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-500 rotate-3">
+                        <div className="w-fit mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-500 rotate-3">
                             <RankBadge rank={currentRank} size={80} radius="24px" />
                         </div>
 
