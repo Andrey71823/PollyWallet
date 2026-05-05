@@ -1,11 +1,12 @@
 import React from 'react';
 
 /**
- * GiftBoxNFT — a premium 3/4-perspective gift-box illustration used as
- * the cover artwork of the PolyWallet NFT. Drawn as inline SVG with
- * visible front face + top face + side face, a wrapping ribbon, a pushy
- * multi-loop bow, a small hanging tag, soft ground shadow and floating
- * sparkles.
+ * GiftBoxNFT — friendly "puffy" 3D-style gift-box illustration.
+ *
+ * Built from rounded rectangles (no harsh polygonal isometric faces) so
+ * the silhouette feels soft and premium, like a 3D-rendered emoji.
+ * Shadow is a real Gaussian-blurred ellipse, so it looks like a proper
+ * floor shadow rather than a coloured stain.
  */
 export default function GiftBoxNFT({ size = 240, className = '', ...props }) {
     return (
@@ -19,223 +20,221 @@ export default function GiftBoxNFT({ size = 240, className = '', ...props }) {
             {...props}
         >
             <defs>
-                {/* --- Box gradients --- */}
-                <linearGradient id="gb-front" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#C7D2FE" />
-                    <stop offset="60%" stopColor="#A5B4FC" />
-                    <stop offset="100%" stopColor="#818CF8" />
-                </linearGradient>
-                <linearGradient id="gb-top" x1="0" y1="0" x2="0" y2="1">
+                {/* --- Body gradient (puffy lavender → indigo) --- */}
+                <linearGradient id="gb-body" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#DBEAFE" />
+                    <stop offset="55%" stopColor="#A5B4FC" />
+                    <stop offset="100%" stopColor="#6366F1" />
+                </linearGradient>
+                {/* --- Lid gradient (slightly lighter, sits on top) --- */}
+                <linearGradient id="gb-lid" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#EFF6FF" />
                     <stop offset="100%" stopColor="#A5B4FC" />
                 </linearGradient>
-                <linearGradient id="gb-side" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#818CF8" />
-                    <stop offset="100%" stopColor="#4F46E5" />
-                </linearGradient>
 
-                {/* --- Ribbon gradients --- */}
+                {/* --- Ribbon gradient (warm pink) --- */}
                 <linearGradient id="gb-ribbon" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#FDA4AF" />
+                    <stop offset="0%" stopColor="#FBCFE8" />
                     <stop offset="50%" stopColor="#F472B6" />
                     <stop offset="100%" stopColor="#DB2777" />
                 </linearGradient>
-                <linearGradient id="gb-ribbon-top" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#FBCFE8" />
-                    <stop offset="100%" stopColor="#F472B6" />
-                </linearGradient>
-                <linearGradient id="gb-ribbon-side" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#F472B6" />
-                    <stop offset="100%" stopColor="#BE185D" />
-                </linearGradient>
 
-                {/* --- Bow gradient (slightly lighter so it pops off the body) --- */}
-                <radialGradient id="gb-bow" cx="50%" cy="40%" r="70%">
-                    <stop offset="0%" stopColor="#FBCFE8" />
+                {/* --- Bow gradient (puffy/rendered look) --- */}
+                <radialGradient id="gb-bow" cx="50%" cy="35%" r="70%">
+                    <stop offset="0%" stopColor="#FCE7F3" />
                     <stop offset="55%" stopColor="#F472B6" />
-                    <stop offset="100%" stopColor="#DB2777" />
+                    <stop offset="100%" stopColor="#BE185D" />
                 </radialGradient>
 
-                {/* --- Ambient glow + shadow --- */}
-                <radialGradient id="gb-glow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#FDE68A" stopOpacity="0.45" />
-                    <stop offset="100%" stopColor="#FDE68A" stopOpacity="0" />
-                </radialGradient>
-                <radialGradient id="gb-shadow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#312E81" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#312E81" stopOpacity="0" />
+                {/* --- Ambient warm glow --- */}
+                <radialGradient id="gb-glow" cx="50%" cy="48%" r="55%">
+                    <stop offset="0%" stopColor="#FDE68A" stopOpacity="0.55" />
+                    <stop offset="55%" stopColor="#FBCFE8" stopOpacity="0.25" />
+                    <stop offset="100%" stopColor="#FBCFE8" stopOpacity="0" />
                 </radialGradient>
 
-                <filter id="gb-soft" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="0.6" />
+                {/* --- Real Gaussian-blurred floor shadow --- */}
+                <filter id="gb-shadow-blur" x="-20%" y="-50%" width="140%" height="200%">
+                    <feGaussianBlur stdDeviation="6" />
+                </filter>
+                {/* --- Soft inner shadow under the lid (separates lid from body) --- */}
+                <filter id="gb-lid-shadow" x="-20%" y="-50%" width="140%" height="200%">
+                    <feGaussianBlur stdDeviation="2.2" />
                 </filter>
             </defs>
 
             {/* Warm ambient glow behind the scene */}
-            <circle cx="130" cy="130" r="112" fill="url(#gb-glow)" />
+            <ellipse cx="130" cy="130" rx="118" ry="100" fill="url(#gb-glow)" />
 
-            {/* Ground shadow */}
-            <ellipse cx="130" cy="232" rx="96" ry="12" fill="url(#gb-shadow)" />
-
-            {/* =================== BOX BODY (3/4 PERSPECTIVE) =================== */}
-
-            {/* Right side face (darker, gives depth) */}
-            <path
-                d="M200 108 L236 82 L236 198 L200 224 Z"
-                fill="url(#gb-side)"
-            />
-            {/* Front face */}
-            <path
-                d="M44 108 L200 108 L200 224 L44 224 Z"
-                fill="url(#gb-front)"
-            />
-            {/* Top face (flat parallelogram, showing the lid surface) */}
-            <path
-                d="M44 108 L80 82 L236 82 L200 108 Z"
-                fill="url(#gb-top)"
+            {/* =================== FLOOR SHADOW =================== */}
+            <ellipse
+                cx="130"
+                cy="234"
+                rx="86"
+                ry="9"
+                fill="#312E81"
+                opacity="0.28"
+                filter="url(#gb-shadow-blur)"
             />
 
-            {/* Front face soft inner highlight band */}
-            <path
-                d="M52 114 L192 114 L192 122 L52 122 Z"
+            {/* =================== STREAMERS (drawn behind the body) =================== */}
+            <g>
+                {/* left streamer */}
+                <path
+                    d="M118 88 C 100 110 84 130 78 158 C 76 168 80 174 86 176 L 100 176 C 104 168 108 154 114 138 C 120 120 124 104 128 90 Z"
+                    fill="url(#gb-ribbon)"
+                    opacity="0.92"
+                />
+                {/* V-cut at the bottom of left streamer */}
+                <path d="M86 176 L96 168 L100 180 Z" fill="#FFF5F7" opacity="0.95" />
+
+                {/* right streamer */}
+                <path
+                    d="M138 88 C 152 108 168 122 178 148 C 182 158 178 168 172 170 L 158 168 C 154 158 148 144 142 128 C 136 112 132 100 130 90 Z"
+                    fill="url(#gb-ribbon)"
+                    opacity="0.92"
+                />
+                <path d="M172 170 L168 182 L160 172 Z" fill="#FFF5F7" opacity="0.95" />
+            </g>
+
+            {/* =================== BOX BODY =================== */}
+
+            {/* Body — puffy rounded rect */}
+            <rect
+                x="44"
+                y="118"
+                width="172"
+                height="106"
+                rx="20"
+                fill="url(#gb-body)"
+            />
+            {/* Body inner top highlight (specular) */}
+            <rect
+                x="54"
+                y="124"
+                width="152"
+                height="14"
+                rx="7"
                 fill="white"
-                opacity="0.22"
+                opacity="0.32"
+            />
+            {/* Body soft side shadow on the right */}
+            <rect
+                x="194"
+                y="118"
+                width="22"
+                height="106"
+                rx="11"
+                fill="#312E81"
+                opacity="0.13"
             />
 
-            {/* Edge definition: subtle inner strokes where faces meet */}
-            <path
-                d="M44 108 L200 108 M200 108 L200 224 M200 108 L236 82"
-                stroke="#4338CA"
-                strokeOpacity="0.18"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-            />
-
-            {/* =================== LID SEAM =================== */}
-            {/* A thin horizontal shadow line just under the top face to suggest a separate lid */}
-            <path
-                d="M44 108 L200 108"
-                stroke="#312E81"
-                strokeOpacity="0.25"
-                strokeWidth="2"
-            />
-            <path
-                d="M200 108 L236 82"
-                stroke="#312E81"
-                strokeOpacity="0.18"
-                strokeWidth="1.5"
-            />
-
-            {/* =================== RIBBON — vertical wrap =================== */}
-
-            {/* Vertical band on the FRONT face */}
-            <path
-                d="M110 108 L150 108 L150 224 L110 224 Z"
+            {/* =================== RIBBON ON THE BODY =================== */}
+            <rect
+                x="115"
+                y="118"
+                width="30"
+                height="106"
                 fill="url(#gb-ribbon)"
             />
-            {/* Front-ribbon top highlight */}
-            <path
-                d="M113 108 L147 108 L147 118 L113 118 Z"
+            {/* ribbon highlight */}
+            <rect x="118" y="118" width="6" height="106" fill="white" opacity="0.22" />
+            {/* ribbon shadow on the right edge */}
+            <rect x="139" y="118" width="6" height="106" fill="#831843" opacity="0.18" />
+
+            {/* =================== LID SHADOW (subtle, under the lid) =================== */}
+            <rect
+                x="40"
+                y="120"
+                width="180"
+                height="8"
+                rx="4"
+                fill="#312E81"
+                opacity="0.35"
+                filter="url(#gb-lid-shadow)"
+            />
+
+            {/* =================== LID =================== */}
+            <rect
+                x="36"
+                y="96"
+                width="188"
+                height="32"
+                rx="14"
+                fill="url(#gb-lid)"
+            />
+            {/* lid top highlight */}
+            <rect
+                x="44"
+                y="100"
+                width="172"
+                height="8"
+                rx="4"
                 fill="white"
-                opacity="0.25"
+                opacity="0.55"
             />
-
-            {/* Vertical band continuing across the TOP face */}
-            <path
-                d="M110 108 L146 82 L186 82 L150 108 Z"
-                fill="url(#gb-ribbon-top)"
+            {/* lid inner bottom shadow line */}
+            <rect
+                x="36"
+                y="120"
+                width="188"
+                height="8"
+                rx="4"
+                fill="#1E1B4B"
+                opacity="0.10"
             />
-            {/* Subtle seam at the front-top edge of the ribbon */}
-            <path
-                d="M110 108 L150 108"
-                stroke="#BE185D"
-                strokeOpacity="0.35"
-                strokeWidth="1.2"
-            />
-
-            {/* Short band visible on the RIGHT side face where the ribbon wraps */}
-            <path
-                d="M150 108 L186 82 L186 166 L150 192 Z"
-                fill="url(#gb-ribbon-side)"
-            />
-            <path
-                d="M150 108 L186 82"
-                stroke="#BE185D"
-                strokeOpacity="0.4"
-                strokeWidth="1.2"
-            />
+            {/* ribbon on the lid */}
+            <rect x="115" y="96" width="30" height="32" fill="url(#gb-ribbon)" />
+            <rect x="118" y="96" width="6" height="32" fill="white" opacity="0.3" />
+            <rect x="139" y="96" width="6" height="32" fill="#831843" opacity="0.18" />
 
             {/* =================== BOW =================== */}
-
-            <g transform="translate(166 70)">
-                {/* Trailing streamers — drawn BEHIND the loops so they tuck under */}
+            <g transform="translate(130 80)">
+                {/* Left puffy loop */}
                 <path
-                    d="M-8 18 C -16 38 -24 54 -34 68 L -18 70 C -10 54 -4 38 0 22 Z"
-                    fill="url(#gb-ribbon)"
-                    opacity="0.95"
-                />
-                <path
-                    d="M8 18 C 14 34 20 50 30 62 L 18 70 C 10 54 4 38 2 22 Z"
-                    fill="url(#gb-ribbon)"
-                    opacity="0.95"
-                />
-                {/* V-cuts at the ends of the streamers */}
-                <path
-                    d="M-34 68 L -26 60 L -22 72 Z"
-                    fill="#F9FAFB"
-                    opacity="0.9"
-                />
-                <path
-                    d="M30 62 L 26 72 L 20 64 Z"
-                    fill="#F9FAFB"
-                    opacity="0.9"
-                />
-
-                {/* Left loop — large puffy teardrop */}
-                <path
-                    d="M2 10
-                       C -22 -22 -64 -20 -58 12
-                       C -54 30 -28 32 -8 20
-                       Z"
+                    d="M0 8
+                       C -10 -22 -50 -28 -52 -2
+                       C -54 18 -34 28 -10 22
+                       C -4 20 -2 14 0 8 Z"
                     fill="url(#gb-bow)"
                 />
-                {/* Left loop inner crease (adds depth) */}
+                {/* Right puffy loop (mirror) */}
                 <path
-                    d="M-48 0 C -36 -10 -20 -10 -10 -2"
+                    d="M0 8
+                       C 10 -22 50 -28 52 -2
+                       C 54 18 34 28 10 22
+                       C 4 20 2 14 0 8 Z"
+                    fill="url(#gb-bow)"
+                />
+                {/* Inner-loop highlights on top */}
+                <path
+                    d="M-44 -6 C -32 -16 -16 -16 -8 -8"
                     stroke="white"
-                    strokeOpacity="0.55"
-                    strokeWidth="2.5"
+                    strokeOpacity="0.6"
+                    strokeWidth="2.4"
                     strokeLinecap="round"
                     fill="none"
                 />
                 <path
-                    d="M-54 12 C -44 20 -28 22 -12 14"
-                    stroke="#9D174D"
+                    d="M44 -6 C 32 -16 16 -16 8 -8"
+                    stroke="white"
+                    strokeOpacity="0.6"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    fill="none"
+                />
+                {/* Inner-loop shadow creases at the knot */}
+                <path
+                    d="M-46 8 C -34 18 -16 22 -4 14"
+                    stroke="#831843"
                     strokeOpacity="0.35"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     fill="none"
                 />
-
-                {/* Right loop — mirrored */}
                 <path
-                    d="M-2 10
-                       C 22 -22 64 -20 58 12
-                       C 54 30 28 32 8 20
-                       Z"
-                    fill="url(#gb-bow)"
-                />
-                <path
-                    d="M48 0 C 36 -10 20 -10 10 -2"
-                    stroke="white"
-                    strokeOpacity="0.55"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    fill="none"
-                />
-                <path
-                    d="M54 12 C 44 20 28 22 12 14"
-                    stroke="#9D174D"
+                    d="M46 8 C 34 18 16 22 4 14"
+                    stroke="#831843"
                     strokeOpacity="0.35"
                     strokeWidth="1.5"
                     strokeLinecap="round"
@@ -243,62 +242,26 @@ export default function GiftBoxNFT({ size = 240, className = '', ...props }) {
                 />
 
                 {/* Knot in the centre */}
-                <rect x="-12" y="-2" width="24" height="24" rx="7" fill="#BE185D" />
-                <rect x="-10" y="0" width="20" height="6" rx="3" fill="white" opacity="0.4" />
-                <rect x="-10" y="16" width="20" height="4" rx="2" fill="#831843" opacity="0.8" />
-            </g>
-
-            {/* =================== HANGING TAG =================== */}
-            <g transform="translate(196 110)">
-                {/* string */}
-                <path
-                    d="M -32 -40 C -28 -28 -18 -18 -4 -6"
-                    stroke="#4F46E5"
-                    strokeOpacity="0.55"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    fill="none"
-                />
-                {/* tag body */}
-                <g transform="rotate(12)">
-                    <path
-                        d="M -2 -2 L 26 -2 L 32 8 L 26 18 L -2 18 Z"
-                        fill="#FEF3C7"
-                        stroke="#F59E0B"
-                        strokeWidth="1.2"
-                        strokeLinejoin="round"
-                    />
-                    {/* hole */}
-                    <circle cx="2" cy="8" r="1.8" fill="#92400E" />
-                    {/* tiny sparkle on the tag */}
-                    <path
-                        d="M14 4 L15 8 L19 9 L15 10 L14 14 L13 10 L9 9 L13 8 Z"
-                        fill="#F59E0B"
-                        opacity="0.85"
-                    />
-                </g>
+                <rect x="-11" y="-4" width="22" height="26" rx="7" fill="#BE185D" />
+                {/* knot top highlight */}
+                <rect x="-9" y="-2" width="18" height="6" rx="3" fill="white" opacity="0.45" />
+                {/* knot bottom inner shadow */}
+                <rect x="-9" y="16" width="18" height="4" rx="2" fill="#831843" opacity="0.85" />
+                {/* tiny gleam */}
+                <circle cx="-3" cy="2" r="2.2" fill="white" opacity="0.7" />
             </g>
 
             {/* =================== SPARKLES =================== */}
-            <g opacity="0.95">
-                {/* 4-point stars */}
-                <path d="M50 60 L52 52 L54 60 L62 62 L54 64 L52 72 L50 64 L42 62 Z" fill="#FBBF24" />
-                <path d="M218 148 L219.5 142 L221 148 L227 149.5 L221 151 L219.5 157 L218 151 L212 149.5 Z" fill="#60A5FA" />
-                <path d="M36 170 L37 166 L38 170 L42 171 L38 172 L37 176 L36 172 L32 171 Z" fill="#F472B6" />
-                {/* dots */}
-                <circle cx="226" cy="60" r="3" fill="#F472B6" />
-                <circle cx="28" cy="110" r="2.4" fill="#A78BFA" />
-                <circle cx="244" cy="120" r="2" fill="#FDE68A" />
-                <circle cx="64" cy="214" r="2" fill="#60A5FA" opacity="0.85" />
+            <g>
+                <path d="M52 70 L54 62 L56 70 L64 72 L56 74 L54 82 L52 74 L44 72 Z" fill="#FBBF24" />
+                <path d="M214 158 L215.5 152 L217 158 L223 159.5 L217 161 L215.5 167 L214 161 L208 159.5 Z" fill="#60A5FA" />
+                <path d="M40 178 L41 174 L42 178 L46 179 L42 180 L41 184 L40 180 L36 179 Z" fill="#F472B6" />
+                <circle cx="220" cy="76" r="3" fill="#F472B6" />
+                <circle cx="32" cy="118" r="2.4" fill="#A78BFA" />
+                <circle cx="232" cy="118" r="2" fill="#FDE68A" />
+                <circle cx="68" cy="220" r="2" fill="#60A5FA" opacity="0.85" />
+                <circle cx="200" cy="216" r="2.2" fill="#F9A8D4" opacity="0.85" />
             </g>
-
-            {/* Front-face soft shine overlay (very subtle) */}
-            <path
-                d="M44 108 L92 108 L62 224 L44 224 Z"
-                fill="white"
-                opacity="0.07"
-                filter="url(#gb-soft)"
-            />
         </svg>
     );
 }
