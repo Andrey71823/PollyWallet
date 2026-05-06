@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" rx="32" fill="url(#bg-diamond)"/>
+  <rect x="1" y="1" width="126" height="126" rx="31" stroke="#DBEAFE" stroke-opacity="0.55" stroke-width="2"/>
+  <path d="M36 29H92L111 57L64 111L17 57L36 29Z" fill="white" fill-opacity="0.23" stroke="white" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M17 57H111M50 29L64 57L78 29M64 57V111" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="bg-diamond" x1="17" y1="12" x2="111" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.52" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+</svg>
