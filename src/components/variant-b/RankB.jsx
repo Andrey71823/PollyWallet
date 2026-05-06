@@ -117,22 +117,6 @@ export default function RankB() {
                         );
                     })}
 
-                    {/* Rank Ladder - all 8 ranks */}
-                    <div className="col-span-2 mt-4 px-2">
-                        <h3 className="text-base font-black text-gray-800 mb-3">{t('rankLadder', 'Rank Ladder')}</h3>
-                        <div className="bg-white rounded-[24px] p-4 shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-gray-50 grid grid-cols-4 gap-3">
-                            {RANK_ORDER.map((name) => {
-                                const isCurrent = name === currentRank;
-                                return (
-                                    <div key={name} className={`flex flex-col items-center gap-1.5 p-2 rounded-2xl ${isCurrent ? 'bg-blue-50/60 ring-1 ring-blue-200' : ''}`}>
-                                        <RankBadge rank={name} size={40} radius="14px" />
-                                        <span className={`text-[9px] font-black uppercase tracking-wider text-center leading-tight ${isCurrent ? 'text-blue-600' : 'text-gray-500'}`}>{name}</span>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-
                 </div>
 
             </div>

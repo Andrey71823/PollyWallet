@@ -51,40 +51,65 @@ export default function WalletADesktop() {
                     <HeaderActionsA walletAddress={walletAddress} />
                 </div>
 
-                {/* Balance Section - SAME DESIGN AS MOBILE */}
-                <div>
-                    <p className="text-gray-400 font-bold text-[10px] tracking-widest uppercase">{t('totalBalance', 'TOTAL BALANCE')}</p>
-                    <h2 className="text-5xl font-black text-gray-900 tracking-tight mt-3">$5,420.50</h2>
-                </div>
-
-                {/* TOTAL INTEREST & TOTAL BONUS Cards - SAME AS MOBILE */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white px-5 py-4 rounded-2xl border border-gray-300">
-                        <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
-                        <p className="text-[26px] font-black text-gray-900 mt-3">$1,248.50</p>
-                        <div className="mt-2 flex items-center justify-between">
-                            <p className="text-[12px] text-blue-600 font-bold">+ $11.23</p>
-                            <span className="text-[11px] font-bold text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded border border-gray-200">{t('apy', 'APY')} 10%</span>
+                {/* Hero Balance Card */}
+                <div className="relative overflow-hidden rounded-[28px] p-7 bg-gradient-to-br from-[#0B1020] via-[#11183A] to-[#0B1020] text-white shadow-[0_30px_80px_-30px_rgba(15,23,42,0.6)] ring-1 ring-white/10">
+                    <div className="pointer-events-none absolute -top-20 -right-10 w-72 h-72 rounded-full bg-blue-500/30 blur-3xl" />
+                    <div className="pointer-events-none absolute -bottom-24 -left-10 w-72 h-72 rounded-full bg-indigo-500/20 blur-3xl" />
+                    <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{backgroundImage:'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize:'22px 22px'}} />
+                    <div className="relative flex items-start justify-between">
+                        <div>
+                            <p className="text-white/50 font-bold text-[10px] tracking-[0.2em] uppercase">{t('totalBalance', 'TOTAL BALANCE')}</p>
+                            <h2 className="text-4xl sm:text-5xl lg:text-[56px] leading-none font-black tracking-tight mt-3 bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent break-all">$5,420.50</h2>
+                            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-xs font-bold">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> +$246.73 {t('today', 'today')}
+                            </div>
+                        </div>
+                        <div className="hidden md:flex flex-col items-end gap-2 text-right">
+                            <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold">USDC · Polygon</span>
+                            <div className="flex -space-x-2">
+                                <div className="group relative w-9 h-9 rounded-full bg-gradient-to-br from-[#2775CA] to-[#1E5FA8] ring-2 ring-[#0B1020] flex items-center justify-center text-white text-[11px] font-black tracking-tight transition-all duration-300 hover:scale-110 hover:z-10 hover:shadow-[0_0_20px_rgba(39,117,202,0.7)] cursor-pointer">
+                                    <span className="absolute inset-0 rounded-full bg-[#2775CA] blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300 -z-10" />
+                                    $
+                                </div>
+                                <div className="group relative w-9 h-9 rounded-full bg-gradient-to-br from-[#A855F7] to-[#6D28D9] ring-2 ring-[#0B1020] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:z-10 hover:shadow-[0_0_20px_rgba(168,85,247,0.7)] cursor-pointer">
+                                    <span className="absolute inset-0 rounded-full bg-[#A855F7] blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300 -z-10" />
+                                    <svg viewBox="0 0 38 33" className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" fill="white"><path d="M29 10.2c-.7-.4-1.6-.4-2.4 0L21 13.5l-3.8 2.1-5.5 3.3c-.7.4-1.6.4-2.4 0L5 16.3c-.7-.4-1.2-1.2-1.2-2.1v-5c0-.8.4-1.6 1.2-2.1l4.3-2.5c.7-.4 1.6-.4 2.4 0l4.3 2.5c.7.4 1.2 1.2 1.2 2.1v3.3l3.8-2.2V7c0-.8-.4-1.6-1.2-2.1L11.7.4c-.7-.4-1.6-.4-2.4 0L1.2 5.2C.4 5.6 0 6.4 0 7.3v9.5c0 .8.4 1.6 1.2 2.1l8.1 4.7c.7.4 1.6.4 2.4 0l5.5-3.2 3.8-2.2 5.5-3.2c.7-.4 1.6-.4 2.4 0l4.3 2.5c.7.4 1.2 1.2 1.2 2.1v5c0 .8-.4 1.6-1.2 2.1L29 29.2c-.7.4-1.6.4-2.4 0l-4.3-2.5c-.7-.4-1.2-1.2-1.2-2.1v-3.3l-3.8 2.2v3.3c0 .8.4 1.6 1.2 2.1l8.1 4.7c.7.4 1.6.4 2.4 0l8.1-4.7c.7-.4 1.2-1.2 1.2-2.1V17.3c0-.8-.4-1.6-1.2-2.1L29 10.2z"/></svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="bg-white px-5 py-4 rounded-2xl border border-gray-300">
+                </div>
+
+                {/* TOTAL INTEREST & TOTAL BONUS Cards */}
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="relative overflow-hidden bg-white px-5 py-5 rounded-[22px] border border-gray-200/80 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.25)] hover:shadow-[0_20px_40px_-20px_rgba(59,130,246,0.35)] transition-all">
+                        <div className="pointer-events-none absolute -top-8 -right-8 w-32 h-32 rounded-full bg-blue-500/10 blur-2xl" />
+                        <div className="flex items-center justify-between">
+                            <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">{t('totalInvest', 'TOTAL INTEREST')}</p>
+                            <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">{t('apy', 'APY')} 10%</span>
+                        </div>
+                        <p className="text-[28px] font-black text-gray-900 mt-3 tracking-tight">$1,248.50</p>
+                        <p className="text-[12px] text-blue-600 font-bold mt-1">+ $11.23 today</p>
+                    </div>
+                    <div className="relative overflow-hidden bg-white px-5 py-5 rounded-[22px] border border-gray-200/80 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.25)] hover:shadow-[0_20px_40px_-20px_rgba(168,85,247,0.35)] transition-all">
+                        <div className="pointer-events-none absolute -top-8 -right-8 w-32 h-32 rounded-full bg-violet-500/10 blur-2xl" />
                         <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">{t('totalBonus', 'TOTAL BONUS')}</p>
-                        <p className="text-[26px] font-black text-gray-900 mt-3">$398.20</p>
-                        <p className="text-[12px] text-blue-600 font-bold mt-2">+ $85.50</p>
+                        <p className="text-[28px] font-black text-gray-900 mt-3 tracking-tight">$398.20</p>
+                        <p className="text-[12px] text-violet-600 font-bold mt-1">+ $85.50 today</p>
                     </div>
                 </div>
 
-                {/* Action Buttons - SAME AS MOBILE */}
+                {/* Action Buttons */}
                 <div className="flex items-center gap-3">
-                    <button onClick={() => openModal('deposit')} className="flex-1 h-14 bg-blue-600 text-white rounded-[18px] shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-bold text-[15px] ring-4 ring-blue-500/10">
+                    <button onClick={() => openModal('deposit')} className="flex-1 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-[18px] shadow-[0_15px_30px_-10px_rgba(59,130,246,0.6)] hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.7)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-bold text-[15px] ring-1 ring-white/20">
                         <ArrowDown size={18} strokeWidth={2.5} />
                         {t('deposit', 'Deposit')}
                     </button>
-                    <button onClick={() => openModal('withdraw')} className="flex-1 h-14 bg-white rounded-[18px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-bold text-gray-900 text-[15px] border border-gray-200">
+                    <button onClick={() => openModal('withdraw')} className="flex-1 h-14 bg-white rounded-[18px] shadow-[0_8px_20px_-12px_rgba(15,23,42,0.25)] hover:shadow-[0_15px_30px_-12px_rgba(15,23,42,0.35)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-bold text-gray-900 text-[15px] border border-gray-200">
                         <ArrowUp size={18} strokeWidth={2.5} />
                         {t('withdraw', 'Withdraw')}
                     </button>
-                    <button onClick={() => openModal('send')} className="flex-1 h-14 bg-white rounded-[18px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-bold text-gray-900 text-[15px] border border-gray-200">
+                    <button onClick={() => openModal('send')} className="flex-1 h-14 bg-white rounded-[18px] shadow-[0_8px_20px_-12px_rgba(15,23,42,0.25)] hover:shadow-[0_15px_30px_-12px_rgba(15,23,42,0.35)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-bold text-gray-900 text-[15px] border border-gray-200">
                         <Send size={18} className="text-gray-900" strokeWidth={2.5} />
                         {t('send', 'Send')}
                     </button>

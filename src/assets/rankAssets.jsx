@@ -245,7 +245,6 @@ export const RANK_ORDER = [
     'Platinum',
     'Black',
     'Diamond',
-    'Special',
 ];
 
 export function getRank(name) {
