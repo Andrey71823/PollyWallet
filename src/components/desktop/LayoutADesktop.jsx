@@ -1,13 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Wallet, Diamond, Disc, Award } from 'lucide-react';
+import { Wallet, Diamond, Disc, Award, ChevronLeft } from 'lucide-react';
 import clsx from 'clsx';
 import { useLocale } from '../../i18n';
+import lumaBg from '../../assets/Luma2016.jpeg';
 import LogoBlack from '../../assets/LOGO-black.svg';
-import LogoWhite from '../../assets/LOGO.svg';
 
 export default function LayoutADesktop({ children }) {
     const { t } = useLocale();
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [collapsed, setCollapsed] = useState(() => {
+        if (typeof window === 'undefined') {
+            return false;
+        }
+        try {
+            return window.localStorage.getItem('pw-desktop-sidebar') === 'collapsed';
+        } catch (error) {
+            return false;
+        }
+    });
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            setMousePosition({ x: e.clientX, y: e.clientY });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            try {
+                window.localStorage.setItem('pw-desktop-sidebar', collapsed ? 'collapsed' : 'expanded');
+            } catch (error) {
+                // ignore storage errors
+            }
+        }
+    }, [collapsed]);
 
     // Responsive Guard: Redirect to Mobile if screen is too small (< 768px)
     useEffect(() => {
@@ -32,7 +62,6 @@ export default function LayoutADesktop({ children }) {
 
     // Better implementation with Hook:
     const navigate = useNavigate();
-
     useEffect(() => {
         const checkSize = () => {
             if (window.innerWidth < 768) {
@@ -53,86 +82,106 @@ export default function LayoutADesktop({ children }) {
     ];
 
     return (
-        <div className="min-h-screen w-full relative font-sans flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 xl:px-24 py-6 lg:py-11">
-            {/* SVG gradient defs for nav icons */}
-            <svg width="0" height="0" className="absolute" aria-hidden>
-                <defs>
-                    <linearGradient id="nav-icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#60A5FA" />
-                        <stop offset="50%" stopColor="#A78BFA" />
-                        <stop offset="100%" stopColor="#22D3EE" />
-                    </linearGradient>
-                </defs>
-            </svg>
-            {/* Floating logo above the device frame */}
-            <div className="relative z-20 mb-6 flex items-center justify-center">
-                <div className="px-6 py-2.5 rounded-full bg-black/60 backdrop-blur-md ring-1 ring-white/10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)]">
-                    <img src={LogoWhite} alt="PolyWallet" className="h-7 w-auto" />
-                </div>
+        <div className="min-h-screen w-full relative overflow-hidden font-sans flex justify-center items-center p-6 bg-[#F2F4F7]">
+            {/* Background: LightGlow - 08 style Gradient (50% opacity) */}
+            {/* Background: Luma Effect Image */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <img
+                    src={lumaBg}
+                    alt="Background"
+                    className="w-full h-full object-cover opacity-50"
+                />
             </div>
 
-            {/* Outer device frame with luxury gradient border */}
-            <div className="relative z-10 w-full max-w-[1500px] min-h-[calc(100vh-140px)] lg:h-[calc(100vh-160px)] rounded-[38px] p-[1.5px] bg-gradient-to-br from-white/25 via-white/5 to-blue-400/20 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
-              <div className="relative w-full h-full bg-[#0A0A0B] rounded-[36px] p-2 sm:p-3 flex">
+            {/* Mouse Spotlight Effect */}
+            <div
+                className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-overlay"
+                style={{
+                    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.8), transparent 40%)`
+                }}
+            ></div>
 
-                {/* Sidebar (icon rail outside white card) */}
-                <aside className="relative w-[64px] lg:w-[88px] flex flex-col items-center py-4 lg:py-6 shrink-0">
-                    {/* Nav icons */}
-                    <nav className="flex-1 flex flex-col items-center justify-center gap-2 w-full">
-                        {navItems.map((item) => (
-                            <NavLink
-                                key={item.to}
-                                to={item.to}
-                                className={({ isActive }) =>
-                                    clsx(
-                                    'relative flex items-center justify-center w-full h-[54px] transition-all duration-300 group',
-                                        isActive
-                                            ? 'text-gray-900 [&_svg]:!stroke-current'
-                                            : 'text-gray-900 [&_svg]:[stroke:url(#nav-icon-grad)]'
-                                    )
-                                }
-                            >
-                                {({ isActive }) => (
-                                    <>
-                                        {isActive && (
-                                            <>
-                                                {/* Active tab shape from the reference */}
-                                                <span className="absolute inset-y-0 left-3 lg:left-7 right-0 bg-white rounded-l-[22px]" />
-                                                {/* Top black square wrapper with the white concave cut */}
-                                                <span aria-hidden className="absolute right-0 -top-5 w-5 h-5 bg-white">
-                                                    <span className="block w-full h-full bg-[#0A0A0B] rounded-br-[20px]" />
-                                                </span>
-                                                {/* Bottom black square wrapper with the white concave cut */}
-                                                <span aria-hidden className="absolute right-0 -bottom-5 w-5 h-5 bg-white">
-                                                    <span className="block w-full h-full bg-[#0A0A0B] rounded-tr-[20px]" />
-                                                </span>
-                                            </>
-                                        )}
-                                        <item.icon
-                                            size={20}
-                                            strokeWidth={2}
-                                            className="relative z-10 transition-all duration-300 group-hover:scale-110 group-active:scale-95 group-hover:drop-shadow-[0_0_6px_rgba(167,139,250,0.1)]"
-                                        />
-                                        {/* Tooltip */}
-                                        <span className="pointer-events-none absolute left-full ml-3 px-2.5 py-1 rounded-md bg-white text-gray-900 text-xs font-semibold shadow-lg opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition whitespace-nowrap z-20">
-                                            {item.label}
-                                        </span>
-                                    </>
-                                )}
-                            </NavLink>
-                        ))}
-                    </nav>
-                </aside>
+            {/* 8px Glass Border Wrapper */}
+            <div className="relative z-10 w-full max-w-[1440px] h-[calc(100vh-48px)] bg-white/40 backdrop-blur-xl rounded-[32px] p-[8px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-white/60">
 
-                {/* Main white card */}
-                <main className="flex-1 bg-white rounded-[24px] overflow-hidden relative">
-                    <div className="h-full overflow-y-auto no-scrollbar">
-                        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8 pb-16 lg:pb-24">
+                {/* Main Glass/White Container */}
+                <div className="w-full h-full bg-white/80 rounded-[24px] overflow-hidden flex shadow-inner relative z-10">
+                    <aside
+                        className={clsx(
+                            'bg-white/50 backdrop-blur-md border-r border-[#E4E9F0] flex flex-col transition-all duration-300',
+                            collapsed ? 'w-20' : 'w-64'
+                        )}
+                    >
+                        <div className="flex items-center justify-between px-6 py-6 h-20">
+                            {/* Logo Section */}
+                            {!collapsed ? (
+                                <img src={LogoBlack} alt="PolyWallet" className="h-5 w-auto" />
+                            ) : (
+                                <div className="w-full flex justify-center">
+                                    <img src={LogoBlack} alt="PW" className="h-5 w-auto" />
+                                </div>
+                            )}
+
+                            {!collapsed && (
+                                <button
+                                    type="button"
+                                    onClick={() => setCollapsed(true)}
+                                    className="w-8 h-8 rounded-full bg-white text-slate-400 hover:text-slate-900 flex items-center justify-center transition-colors border border-gray-100 shadow-sm"
+                                    aria-label="Collapse sidebar"
+                                >
+                                    <ChevronLeft size={16} />
+                                </button>
+                            )}
+                        </div>
+
+                        {collapsed && (
+                            <div className="flex justify-center mb-6">
+                                <button
+                                    type="button"
+                                    onClick={() => setCollapsed(false)}
+                                    className="w-8 h-8 rounded-full bg-white text-slate-400 hover:text-slate-900 flex items-center justify-center transition-colors border border-gray-100 shadow-sm rotate-180"
+                                    aria-label="Expand sidebar"
+                                >
+                                    <ChevronLeft size={16} />
+                                </button>
+                            </div>
+                        )}
+
+                        <nav className="flex-1 px-3 space-y-2 py-4">
+                            {navItems.map((item) => (
+                                <NavLink
+                                    key={item.to}
+                                    to={item.to}
+                                    className={({ isActive }) =>
+                                        clsx(
+                                            'flex items-center gap-3 px-3 py-3 rounded-[16px] transition-all duration-200 group',
+                                            isActive
+                                                ? 'bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg shadow-gray-900/10'
+                                                : 'text-slate-500 hover:bg-white hover:text-slate-900 hover:shadow-sm'
+                                        )
+                                    }
+                                >
+                                    <div className={clsx(
+                                        'rounded-xl p-0.5 transition-colors',
+                                        // isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-600'
+                                    )}>
+                                        <item.icon size={20} strokeWidth={2} />
+                                    </div>
+                                    {!collapsed && <span className="font-semibold text-[15px]">{item.label}</span>}
+                                </NavLink>
+                            ))}
+                        </nav>
+
+                        {/* User Profile / Footer - Removed as per request */}
+                    </aside>
+
+                    <main className="flex-1 overflow-y-auto no-scrollbar relative bg-[#FAFAFA]/50">
+                        {/* Reduced padding from p-8 to p-5 to reduce gaps from sidebar */}
+                        <div className="max-w-5xl mx-auto p-5 pb-24">
                             {children}
                         </div>
-                    </div>
-                </main>
-              </div>
+                    </main>
+                </div>
             </div>
         </div>
     );

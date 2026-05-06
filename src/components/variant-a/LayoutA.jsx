@@ -15,7 +15,7 @@ export default function LayoutA({ children }) {
                 "p-2.5 rounded-2xl transition-all duration-300 relative overflow-hidden",
                 active
                     ? "bg-gray-900 text-white shadow-[0_4px_12px_rgba(0,0,0,0.15)] scale-110 -translate-y-1"
-                    : "[&_svg]:[stroke:url(#mobile-nav-grad)] hover:bg-gray-50"
+                    : "text-gray-400 hover:text-gray-600 hover:bg-gray-50"
             )}>
                 {active && (
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-50"></div>
@@ -35,17 +35,8 @@ export default function LayoutA({ children }) {
     );
 
     return (
-        <div className="h-[100dvh] w-full text-gray-900 font-sans flex justify-center items-center selection:bg-gray-200 overflow-hidden p-[10px] sm:p-0">
-            <svg width="0" height="0" className="absolute" aria-hidden>
-                <defs>
-                    <linearGradient id="mobile-nav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#60A5FA" />
-                        <stop offset="50%" stopColor="#A78BFA" />
-                        <stop offset="100%" stopColor="#22D3EE" />
-                    </linearGradient>
-                </defs>
-            </svg>
-            <div className="w-full h-full bg-[#F9FAFB] relative flex flex-col rounded-[32px] border-[6px] border-gray-900 shadow-[0_20px_60px_rgba(0,0,0,0.45)] ring-1 ring-gray-700/40 overflow-hidden sm:h-[844px] sm:max-w-[400px] sm:rounded-[40px] sm:shadow-2xl sm:border-[8px] sm:ring-2 sm:ring-gray-700/50 transition-all duration-300">
+        <div className="h-[100dvh] w-full bg-grid-dark text-gray-900 font-sans flex justify-center items-start sm:items-center selection:bg-gray-200 overflow-hidden">
+            <div className="w-full h-full bg-[#F9FAFB] relative flex flex-col sm:h-[844px] sm:max-w-[400px] sm:rounded-[40px] sm:shadow-2xl sm:border-[8px] sm:border-gray-900 sm:ring-2 sm:ring-gray-700/50 sm:overflow-hidden transition-all duration-300">
                 <main className="flex-1 overflow-y-auto pb-[120px] no-scrollbar relative">
                     {children}
                 </main>
